@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Polygon OMS — Asset Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1A;color:#fff;overflow:hidden}
+.app{display:grid;grid-template-columns:230px 1fr;height:100vh}
+/* SIDEBAR */
+.sb{background:#060910;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;overflow:hidden}
+.sb-logo-wrap{padding:1rem 1rem .85rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-logo{display:flex;align-items:center;gap:7px;margin-bottom:.9rem}
+.slt{font-size:12px;font-weight:700;color:#fff}
+.sls{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8247E5;display:block}
+.sec-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.5rem}
+.fw-item{display:flex;align-items:flex-start;gap:.5rem;padding:.58rem .65rem;border-radius:5px;cursor:pointer;border:1px solid transparent;transition:all .15s;margin-bottom:3px}
+.fw-item:hover{background:rgba(130,71,229,.08);border-color:rgba(130,71,229,.15)}
+.fw-item.on{background:rgba(130,71,229,.15);border-color:rgba(130,71,229,.3)}
+.fw-dot{width:7px;height:7px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:3px}
+.fw-txt{font-size:11px;font-weight:600;color:rgba(255,255,255,.42);line-height:1.35}
+.fw-item.on .fw-txt{color:#fff}
+.fw-ck{font-size:10px;color:#5EEABD;margin-left:auto;flex-shrink:0}
+/* asset section */
+.sb-assets-wrap{padding:.85rem 1rem;border-top:1px solid rgba(255,255,255,.07)}
+.at{display:flex;align-items:center;gap:.5rem;padding:.5rem .65rem;border-radius:5px;cursor:pointer;border:1px solid transparent;transition:all .15s;margin-bottom:3px}
+.at:hover{background:rgba(255,255,255,.04)}
+.at.on{background:rgba(130,71,229,.1);border-color:rgba(130,71,229,.2)}
+.at-ic{width:22px;height:22px;background:rgba(255,255,255,.05);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.3);flex-shrink:0}
+.at.on .at-ic{background:rgba(130,71,229,.2);color:#A97CF8}
+.at-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.38)}
+.at.on .at-lbl{color:#fff}
+.at-bdg{font-size:9px;font-weight:600;color:#5EEABD;margin-left:auto;background:rgba(29,158,117,.08);padding:1px 5px;border-radius:3px}
+/* personalise section */
+.sb-pers{padding:.85rem 1rem;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.sb-input{width:100%;background:#0B0E1A;border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.45rem .65rem;font-size:11px;color:#fff;font-family:'Inter',system-ui;outline:none;margin-bottom:.45rem}
+.sb-input:focus{border-color:#8247E5}
+.sb-input::placeholder{color:rgba(255,255,255,.2)}
+.gen-btn{width:100%;background:#8247E5;color:#fff;border:none;border-radius:5px;padding:.55rem;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:'Inter',system-ui;transition:opacity .15s}
+.gen-btn:hover{opacity:.88}
+.gen-btn:disabled{opacity:.4;cursor:not-allowed}
+.sb-bot{padding:.7rem 1rem;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
+.sb-tip{font-size:10px;color:rgba(255,255,255,.22);line-height:1.5}
+.co-pill{background:rgba(130,71,229,.1);border:1px solid rgba(130,71,229,.2);border-radius:4px;padding:.38rem .6rem;display:flex;align-items:center;gap:.4rem}
+.co-dot{width:5px;height:5px;border-radius:50%;background:#8247E5;flex-shrink:0}
+.co-nm{font-size:11px;font-weight:600;color:#A97CF8}
+.co-ty{font-size:9px;color:rgba(255,255,255,.28);margin-left:auto}
+/* MAIN */
+.main{display:flex;flex-direction:column;overflow:hidden}
+.mh{padding:.8rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.07);background:#080B14;flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column}
+.mh-lb{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.18rem}
+.mh-ti{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.edit-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:rgba(255,255,255,.5);font-size:11px;font-weight:600;padding:6px 11px;cursor:pointer;display:flex;align-items:center;gap:.4rem;font-family:'Inter',system-ui;transition:all .15s}
+.edit-btn:hover{background:rgba(255,255,255,.09);color:#fff}
+.edit-btn:disabled{opacity:.4;cursor:not-allowed}
+.tbar{display:flex;gap:3px;padding:.55rem 1.3rem .4rem;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap;background:#060910;flex-shrink:0}
+.tab{padding:.28rem .62rem;border-radius:4px;font-size:11px;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.tab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.05)}
+.tab.on{background:rgba(130,71,229,.18);border-color:rgba(130,71,229,.35);color:#D4B5FF}
+.bd{padding:1.15rem 1.3rem;overflow-y:auto;flex:1}
+/* SHARED COMPONENTS */
+.ey{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.32rem}
+.sh{font-size:17px;font-weight:900;line-height:1.2;letter-spacing:-.02em;color:#fff;margin-bottom:.28rem}
+.sh em{color:#C4A4FF;font-style:normal}
+.sub{font-size:12px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:1rem;max-width:520px}
+.slb{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.6rem}
+.dv{border:none;border-top:1px solid rgba(255,255,255,.08);margin:.95rem 0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.ca{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:7px}
+.ca:last-child{margin-bottom:0}
+.cl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem}
+.cv{font-size:13px;font-weight:600;color:#fff;line-height:1.5}
+.cs{font-size:11px;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.6}
+.tg{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
+.tp{background:rgba(130,71,229,.25);color:#D4B5FF}
+.ttr{background:rgba(226,75,74,.2);color:#F9A8A7}
+.ta{background:rgba(186,117,23,.2);color:#F2CC70}
+.ib{width:29px;height:29px;background:rgba(130,71,229,.2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#C4A4FF;flex-shrink:0}
+.rf{display:flex;align-items:flex-start;gap:.55rem;margin-bottom:.42rem}
+.rf:last-child{margin-bottom:0}
+.bl{width:5px;height:5px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:.37rem}
+.bt{font-size:11px;color:rgba(255,255,255,.75);line-height:1.55}
+.qb{border-left:3px solid #9B6DF5;padding:.5rem .75rem;background:rgba(130,71,229,.09);border-radius:0 5px 5px 0;font-size:12px;font-style:italic;color:rgba(255,255,255,.82);line-height:1.6;margin-bottom:6px}
+/* ICP */
+.ic{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:10px}
+.ic-top{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.ic-av{width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+.ic-nm{font-size:13px;font-weight:700;color:#fff}
+.ic-ro{font-size:10px;color:rgba(255,255,255,.5)}
+.ic-b{padding:.85rem}
+.ic-d{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.7rem}
+.ic-tr{background:rgba(130,71,229,.1);border-radius:4px;padding:.4rem .6rem;margin-bottom:.7rem;border:1px solid rgba(130,71,229,.2)}
+.ic-tl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B48BFF;margin-bottom:.18rem}
+.ic-tt{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.isl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.28rem;margin-top:.6rem}
+.ip{display:flex;align-items:flex-start;gap:.33rem;font-size:11px;color:rgba(255,255,255,.72);line-height:1.43;margin-bottom:.2rem}
+.ipd{width:4px;height:4px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:.32rem}
+.iq{font-size:12px;font-style:italic;color:rgba(255,255,255,.72);border-left:2px solid rgba(130,71,229,.5);padding:.4rem .65rem;margin-top:.6rem;line-height:1.6;background:rgba(130,71,229,.07);border-radius:0 4px 4px 0}
+.ch{display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:2px 7px;font-size:10px;color:rgba(255,255,255,.72);margin:2px;font-style:italic}
+/* COMP MATRIX */
+.cmx{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:.9rem}
+.cmxh{display:grid;grid-template-columns:145px repeat(4,minmax(0,1fr));background:#0B1120;border-bottom:1px solid rgba(255,255,255,.08)}
+.cmxhc{padding:.48rem .6rem;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
+.cmxhc:first-child{text-align:left}
+.cmxr{display:grid;grid-template-columns:145px repeat(4,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.05);align-items:center}
+.cmxr:last-child{border-bottom:none}
+.cmxr.oms{background:rgba(130,71,229,.08)}
+.cmxc{padding:.48rem .6rem;font-size:11px;color:rgba(255,255,255,.6);text-align:center}
+.cmxc:first-child{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-align:left}
+.cmxr.oms .cmxc:first-child{color:#C4A4FF;font-weight:700}
+.cy{color:#5EEABD;font-weight:700;font-size:13px}
+.cn{color:rgba(255,255,255,.3);font-size:13px}
+.cpa{color:#F2CC70;font-weight:600;font-size:11px}
+/* FULL COMP CARD */
+.fcc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
+.fcc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.fcc-n{font-size:13px;font-weight:700;color:#fff}
+.fcc-s{font-size:10px;color:rgba(255,255,255,.5);margin-top:1px}
+.fcc-b{padding:.85rem}
+.frl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.frt{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6}
+.lm{background:rgba(186,117,23,.1);border:1px solid rgba(186,117,23,.25);border-radius:4px;padding:.42rem .65rem;margin-top:.42rem}
+.lml{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F2CC70;margin-bottom:.15rem}
+.lmt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.neu{background:rgba(29,158,117,.09);border:1px solid rgba(29,158,117,.25);border-radius:4px;padding:.42rem .65rem;margin-top:.42rem}
+.neul{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5EEABD;margin-bottom:.15rem}
+.neut{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+/* DRIVER CHART */
+.drc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:.9rem}
+.dr{display:flex;align-items:center;gap:.65rem;margin-bottom:.42rem}
+.drl{font-size:11px;color:rgba(255,255,255,.78);width:182px;flex-shrink:0}
+.drb{flex:1;background:rgba(255,255,255,.07);border-radius:3px;height:7px;overflow:hidden}
+.drbi{height:100%;border-radius:3px;background:#8247E5}
+.drp{font-size:10px;font-weight:700;color:#B48BFF;width:32px;text-align:right;flex-shrink:0}
+.dri{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;padding-left:182px;margin-top:.12rem;margin-bottom:.65rem}
+/* CONCLUSION / PURPLE BOX */
+.pbox{background:#8247E5;border-radius:7px;padding:.95rem 1.15rem;position:relative;overflow:hidden;margin-bottom:8px}
+.pbox::after{content:'"';position:absolute;right:.7rem;top:-.5rem;font-size:75px;font-weight:900;color:rgba(255,255,255,.08);line-height:1;pointer-events:none}
+.pbox-l{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.4rem}
+.pbox-t{font-size:13px;font-weight:600;color:#fff;line-height:1.75}
+/* VP */
+.vp{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:7px}
+.vpn{font-size:24px;font-weight:900;color:#9B6DF5;line-height:1;flex-shrink:0;width:32px}
+.vptit{font-size:13px;font-weight:700;color:#fff;margin-bottom:.15rem}
+.vpft{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:.28rem;font-style:italic}
+.vpb{font-size:12px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:.3rem}
+.vpw{font-size:11px;color:rgba(255,255,255,.62);line-height:1.5;margin-bottom:.3rem}
+.vppf{font-size:11px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.15);padding:3px 8px;border-radius:3px;display:inline-block}
+/* FRAME */
+.fr{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:7px}
+.fr-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.fr-n{font-size:13px;font-weight:700;color:#fff}
+.frsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.22rem}
+.frt2{font-size:12px;color:rgba(255,255,255,.75);line-height:1.65}
+.fscr{background:rgba(130,71,229,.09);border-left:3px solid #8247E5;padding:.5rem .75rem;border-radius:0 4px 4px 0;font-size:12px;color:rgba(255,255,255,.82);line-height:1.65;font-style:italic;margin-top:.32rem}
+/* MSG */
+.mc2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:.85rem}
+.mc2c{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden}
+.mc2h{background:#0B1120;padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.07);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.mc2b{padding:.75rem .85rem;display:flex;flex-direction:column;gap:.55rem}
+.mil{font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.15rem}
+.mit{font-size:12px;color:#fff;font-weight:600;line-height:1.5}
+.mis{font-size:11px;color:rgba(255,255,255,.65);line-height:1.55;font-weight:400;margin-top:.1rem}
+.gc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px}
+.gcl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.3rem}
+.gct{font-size:12px;color:rgba(255,255,255,.75);line-height:1.65}
+.tg2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.tc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem}
+.tcl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.42rem}
+.tci{font-size:11px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.3rem;display:flex;align-items:flex-start;gap:.45rem}
+.tci:last-child{margin-bottom:0}
+/* SESS */
+.pt{display:flex;gap:4px;margin-bottom:.75rem}
+.ptb{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.28rem .65rem;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .15s}
+.ptb.on{background:#8247E5;border-color:#8247E5;color:#fff}
+.ptc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;font-size:13px;line-height:1.85;color:rgba(255,255,255,.82);margin-bottom:.85rem;white-space:pre-line}
+.ptc em{color:#C4A4FF;font-style:normal;font-weight:600}
+.pe{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
+.pe-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.pe-n{font-size:12px;font-weight:700;color:#fff}
+.pe-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.pesl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem}
+.pet{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.lmb{background:rgba(226,75,74,.09);border:1px solid rgba(226,75,74,.2);border-radius:4px;padding:.4rem .65rem;margin:.4rem .85rem .75rem}
+.lmbl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F9A8A7;margin-bottom:.15rem}
+.lmbt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.5}
+.oc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
+.oc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.oc-hi{font-size:13px;color:#F9A8A7}
+.oc-t{font-size:12px;font-weight:700;color:#fff}
+.oc-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.ocsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.octx{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.ocpf{font-size:10px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.12);padding:2px 7px;border-radius:3px;display:inline-block;margin-top:.3rem}
+.cc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
+.cc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.cc-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.ccl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.cct{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.wc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px;display:flex;align-items:flex-start;gap:.65rem}
+.wn{font-size:20px;font-weight:900;color:#5EEABD;line-height:1;flex-shrink:0;width:28px}
+.ln{font-size:20px;font-weight:900;color:#F9A8A7;line-height:1;flex-shrink:0;width:28px}
+.wt{font-size:13px;font-weight:700;color:#fff;margin-bottom:.2rem}
+.wb{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6}
+.ds{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px;display:flex;align-items:flex-start;gap:.65rem}
+.dsn{width:25px;height:25px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
+.dst{font-size:12px;font-weight:700;color:#fff;margin-bottom:.15rem}
+.dsb{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6}
+.dsp{font-size:11px;font-style:italic;color:#B48BFF;margin-top:.28rem;background:rgba(130,71,229,.08);padding:.25rem .45rem;border-radius:3px}
+.bm{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:7px}
+.bm-h{background:#0B1120;padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between}
+.bm-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.bmsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.bmt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+/* ASSET VIEWS */
+.a-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8247E5;margin-bottom:.4rem}
+.a-h1{font-size:20px;font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:.55rem}
+.a-h1 em{color:#8247E5;font-style:normal}
+.a-lead{font-size:13px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:.9rem}
+.a-co{background:rgba(130,71,229,.08);border:1px solid rgba(130,71,229,.15);border-radius:6px;padding:.6rem .85rem;display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.a-ci{width:28px;height:28px;background:#8247E5;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.a-cn{font-size:12px;font-weight:700;color:#fff}
+.a-cs{font-size:10px;color:rgba(255,255,255,.4)}
+.bfr{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.55rem}
+.vnd{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:4px 8px;font-size:10px;font-weight:500;color:rgba(255,255,255,.35)}
+.vnd-n{font-size:8px;color:#F9A8A7;font-weight:600;display:block;margin-top:1px}
+.arr{display:flex;align-items:center;gap:.4rem;font-size:10px;color:rgba(255,255,255,.18);margin:.45rem 0}
+.arr::before,.arr::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
+.oms-bar{background:#8247E5;border-radius:5px;padding:.7rem .85rem;margin-bottom:.7rem}
+.oms-bar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.42rem}
+.oms-bar-nm{font-size:12px;font-weight:700;color:#fff}
+.oms-bar-bg{font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.2);padding:2px 6px;border-radius:2px;font-weight:600}
+.oms-bar-comps{display:flex;flex-wrap:wrap;gap:4px}
+.oms-c{background:rgba(255,255,255,.12);border-radius:2px;padding:2px 6px;font-size:10px;color:rgba(255,255,255,.88);font-weight:500}
+.stat4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden;margin:.4rem 0 .8rem}
+.s4c{background:#0B0E1A;padding:.75rem;text-align:center}
+.s4n{font-size:17px;font-weight:900;color:#8247E5;display:block;letter-spacing:-.02em;line-height:1}
+.s4l{font-size:9px;color:rgba(255,255,255,.3);margin-top:.25rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.vp-list{display:flex;flex-direction:column;gap:5px}
+.vp-row{background:#111827;border-radius:5px;padding:.6rem .8rem;display:flex;gap:.6rem;align-items:flex-start}
+.vp-ic{width:23px;height:23px;background:rgba(130,71,229,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#A97CF8;font-size:12px}
+.vp-tl{font-size:12px;font-weight:700;color:#fff;margin-bottom:.12rem}
+.vp-bd{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5}
+.logos-row{display:flex;flex-wrap:wrap;gap:4px;margin:.45rem 0}
+.logo-pill{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:3px 9px;font-size:10px;font-weight:600;color:rgba(255,255,255,.45)}
+.cta-bar{background:#8247E5;border-radius:5px;padding:.75rem .9rem;display:flex;align-items:center;justify-content:space-between;margin-top:.9rem;gap:.6rem}
+.cta-l{font-size:12px;font-weight:700;color:#fff}
+.cta-l span{display:block;font-size:10px;font-weight:400;color:rgba(255,255,255,.6);margin-top:1px}
+.cta-r{font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.2);padding:5px 10px;border-radius:3px;flex-shrink:0}
+/* SLIDES */
+.slide{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:1.1rem;height:188px;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:7px;overflow:hidden;position:relative}
+.slide-glow{position:absolute;right:-20px;top:-20px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.09) 0%,transparent 70%);pointer-events:none}
+.sl-ey{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8247E5;margin-bottom:.32rem}
+.sl-h{font-size:16px;font-weight:900;line-height:1.2;letter-spacing:-.02em;color:#fff}
+.sl-h em{color:#8247E5;font-style:normal}
+.sl-s{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5;margin-top:.3rem;max-width:340px}
+.sl-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.45rem;border-top:1px solid rgba(255,255,255,.05);margin-top:auto;flex-shrink:0}
+.sl-logo{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:rgba(255,255,255,.2)}
+.sl-num{font-size:10px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.05em}
+.pain-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
+.pg{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:.4rem .55rem;display:flex;gap:.4rem}
+.pg-ic{font-size:10px;color:rgba(255,255,255,.22);flex-shrink:0;margin-top:1px}
+.pg-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);margin-bottom:.1rem}
+.pg-b{font-size:10px;color:rgba(255,255,255,.32);line-height:1.4}
+.b3g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;flex:1;margin-top:.35rem;max-height:85px}
+.b3s{background:#111827;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.b3n{font-size:22px;font-weight:900;color:#8247E5;letter-spacing:-.02em;line-height:1}
+.b3l{font-size:8px;color:rgba(255,255,255,.25);margin-top:.18rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600;text-align:center}
+.vpm{display:flex;flex-direction:column;gap:4px;flex:1;margin-top:.35rem}
+.vpmr{background:rgba(255,255,255,.03);border-radius:4px;padding:.4rem .55rem;display:flex;gap:.5rem}
+.vpmn{font-size:13px;font-weight:900;color:#8247E5;line-height:1;flex-shrink:0;width:18px}
+.vpmt{font-size:10px;font-weight:700;color:#fff;margin-bottom:.08rem}
+.vpmb{font-size:10px;color:rgba(255,255,255,.3);line-height:1.4}
+.cmt{width:100%;border-collapse:collapse;font-size:10px;flex:1;margin-top:.35rem}
+.cmt th{font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:.3rem .45rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.05)}
+.cmt td{padding:.35rem .45rem;border-bottom:1px solid rgba(255,255,255,.03);color:rgba(255,255,255,.4)}
+.cmt tr:last-child td{border-bottom:none}
+.cmt .or td{color:#fff;background:rgba(130,71,229,.05)}
+.cmt .or td:first-child{color:#8247E5;font-weight:700}
+.cyw{color:#1D9E75;font-weight:600}.cpw{color:#BA7517}.cnw{color:rgba(255,255,255,.18)}
+.proof-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
+.pg2{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:.45rem .6rem}
+.pg2l{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.28rem}
+.pg2-logos{display:flex;flex-wrap:wrap;gap:3px}
+.pg2-logo{border:1px solid rgba(255,255,255,.08);border-radius:2px;padding:2px 5px;font-size:9px;font-weight:600;color:rgba(255,255,255,.4)}
+.pg2-big{font-size:19px;font-weight:900;color:#8247E5;letter-spacing:-.02em;line-height:1.1}
+.pg2-sub{font-size:8px;color:rgba(255,255,255,.25);margin-top:.15rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.cta-slide{background:#8247E5;border-radius:5px;padding:.9rem 1rem;flex:1;margin-top:.35rem;display:flex;flex-direction:column;justify-content:space-between}
+.ctas-h{font-size:15px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.02em}
+.ctas-s{font-size:10px;color:rgba(255,255,255,.65);margin-top:.28rem;line-height:1.45}
+.ctas-btns{display:flex;gap:5px;margin-top:.6rem}
+.ctas-btn{background:rgba(255,255,255,.15);color:#fff;border:none;font-size:10px;font-weight:700;padding:5px 10px;border-radius:3px;cursor:pointer;font-family:'Inter',system-ui}
+.ctas-url{font-size:9px;color:rgba(255,255,255,.35);margin-top:.32rem}
+.co-cover{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem}
+.co-init{width:26px;height:26px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.co-name{font-size:11px;font-weight:700;color:#fff}
+.co-sub{font-size:10px;color:rgba(255,255,255,.3)}
+.co-div{width:1px;height:26px;background:rgba(255,255,255,.1)}
+/* EMAIL */
+.em-card{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;margin-bottom:7px}
+.em-hdr{background:#0B1120;padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between}
+.em-nb{background:#8247E5;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;letter-spacing:.04em}
+.em-tm{font-size:9px;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.05em;text-transform:uppercase}
+.em-ty{font-size:9px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.05em;text-transform:uppercase}
+.em-meta{padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;gap:3px}
+.em-row{display:flex;align-items:baseline;gap:.4rem}
+.em-lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.06em;width:42px;flex-shrink:0}
+.em-val{font-size:11px;color:rgba(255,255,255,.45)}
+.em-val.s{font-size:12px;font-weight:600;color:#fff}
+.em-body{padding:.85rem;font-size:12px;line-height:1.8;color:rgba(255,255,255,.65)}
+.em-body p{margin-bottom:.6rem}
+.em-body p:last-child{margin-bottom:0}
+.em-hook{font-size:13px;font-weight:600;color:#fff;line-height:1.6;padding-left:.6rem;border-left:3px solid #8247E5;margin-bottom:.7rem}
+.em-stat{color:#A97CF8;font-weight:700}
+.em-cta{background:rgba(130,71,229,.1);border:1px solid rgba(130,71,229,.2);border-radius:4px;padding:.42rem .75rem;font-size:11px;font-weight:600;color:#A97CF8;margin-top:.7rem;display:flex;align-items:center;gap:.35rem}
+.em-sig{margin-top:.85rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:rgba(255,255,255,.22)}
+.em-sig strong{color:rgba(255,255,255,.38);display:block;margin-bottom:1px}
+.em-note{padding:.5rem .85rem;background:rgba(130,71,229,.04);border-top:1px solid rgba(130,71,229,.08);display:flex;gap:.42rem;align-items:flex-start}
+.em-ni{color:#8247E5;font-size:11px;flex-shrink:0;margin-top:1px}
+.em-nt{font-size:10px;color:rgba(255,255,255,.28);line-height:1.5}
+.em-nt strong{color:rgba(255,255,255,.38)}
+.em-conn{display:flex;align-items:center;justify-content:center;gap:.35rem;padding:.22rem 0;color:rgba(255,255,255,.1);font-size:10px;font-weight:500}
+.em-conn::before,.em-conn::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.04)}
+/* GENERATING STATE */
+.gen-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.8rem;color:rgba(255,255,255,.35)}
+.gen-dots{display:flex;gap:5px}
+.gen-dots span{width:7px;height:7px;border-radius:50%;background:#8247E5;animation:dp 1.2s ease-in-out infinite}
+.gen-dots span:nth-child(2){animation-delay:.2s}
+.gen-dots span:nth-child(3){animation-delay:.4s}
+@keyframes dp{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.gen-lbl{font-size:12px;font-weight:500}
+</style>
+</head>
+<body>
+<div class="app">
+<!-- SIDEBAR -->
+<div class="sb">
+  <div class="sb-logo-wrap">
+    <div class="sb-logo">
+      <svg width="20" height="20" viewBox="0 0 180 180" fill="none"><path d="M80.2 71.7L67.9 64.1L29.8 86.3V130.5L67.9 152.7L106 130.5V62.3L127 50.2L148.1 62.3V86.3L127 98.4L114.7 90.8V110.1L127 117.7L165.1 95.5V53.3L127 31.1L88.9 53.3V117.5L67.9 129.6L46.9 117.5V95.5L67.9 83.4L80.2 90.9V71.7Z" fill="#8247E5"/></svg>
+      <div><span class="slt">Polygon OMS</span><span class="sls">Asset Generator</span></div>
+    </div>
+    <p class="sec-lbl">Research frameworks</p>
+    <div id="fwl"></div>
+    <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.06)">
+      <p class="sec-lbl">Sales assets</p>
+      <div class="at on" id="at-op" onclick="switchAsset('op')"><div class="at-ic"><i class="ti ti-file-text"></i></div><span class="at-lbl">One-Pager</span><span class="at-bdg">Ready</span></div>
+      <div class="at" id="at-pd" onclick="switchAsset('pd')"><div class="at-ic"><i class="ti ti-presentation"></i></div><span class="at-lbl">Pitch Deck</span><span class="at-bdg">Ready</span></div>
+      <div class="at" id="at-em" onclick="switchAsset('em')"><div class="at-ic"><i class="ti ti-mail"></i></div><span class="at-lbl">Email Sequence</span><span class="at-bdg">Ready</span></div>
+    </div>
+  </div>
+  <div class="sb-pers">
+    <p class="sec-lbl">Personalise</p>
+    <input type="text" class="sb-input" id="coName" placeholder="Company name">
+    <input type="text" class="sb-input" id="coUrl" placeholder="Website URL (optional)">
+    <button class="gen-btn" id="genBtn" onclick="genAssets()"><i class="ti ti-sparkles" style="font-size:11px"></i>Generate personalised assets</button>
+    <div id="sbStatus" style="margin-top:.5rem"></div>
+  </div>
+  <div class="sb-bot"><p class="sb-tip">All three frameworks feed the assets below. Click any framework to explore the research.</p></div>
+</div>
+<!-- MAIN -->
+<div class="main">
+  <div class="mh">
+    <div class="mh-left">
+      <p class="mh-lb" id="mhLbl">SALES ASSETS</p>
+      <p class="mh-ti" id="mhTi">One-Pager</p>
+    </div>
+    <button class="edit-btn" id="editBtn" onclick="editInDrive()"><i class="ti ti-brand-google-drive" style="font-size:12px"></i><span id="editBtnLbl">Edit in Google Docs</span></button>
+  </div>
+  <div class="tbar" id="tbar"></div>
+  <div class="bd" id="bd"></div>
+</div>
+</div>
+<script>
+var VIEW='asset', FW='', ATAB='op', FTAB='', PT='30s', CO='', COSTAT='default', CO_LEAD=null;
+var SRC='Polygon Open Money Stack: One integration replaces 5-6 vendor stack. ICP: fintechs and payment processors. Proof: $54B stablecoin transfer volume, 7B transactions, 159M wallets, $0.002 avg cost. Customers: Stripe, Revolut, Nubank, BlackRock, Hamilton Lane. Primary competitor: Bridge (Stripe-owned managed service). Tone: payments professionals not blockchain enthusiasts.';
+var FWMAP={
+  market:{lb:'FRAMEWORK 1 OF 3',ti:'User, Competitor and Market Research',tabs:['Market Context','ICP Profiles','Competitive Analysis','Buyer Intelligence']},
+  pos:{lb:'FRAMEWORK 2 OF 3',ti:'Positioning and Messaging',tabs:['Positioning Statement','Value Propositions','Market Frame','Messaging']},
+  sess:{lb:'FRAMEWORK 3 OF 3',ti:'Sales Enablement System',tabs:['Pitches + Talk Tracks','Objection Handling','Competitive Cards','Why We Win / Lose']}
+};
+var ASSETMAP={op:{lb:'SALES ASSETS',ti:'One-Pager',edit:'Edit in Google Docs'},pd:{lb:'SALES ASSETS',ti:'Pitch Deck',edit:'Edit in Google Slides'},em:{lb:'SALES ASSETS',ti:'Email Sequence',edit:'Edit in Google Docs'}};
+var PITCHES={
+  '15s':'We are Polygon Open Money Stack — <em>stablecoin payments infrastructure</em> for fintechs. One integration gives you wallets, ramps, compliance, and settlement. <em>Stripe, Revolut, and BlackRock</em> are already on these rails.',
+  '30s':'Most fintechs building cross-border stablecoin products are running <em>5 to 6 vendors</em> just to make one corridor work. Every new market means another <em>3 to 4 month integration cycle</em>.\n\nThe Open Money Stack replaces that entire stack with one integration. You go from decision to <em>first live transaction in days</em>. Stripe, Revolut, Nubank, and BlackRock are already live on these rails.',
+  '2min':'Most fintechs we talk to are dealing with the same problem. They want to move money globally with stablecoins, but the infrastructure is fragmented. Custody here, compliance there, a ramp for every new market. Teams are spending <em>3 to 4 months getting one corridor live</em>.\n\nThe Open Money Stack is <em>one integration that replaces all of that</em>. Wallets, fiat ramps in 150+ countries, compliance, and blockchain-native settlement assembled at scale. Live in days, not months.\n\nWhat makes us different from Bridge is that we are open infrastructure. Bridge abstracts complexity but you are building on a <em>Stripe-owned managed service</em>. With OMS you own the rail.\n\n<em>$54B in stablecoin transfers. 7 billion total transactions.</em> Stripe, Revolut, Nubank, BlackRock, and Hamilton Lane are all live.\n\nWhat corridors are you looking to open in the next 90 days?'
+};
+var PLY='<svg width="12" height="12" viewBox="0 0 180 180" fill="none"><path d="M80.2 71.7L67.9 64.1L29.8 86.3V130.5L67.9 152.7L106 130.5V62.3L127 50.2L148.1 62.3V86.3L127 98.4L114.7 90.8V110.1L127 117.7L165.1 95.5V53.3L127 31.1L88.9 53.3V117.5L67.9 129.6L46.9 117.5V95.5L67.9 83.4L80.2 90.9V71.7Z" fill="rgba(255,255,255,0.2)"/></svg>';
+
+function gi(n){if(!n)return 'C';var p=n.trim().split(' ');return p.length>=2?(p[0][0]+p[1][0]).toUpperCase():n.trim()[0].toUpperCase()}
+function e(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function initFWList(){
+  var el=document.getElementById('fwl');el.innerHTML='';
+  [{id:'market',text:'User, Competitor and Market Research'},{id:'pos',text:'Positioning and Messaging'},{id:'sess',text:'Sales Enablement System'}].forEach(function(f){
+    var d=document.createElement('div');d.className='fw-item'+(f.id===FW?' on':'');
+    d.innerHTML='<span class="fw-dot"></span><span class="fw-txt">'+f.text+'</span><i class="ti ti-check fw-ck"></i>';
+    d.onclick=function(){
+      VIEW='fw';FW=f.id;FTAB=FWMAP[FW].tabs[0];
+      ['op','pd','em'].forEach(function(a){document.getElementById('at-'+a).className='at'});
+      initFWList();renderHdr();renderTabs();renderBd();
+    };
+    el.appendChild(d);
+  });
+}
+function switchAsset(a){
+  VIEW='asset';ATAB=a;FW='';FTAB='';
+  ['op','pd','em'].forEach(function(x){document.getElementById('at-'+x).className='at'+(x===a?' on':'')});
+  initFWList();renderHdr();renderTabs();renderBd();
+}
+function renderHdr(){
+  if(VIEW==='fw'){
+    document.getElementById('mhLbl').textContent=FWMAP[FW].lb;
+    document.getElementById('mhTi').textContent=FWMAP[FW].ti;
+    document.getElementById('editBtn').style.display='none';
+  } else {
+    document.getElementById('mhLbl').textContent=ASSETMAP[ATAB].lb;
+    document.getElementById('mhTi').textContent=ASSETMAP[ATAB].ti+(CO&&COSTAT==='done'?' — '+CO:'');
+    document.getElementById('editBtnLbl').textContent=ASSETMAP[ATAB].edit;
+    document.getElementById('editBtn').style.display='';
+  }
+}
+function renderTabs(){
+  var el=document.getElementById('tbar');el.innerHTML='';
+  if(VIEW==='fw'){
+    FWMAP[FW].tabs.forEach(function(t){
+      var d=document.createElement('div');d.className='tab'+(t===FTAB?' on':'');d.textContent=t;
+      d.onclick=function(){FTAB=t;renderTabs();renderBd()};el.appendChild(d);
+    });
+  }
+}
+function renderBd(){
+  var el=document.getElementById('bd');
+  if(VIEW==='fw'){
+    var map={'Market Context':tMC,'ICP Profiles':tICP,'Competitive Analysis':tComp,'Buyer Intelligence':tBI,
+      'Positioning Statement':tPS,'Value Propositions':tVP,'Market Frame':tMF,'Messaging':tMsg,
+      'Pitches + Talk Tracks':tPitch,'Objection Handling':tObj,'Competitive Cards':tCC,'Why We Win / Lose':tWin};
+    el.innerHTML=(map[FTAB]||function(){return'';})();
+  } else {
+    if(COSTAT==='generating'){el.innerHTML='<div class="gen-state"><div class="gen-dots"><span></span><span></span><span></span></div><p class="gen-lbl">Generating personalised assets for '+e(CO)+'...</p></div>';return;}
+    if(ATAB==='op')el.innerHTML=tOP();
+    else if(ATAB==='pd')el.innerHTML=tPD();
+    else el.innerHTML=tEM();
+  }
+}
+/* ═══ MARKET CONTEXT ═══ */
+function tMC(){return'<p class="ey">MarketLens · Tab 1 of 4</p><h3 class="sh">Market <em>Context</em></h3><p class="sub">The environment we are entering, the structural problem driving demand, and the key shifts that make now the right moment.</p><p class="slb">Category definition</p><div class="ca"><p class="cl">Category</p><p class="cv">Stablecoin payments infrastructure</p><p class="cs">Full-stack payments integration for fintechs and payment processors. Not a single chain, not a managed API service — the assembled stack (wallets, fiat ramps, compliance, blockchain-native settlement) in one integration.</p></div><div class="dv"></div><p class="slb">Status quo — what fintechs are doing today</p><div class="g2"><div class="ca"><div class="rf"><div class="ib"><i class="ti ti-puzzle"></i></div><div><p class="cv" style="font-size:12px">5 to 6 vendor stack per corridor</p><p class="cs">Custody, fiat ramp, compliance, cross-chain, settlement — each a separate contract and failure point.</p></div></div></div><div class="ca"><div class="rf"><div class="ib"><i class="ti ti-clock"></i></div><div><p class="cv" style="font-size:12px">3 to 6 months per new corridor</p><p class="cs">Most teams spend this long on engineering before processing a single transaction in a new market.</p></div></div></div><div class="ca"><div class="rf"><div class="ib"><i class="ti ti-tool"></i></div><div><p class="cv" style="font-size:12px">Maintenance compounds</p><p class="cs">As the stack grows, capacity for new features shrinks. Teams become infrastructure companies instead of payments companies.</p></div></div></div><div class="ca"><div class="rf"><div class="ib"><i class="ti ti-alert-triangle"></i></div><div><p class="cv" style="font-size:12px">No single failure owner</p><p class="cs">When something breaks, each vendor points elsewhere. Legal exposure lives in the gaps between contracts.</p></div></div></div></div><div class="dv"></div><p class="slb">Three key market shifts</p><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Shift 1: Bridge / Stripe acquisition normalising the category</p><p class="cs">Stripe buying Bridge legitimised stablecoin infrastructure as serious B2B. Every fintech that takes a Bridge meeting is already warm for OMS. Bridge does the category education; OMS differentiates on openness and blockchain-native settlement.</p></div><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Shift 2: Infrastructure consolidation moment</p><p class="cs">Fintechs that assembled point solutions in 2020-2022 are now consolidating vendors. OMS enters as the consolidation destination — the purchase is "replace our stack," not "add another vendor."</p></div><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Shift 3: Regulatory clarity improving</p><p class="cs">EU MiCA advancing. US stablecoin legislation moving. BlackRock, Hamilton Lane, Revolut, Nubank all on Polygon publicly. The compliance question shifts from "is this legal?" to "which rail has the best compliance coverage?"</p></div><div class="dv"></div><p class="slb">Ecosystem signals to monitor</p><div class="g2"><div class="ca"><p class="cl">Primary sources</p><div class="rf"><span class="bl"></span><span class="bt">The Block, Coindesk — crypto infrastructure news</span></div><div class="rf"><span class="bl"></span><span class="bt">PaymentsSource, Fintech Nexus — payments trade press</span></div><div class="rf"><span class="bl"></span><span class="bt">Bridge blog, Stripe changelog — competitor signals</span></div></div><div class="ca"><p class="cl">Watch for</p><div class="rf"><span class="bl"></span><span class="bt">Bridge product announcements and pricing changes</span></div><div class="rf"><span class="bl"></span><span class="bt">Tron and Base stablecoin supply movements</span></div><div class="rf"><span class="bl"></span><span class="bt">New institutional logos announced on Polygon</span></div></div></div>';}
+
+/* ═══ ICP PROFILES ═══ */
+function iCard(av,bg,nm,ro,type,desc,trig,pains,kpis,quote,chips){
+  return'<div class="ic"><div class="ic-top"><div style="display:flex;align-items:center;gap:.55rem"><div class="ic-av" style="background:'+bg+'">'+av+'</div><div><p class="ic-nm">'+nm+'</p><p class="ic-ro">'+ro+'</p></div></div><span class="tg tp">'+type+'</span></div><div class="ic-b"><p class="ic-d">'+desc+'</p><div class="ic-tr"><p class="ic-tl">⚡ Buying trigger</p><p class="ic-tt">'+trig+'</p></div><div class="g2"><div><p class="isl">Functional pains</p>'+pains.map(function(p){return'<div class="ip"><span class="ipd"></span>'+p+'</div>'}).join('')+'<p class="isl" style="margin-top:.6rem">KPIs they are measured on</p>'+kpis.map(function(k){return'<div class="ip"><span class="ipd"></span>'+k+'</div>'}).join('')+'</div><div><p class="isl">Emotional pain</p><div class="iq">'+quote+'</div><p class="isl" style="margin-top:.6rem">Actual buyer language</p><div style="display:flex;flex-wrap:wrap;gap:3px">'+chips.map(function(c){return'<span class="ch">'+c+'</span>'}).join('')+'</div></div></div></div></div>';}
+
+function tICP(){return'<p class="ey">MarketLens · Tab 2 of 4</p><h3 class="sh">ICP <em>Profiles</em></h3><p class="sub">Three primary buyer profiles with full trigger, pain, KPI, and buyer language maps. Includes the buying committee structure and explicit exclusions for this tool.</p><p class="slb">ICP 1 — The Builder</p>'+iCard('R','#8247E5','Ravi, 31','Head of Payments · Series B cross-border fintech','The Builder','Evaluating infrastructure monthly. Built one multi-vendor stack before and regrets the maintenance overhead. Active in the Stripe ecosystem. Makes or heavily influences infrastructure purchasing decisions.','New corridor on the roadmap with a 90-day deadline, or an engineering audit flagging vendor maintenance consuming 30%+ of sprint capacity.',['Multi-vendor maintenance consuming sprint capacity','3 to 6 month integration cycles per corridor','No single compliance owner across vendors','Engineering team becoming an infrastructure company'],['Time-to-market per corridor','Engineering hours per integration','First live transaction date'],'"We became a payments infrastructure company when we just wanted to build a payments product."',['"Can\'t afford 3-4 months per corridor"','"How long until first transaction?"','"Already talking to Bridge"','"Built this once — won\'t do it again"'])+'<p class="slb" style="margin-top:1rem">ICP 2 — The Scaler</p>'+iCard('A','#1D6E8E','Ana, 38','VP Engineering · Neobank expanding to LATAM','The Scaler','Conservative on new technology. Wants 12+ months of production proof. Has to justify decisions to legal and the board. Being wrong here is a career risk.','Board push to add stablecoin capability, or a compliance incident that exposes a gap in the current vendor stack.',['Compliance fragmentation across vendors','No single source of truth for regulatory standing','Board credibility for infrastructure decisions','Legal exposure in new jurisdictions'],['Compliance standing and audit results','Time to first live transaction','Named reference customers approved by legal'],'"I need logos I can show my board. I can\'t be the person who put us on an unproven rail."',['"Who else is using this at scale?"','"Regulatory standing?"','"Logos for my legal team"','"12 months of production proof"'])+'<p class="slb" style="margin-top:1rem">ICP 3 — The Payments Product Lead</p>'+iCard('P','#1D7A55','Priya, 34','Payments Product Lead · Payment processor','The Processor','Evaluates by hard numbers: cost, corridors, reliability, uptime. New market expansion target set by leadership. Makes a recommendation, does not make the final call.','New market expansion target set by product or commercial leadership, often with a hard deadline.',['Per-corridor engineering overhead for each new market','Always 6 months behind on the roadmap','Uptime and reliability risks on current stack'],['Number of active corridors','Engineering time per new market','Cost per transaction'],'"We are always 6 months behind where we want to be on the roadmap."',['"Cost per transaction?"','"Which corridors are live today?"','"Uptime SLA?"','"How fast to first transaction?"'])+'<div class="dv"></div><p class="slb">Who is NOT the ICP for this tool</p><div class="g2" style="margin-bottom:.85rem"><div class="ca" style="border-top:2px solid #E24B4A"><p class="cl" style="color:#F9A8A7">Excluded</p><p class="cv" style="font-size:12px">Retail end users</p><p class="cs">OMS is B2B infrastructure only. Not a consumer product.</p></div><div class="ca" style="border-top:2px solid #E24B4A"><p class="cl" style="color:#F9A8A7">Excluded from this tool</p><p class="cv" style="font-size:12px">Blockchain-native crypto companies</p><p class="cs">They need CDK/Agglayer, not the assembled payments stack. Different product, different assets needed.</p></div></div><div class="dv"></div><p class="slb">Buying committee map</p><div class="ca"><div class="g2" style="gap:.85rem"><div><p class="cl" style="color:#B48BFF">Economic buyer</p><p class="cv" style="font-size:12px">CFO or VP Finance</p><p class="cs">Cares about vendor consolidation ROI. Does not evaluate technology. Proof: cost reduction vs current stack, fewer contracts.</p></div><div><p class="cl" style="color:#B48BFF">Technical buyer (primary ICP)</p><p class="cv" style="font-size:12px">CTO, VP Engineering, Head of Payments</p><p class="cs">Evaluates integration complexity, time-to-first-transaction, compliance standing. Makes the shortlist recommendation.</p></div></div><div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.07)"><p class="cl" style="color:#B48BFF">Legal / Compliance (veto power)</p><p class="cv" style="font-size:12px">GC or Head of Compliance</p><p class="cs">Can veto, rarely initiates. BlackRock and Hamilton Lane logos handle most of this objection before the conversation starts.</p></div></div>';}
+
+/* ═══ COMPETITIVE ANALYSIS ═══ */
+function fccCard(nm,sub,ttype,threat,posLbl,pos,wins,loses,landmine,neutralise){
+  return'<div class="fcc"><div class="fcc-h"><div><p class="fcc-n">'+nm+'</p><p class="fcc-s">'+sub+'</p></div><span class="tg '+ttype+'">'+threat+'</span></div><div class="fcc-b"><div style="margin-bottom:.7rem"><p class="frl">'+posLbl+'</p><p class="frt">'+pos+'</p></div><div class="g2"><div><p class="frl" style="color:#5EEABD">Where they win</p>'+wins.map(function(w){return'<div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">'+w+'</span></div>'}).join('')+'</div><div><p class="frl" style="color:#F9A8A7">Where they lose</p>'+loses.map(function(l){return'<div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">'+l+'</span></div>'}).join('')+'</div></div><div class="lm"><p class="lml">⚠ Landmine they plant</p><p class="lmt">'+landmine+'</p></div><div class="neu"><p class="neul">✓ Neutralise</p><p class="neut">'+neutralise+'</p></div></div></div>';}
+
+function tComp(){return'<p class="ey">MarketLens · Tab 3 of 4</p><h3 class="sh">Competitive <em>Analysis</em></h3><p class="sub">Full competitor profiles from the research lens — positioning, structural strengths and weaknesses, landmines, and how to neutralise each. For BD-ready talk tracks see Sales Enablement System.</p><p class="slb">Quick reference matrix</p><div class="cmx"><div class="cmxh"><div class="cmxhc">Competitor</div><div class="cmxhc">Full stack</div><div class="cmxhc">Inst. proof</div><div class="cmxhc">Open infra</div><div class="cmxhc">Global ramps</div></div><div class="cmxr oms"><div class="cmxc">Polygon OMS</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc" style="color:#5EEABD;font-size:10px;font-weight:600">150+ countries</div></div><div class="cmxr"><div class="cmxc">Bridge (Stripe)</div><div class="cmxc cpa">Managed</div><div class="cmxc cpa">Stripe logos</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Limited</div></div><div class="cmxr"><div class="cmxc">DIY stack</div><div class="cmxc cn">Build it</div><div class="cmxc cn">Varies</div><div class="cmxc cy">✓</div><div class="cmxc cn">Build it</div></div><div class="cmxr"><div class="cmxc">Tron</div><div class="cmxc cn">Settlement only</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Partial</div><div class="cmxc cn">✗</div></div><div class="cmxr"><div class="cmxc">Base (Coinbase)</div><div class="cmxc cn">Chain only</div><div class="cmxc cpa">Coinbase</div><div class="cmxc cn">✗</div><div class="cmxc cpa">US-centric</div></div></div><p class="slb">Full competitor profiles</p>'+fccCard('Bridge (Stripe-owned)','End-to-end stablecoin platform · Primary competitor','ttr','Highest threat','Their positioning','"The only platform businesses need to receive, store, convert, issue, and spend stablecoins through a single API. We handle all the regulatory, compliance, and technical complexities."',['Stripe brand trust and warm distribution','Developer experience inherits Stripe docs quality','Stablecoin issuance capability','Card programme via Stripe Issuing','Simplicity narrative — "we handle everything"'],['Platform dependency — Stripe-owned commercial risk','Not blockchain-native settlement','Lower long-term composability ceiling','No BlackRock / Hamilton Lane level proof','No stablecoin depth advantage'],'"Polygon is a blockchain company, not a payments company." Also uses Stripe regulatory standing as the primary trust signal.','Stripe chose Polygon rails for their own infrastructure. $54B in stablecoin transfers with BlackRock on the customer list is a payments story, not a crypto story.')+fccCard('DIY Multi-Vendor Stack','Current buyer behaviour · Status quo','ta','Status quo','What the buyer is doing today','Custody + fiat ramp + compliance + cross-chain + settlement assembled independently. Full control, custom built. This is what most ICPs are running and will defend internally.',['Full control over every component','No single platform dependency','Engineering team ownership identity'],['3 to 6 months engineering per new corridor','Maintenance overhead compounds over time','Compliance fragmented with no single owner'],'"We can build this ourselves." Root cause is engineering ownership identity, not a technical objection.','We are not replacing what your team built — we are removing the next build. What would your team do with the 3 months they get back per corridor?')+fccCard('Tron','Dominant low-cost settlement layer','ta','Indirect','Their positioning','Ultra-low fee settlement layer. $86B stablecoin supply. Dominant in SEA, LATAM, MEA remittance. Permissionless, fast, cheap.',['Cheapest fees in the market','Deepest USDT liquidity — $86B','Dominant in SEA, LATAM, MEA remittance corridors'],['Settlement layer only — no wallets, ramps, or compliance','No EVM compatibility','No institutional standing or regulatory credibility'],'"Polygon is more expensive per transaction."','Transaction fee is one line item. Engineering time, maintenance, and compliance exposure are not. The all-in cost comparison rarely goes the way the fee comparison suggests.')+fccCard('Base (Coinbase)','EVM chain with Coinbase distribution','ta','Indirect','Their positioning','EVM-compatible L2 with Coinbase distribution and growing developer ecosystem momentum.',['Coinbase brand trust and US regulatory standing','EVM compatibility — familiar Ethereum tooling','Growing developer ecosystem momentum'],['Coinbase commercial interests conflict with open infrastructure','US-centric — weaker in SEA, LATAM, MEA','Platform risk same pattern as Bridge'],'"Polygon is older technology. Base is where developer momentum is going."','Developer momentum and payment infrastructure are different decisions. The question is which infrastructure cleared the BlackRock and Hamilton Lane compliance review.');}
+
+/* ═══ BUYER INTELLIGENCE ═══ */
+function drRow(icon,label,pct,insight){return'<div class="dr"><span class="drl"><i class="'+icon+'" style="font-size:11px;margin-right:4px;color:#9B6DF5"></i>'+label+'</span><div class="drb"><div class="drbi" style="width:'+pct+'%"></div></div><span class="drp">'+pct+'%</span></div><p class="dri">'+insight+'</p>';}
+
+function tBI(){return'<p class="ey">MarketLens · Tab 4 of 4</p><h3 class="sh">Buyer <em>Intelligence</em></h3><p class="sub">Synthesised buyer language from Kosh Money sales conversations (same ICP). Decision driver ranking with strategic insight beneath each. Market patterns and company-level strategic conclusion.</p><p class="slb">Real buyer language — from Kosh Money sales conversations</p><div class="ca" style="margin-bottom:.85rem"><p class="cl">Same ICP as Polygon OMS target buyer — primary research source</p><div style="display:flex;flex-direction:column;gap:6px;margin-top:.5rem"><div class="qb">"We need to move money globally without rebuilding our stack."</div><div class="qb">"We can\'t afford 3 to 4 months of integration work for each new market."</div><div class="qb">"We need compliance built in, not bolted on."</div><div class="qb">"We need to know this infrastructure is actually being used at scale, not a bet."</div><div class="qb">"Who else has chosen this? I need logos I can take to my board."</div><div class="qb">"How long until we process our first live transaction?"</div></div></div><div class="dv"></div><p class="slb">Buyer decision drivers ranked with strategic insight</p><div class="drc">'+drRow('ti ti-building-bank','Proof of scale','92','Volume and named logos answer "is this real?" before it gets asked. Primary trust gate — never lead with technology, lead with who chose the rails.')+drRow('ti ti-rocket','Time to first transaction','85','Most buyers have been burned by vendors who said "weeks" and delivered months. Specificity is the trust signal — "days, not months" must be backed by a real number.')+drRow('ti ti-shield-check','Compliance and regulatory','78','Not the primary opener but the deal-killer if not addressed. BlackRock and Hamilton Lane logos handle most of this before the question is asked.')+drRow('ti ti-currency-dollar','Cost per transaction','62','Important but not the primary driver. Total cost of ownership almost always favours OMS over the fee comparison alone.')+drRow('ti ti-code','API and developer experience','54','Bridge leads here. OMS needs to meet Bridge on developer documentation quality at the top of funnel. A current gap to close.')+'</div><div class="dv"></div><p class="slb">Three market patterns</p><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Pattern 1: Infrastructure consolidation is the moment</p><p class="cs">Fintechs that assembled point solutions in 2020-2022 are now consolidating vendors. OMS enters as the consolidation destination. Framing: "replace our stack," not "add another vendor."</p></div><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Pattern 2: Bridge accelerating the category for OMS</p><p class="cs">Every fintech Bridge is talking to is already in the market. Bridge does the category education; OMS differentiates on openness, blockchain-native settlement, and institutional proof Bridge cannot match.</p></div><div class="ca" style="border-left:3px solid #8247E5"><p class="cl">Pattern 3: Compliance is the real blocker, not technology</p><p class="cs">Most fintech builders are not skeptical about stablecoins — they are skeptical about regulatory exposure. Polygon institutional logos are the answer, not the technology description.</p></div><div class="dv"></div><p class="slb">Company-level strategic conclusion</p><div class="pbox"><p class="pbox-l">⟶ Narrated insight — the single most important finding</p><p class="pbox-t">Fintechs building global payment products today are not struggling with access to stablecoin technology. They are struggling with the engineering overhead, compliance fragmentation, and time-to-market delays that come from assembling five or six vendors into a working payments stack. Polygon OMS eliminates that stack with one integration — backed by $54B in stablecoin transfer volume, 7B total transactions, and the institutional logos that answer the "is this real?" question before it gets asked.</p></div>';}
+/* ═══ POSITIONING STATEMENT ═══ */
+function tPS(){return'<p class="ey">Positioning · Tab 1 of 4</p><h3 class="sh">Positioning <em>Statement</em></h3><p class="sub">The single sentence everything else flows from. Below it: the only-we statement, the category definition, and the explicit who-it-is-for and who-it-is-not-for.</p><p class="slb">Core positioning statement</p><div class="pbox" style="margin-bottom:.85rem"><p class="pbox-l">Full positioning statement</p><p class="pbox-t">For fintechs and payment processors building global stablecoin payment products, the Polygon Open Money Stack is the stablecoin payments infrastructure that replaces a 5 to 6 vendor stack with one integration — wallets, fiat ramps across 150+ countries, compliance, and blockchain-native settlement — unlike Bridge which abstracts complexity behind a Stripe-owned managed service, and unlike DIY stacks which cost 3 to 6 months of engineering per corridor.</p></div><div class="dv"></div><p class="slb">The only-we statement</p><div class="ca" style="border-left:3px solid #8247E5"><p class="cs" style="font-size:13px;font-weight:600;color:#fff;line-height:1.7">Only Polygon OMS gives fintechs and payment processors wallets, fiat ramps, compliance, and blockchain-native settlement as a single integrated stack they can plug into existing systems without rebuilding from scratch — with $54B in stablecoin transfer volume and institutional logos to prove it works at scale.</p></div><div class="dv"></div><p class="slb">Category definition</p><div class="g2"><div class="ca" style="border-top:2px solid #1D9E75"><p class="cl" style="color:#5EEABD">What OMS is</p><p class="cv" style="font-size:12px">Stablecoin payments infrastructure</p><p class="cs">Full-stack payments integration. The assembled stack sold as one product. Not a chain, not a gateway, not a managed service.</p></div><div class="ca" style="border-top:2px solid #E24B4A"><p class="cl" style="color:#F9A8A7">What OMS is not</p><div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">Not a blockchain chain (Tron, Base, Solana)</span></div><div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">Not a managed API service (Bridge)</span></div><div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">Not a payment gateway (Stripe, Adyen)</span></div></div></div><div class="dv"></div><p class="slb">Who it is for and who it is not for</p><div class="g2"><div class="ca" style="border-top:2px solid #1D9E75"><p class="cl" style="color:#5EEABD">Who it is for</p><div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">Fintech builders and payment processors</span></div><div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">Building cross-border stablecoin payment products</span></div><div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">Running or planning multi-corridor payment expansion</span></div><div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">Decision-makers with infrastructure budget authority</span></div></div><div class="ca" style="border-top:2px solid #E24B4A"><p class="cl" style="color:#F9A8A7">Not for this tool</p><div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">Retail end users — OMS is B2B infrastructure</span></div><div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">Blockchain-native crypto companies needing CDK/Agglayer</span></div></div></div>';}
+
+/* ═══ VALUE PROPOSITIONS ═══ */
+function vpCard(num,icon,title,feat,ben,who,vtype,proof){return'<div class="vp"><div style="display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.65rem"><span class="vpn">'+num+'</span><div class="ib"><i class="'+icon+'"></i></div><div><p class="vptit">'+title+'</p><p class="vpft">Feature: '+feat+'</p></div></div><div class="g2"><div><p class="frl">Benefit</p><p class="vpb">'+ben+'</p></div><div><p class="frl">Who cares most</p><p class="vpwho">'+who+'</p></div></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:.6rem"><span class="tg tp">'+vtype+'</span><span class="vppf">'+proof+'</span></div></div>';}
+
+function tVP(){return'<p class="ey">Positioning · Tab 2 of 4</p><h3 class="sh">Value <em>Propositions</em></h3><p class="sub">Three fully structured value propositions — feature, benefit, who cares most, value type, and proof anchored to real evidence.</p>'+vpCard('01','ti ti-rocket','Speed to market','Single integration replacing a 5 to 6 vendor stack — wallets, fiat ramps 150+ countries, compliance, blockchain-native settlement in one connection.','Go live in days, not months. No vendor assembly, no multi-contract negotiation. New corridors without new integration cycles.','The Builder — Head of Payments whose roadmap is blocked by integration time. Anyone who has built a multi-vendor stack before and regrets the maintenance overhead.','Functional + Time value','Days to first transaction vs 3-6 months on DIY')+vpCard('02','ti ti-building-bank','Proven at institutional scale','$54B stablecoin transfer volume, 7B total transactions, 159M wallet addresses. Named logos: Stripe, Revolut, Nubank, BlackRock, Hamilton Lane.','The compliance and credibility question is answered before it is asked. No one gets fired for choosing the rail that BlackRock chose.','The Scaler — conservative CTO who needs logos for their board and legal team. Any buyer who has to justify an infrastructure decision internally.','Trust + Risk reduction','Stripe, Revolut, Nubank, BlackRock, Hamilton Lane')+vpCard('03','ti ti-lock-open','Open infrastructure, no platform risk','Independent — not owned by Stripe, Coinbase, or any platform with conflicting commercial interests.','Build on rails you control. No pricing changes driven by someone else\'s commercial agenda. Long-term composability. No ecosystem lock-in.','Technically sophisticated buyers thinking 2-3 years ahead. Fintechs burned by Stripe or Coinbase pricing changes. The Bridge-aware prospect.','Strategic value','$0.002 avg cost · No commercial agenda');}
+
+/* ═══ MARKET FRAME ═══ */
+function frCard(nm,ttype,badge,when,pos,script){return'<div class="fr"><div class="fr-h"><span class="fr-n">'+nm+'</span><span class="tg '+ttype+'">'+badge+'</span></div><div style="padding:.85rem"><div style="margin-bottom:.6rem"><p class="frsl">When to use</p><p class="frt2">'+when+'</p></div><div style="margin-bottom:.6rem"><p class="frsl">The positioning</p><p class="frt2">'+pos+'</p></div><div><p class="frsl">The script</p><div class="fscr">'+script+'</div></div></div></div>';}
+
+function tMF(){return'<p class="ey">Positioning · Tab 3 of 4</p><h3 class="sh">Market <em>Frame</em></h3><p class="sub">Three competitive lenses — when to use each, the actual positioning script, and the default rule for asset generation. The market frame changes per prospect, not per product.</p><p class="slb">Default rule for generated assets</p><div class="ca" style="margin-bottom:.85rem;border-left:3px solid #8247E5"><p class="cl">Default</p><p class="cs">Big Fish Small Pond is the default for all generated assets. Switch to Head to Head if the company being generated for is a known Bridge customer. New Category is for content assets and thought leadership, not BD one-pagers.</p></div>'+frCard('Head to Head','ttr','vs Bridge','When BD hears "we are already talking to Bridge" in the first conversation. The most common alternative conversation the OMS BD team will face.','Bridge gives you stablecoin orchestration as a managed service. OMS gives you the open rail plus the stack on top. Bridge abstracts complexity — you hand over control to a Stripe-owned platform. OMS gives the same single integration with blockchain-native settlement and no platform dependency.','"Bridge is excellent if you want maximum simplicity and are comfortable on a Stripe-owned managed service. OMS is right if you want open infrastructure — blockchain-native settlement, composability, no commercial agenda from a parent platform. The integration experience is similar. The long-term ceiling is not."')+frCard('Big Fish, Small Pond','tp','Default frame','Early in the sales conversation when the buyer is still mapping the space. Most effective when they know the category problem but have not yet heard of OMS. Positions OMS as the clear leader before comparisons arise.','For fintechs building cross-border stablecoin products, OMS is the only full-stack option with institutional-grade proof at this scale. Bridge wins on simplicity. Tron wins on raw fees. No one else has the assembled stack with $54B in transfer volume and Stripe, Revolut, and BlackRock as reference customers.','"Most teams at your stage are running a 5 to 6 vendor stack and spending months on each new corridor. OMS is the only full-stack option at this scale with the institutional proof that answers the compliance question before it gets asked. What does your current stack look like, and which corridor is next on your roadmap?"')+frCard('New Category','ta','Content / thought leadership','With technically sophisticated buyers who think in categories. In content marketing and thought leadership to shape how the market talks about the space before competitors define it. Not for BD one-pagers.','Stablecoin payments infrastructure as a unified stack is a new category. Not a chain. Not a gateway. Not a managed API service. A single integration that gives any fintech the full payments stack without assembly — the way Stripe defined developer-first payments a decade ago.','"Payments infrastructure is consolidating. The companies that move money fastest in five years will be the ones that replaced their vendor stack with programmable rails years before their competitors did. The Open Money Stack is how you get ahead of it."');}
+
+/* ═══ MESSAGING ═══ */
+function tMsg(){return'<p class="ey">Positioning · Tab 4 of 4</p><h3 class="sh"><em>Messaging</em></h3><p class="sub">Side-by-side comparison of current live messaging vs the suggested framework output. Includes the gap analysis and locked tone rules.</p><p class="slb">Current vs suggested messaging</p><div class="mc2"><div class="mc2c"><div class="mc2h" style="color:rgba(255,255,255,.45)">Current — live on polygon.technology</div><div class="mc2b"><div><p class="mil">Headline</p><p class="mit">Move funds globally with stablecoins in one unified stack.</p><p class="mis">The enterprise-ready stack to onboard your business to blockchain.</p></div><div><p class="mil">Primary positioning</p><p class="mit">Product-led. Leads with the blockchain onboarding story.</p></div><div><p class="mil">Blurb</p><p class="mis">Build compliant, borderless payments on Polygon\'s Open Money Stack with unified wallets, deep stablecoin liquidity, and always-on settlement for real-world money movement.</p></div></div></div><div class="mc2c" style="border-color:#8247E5"><div class="mc2h" style="color:#C4A4FF">Suggested — from this framework</div><div class="mc2b"><div><p class="mil">Headline</p><p class="mit">Move funds globally with stablecoins in one unified stack.</p><p class="mis" style="color:#B48BFF">Same headline. It is strong. Keep it.</p></div><div><p class="mil">Primary benefit line</p><p class="mit">One integration. Wallets, ramps, compliance, and settlement — live in days, not months.</p></div><div><p class="mil">Secondary benefit line</p><p class="mit">Proven at scale. $54B in stablecoin transfers. Stripe, Revolut, and BlackRock chose these rails.</p></div><div><p class="mil">Blurb</p><p class="mis">The Open Money Stack is stablecoin payments infrastructure for fintechs and payment processors. One integration replaces the 5 to 6 vendor stack most teams are running today — wallets, fiat on/off ramps in 150+ countries, compliance, and blockchain-native settlement.</p></div></div></div></div><div class="dv"></div><p class="slb">Gap analysis — what current messaging does not do</p><div class="gc"><p class="gcl">Gap 1: Does not name the buyer\'s pain</p><p class="gct">"Onboard your business to blockchain" is product-centric. The buyer is thinking "I need to add a stablecoin corridor without a 4-month integration." The suggested messaging leads with that pain before naming the product.</p></div><div class="gc"><p class="gcl">Gap 2: Does not surface proof points early enough</p><p class="gct">The current page buries the stats ($54B, 7B transactions, 159M wallets) below the fold. For the conservative buyer, the proof is the reason to keep reading — it should be in the blurb.</p></div><div class="gc"><p class="gcl">Gap 3: Does not address the vendor assembly problem directly</p><p class="gct">"One integration" is stated but the contrast — what it replaces — is not made explicit. The before/after framing is the most powerful single message in the asset set.</p></div><div class="dv"></div><p class="slb">Tone rules</p><div class="tg2"><div class="tc" style="border-top:2px solid #1D9E75"><p class="tcl" style="color:#5EEABD">Always say</p><div class="tci"><span class="bl" style="background:#1D9E75;flex-shrink:0;margin-top:.37rem"></span>Speak payments, not blockchain. "Move money globally" not "onchain settlement layer."</div><div class="tci"><span class="bl" style="background:#1D9E75;flex-shrink:0;margin-top:.37rem"></span>Direct and confident. Infrastructure-grade. No hype, no evangelism.</div><div class="tci"><span class="bl" style="background:#1D9E75;flex-shrink:0;margin-top:.37rem"></span>Lead with the buyer\'s pain, then the product.</div><div class="tci"><span class="bl" style="background:#1D9E75;flex-shrink:0;margin-top:.37rem"></span>Proof before claims. Never state a benefit without a number or a logo.</div></div><div class="tc" style="border-top:2px solid #E24B4A"><p class="tcl" style="color:#F9A8A7">Never say</p><div class="tci"><span class="bl" style="background:#E24B4A;flex-shrink:0;margin-top:.37rem"></span>"Blockchain-native settlement layer" to a non-technical buyer.</div><div class="tci"><span class="bl" style="background:#E24B4A;flex-shrink:0;margin-top:.37rem"></span>"Crypto rails" — sounds experimental, not infrastructure-grade.</div><div class="tci"><span class="bl" style="background:#E24B4A;flex-shrink:0;margin-top:.37rem"></span>Any benefit without proof. "Faster" needs a number. "Trusted" needs a logo.</div><div class="tci"><span class="bl" style="background:#E24B4A;flex-shrink:0;margin-top:.37rem"></span>"Seamless," "frictionless," "next-generation" — generic clichés.</div></div></div>';}
+/* ═══ PITCHES + TALK TRACKS ═══ */
+function perCard(av,bg,nm,icp,cares,fears,says,lands,landmine){return'<div class="pe"><div class="pe-h"><div style="display:flex;align-items:center;gap:.5rem"><div style="width:25px;height:25px;border-radius:4px;background:'+bg+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0">'+av+'</div><span class="pe-n">'+nm+'</span></div><span class="tg tp">'+icp+'</span></div><div class="pe-b"><div><p class="pesl" style="color:#5EEABD">What they care about</p><p class="pet">'+cares+'</p><p class="pesl" style="color:#F9A8A7;margin-top:.6rem">What they fear</p><p class="pet">'+fears+'</p></div><div><p class="pesl" style="color:rgba(255,255,255,.35)">What they say vs what they mean</p><p class="pet" style="white-space:pre-line">'+says+'</p><p class="pesl" style="color:#B48BFF;margin-top:.6rem">Messaging that lands</p><p class="pet">'+lands+'</p></div></div><div class="lmb"><p class="lmbl">⛔ Landmine phrases — never use with this persona</p><p class="lmbt">'+landmine+'</p></div></div>';}
+
+function tPitch(){return'<p class="ey">Sales Enablement · Tab 1 of 4</p><h3 class="sh">Pitches + <em>Talk Tracks</em></h3><p class="sub">Pitches at every length — 15 seconds, 30 seconds, 2 minutes. Followed by persona-level talk tracks for each ICP: what they care about, what they fear, and which landmine phrases to avoid.</p><p class="slb">Pitch library</p><div class="pt"><div class="ptb'+(PT==='15s'?' on':'')+'" data-p="15s" onclick="setPT(\'15s\')">15 seconds</div><div class="ptb'+(PT==='30s'?' on':'')+'" data-p="30s" onclick="setPT(\'30s\')">30 seconds</div><div class="ptb'+(PT==='2min'?' on':'')+'" data-p="2min" onclick="setPT(\'2min\')">2 minutes</div></div><div class="ptc" id="ptc">'+PITCHES[PT]+'</div><div class="dv"></div><p class="slb">Persona-level talk tracks</p>'+perCard('R','#8247E5','The Builder — Head of Payments, Series A-C fintech','ICP 1','Time-to-market. How fast can we go live. How many engineering hours does this cost. They have been burned before by vendors who said weeks and delivered months.','Another integration that takes 4 months and still does not work cleanly. Picking infrastructure that creates more maintenance overhead than it removes.','"We are evaluating our options" = "My roadmap is already behind. Prove this is faster."\n\n"Already talking to Bridge" = "I default to Stripe. Give me a reason not to."','Lead with time-to-first-transaction. Give a specific number. "Days not months" backed by proof.','"Blockchain-native settlement layer." "EVM-compatible infrastructure." Too technical, sounds like every other crypto pitch. Speak payments, not blockchain.')+perCard('A','#1D6E8E','The Scaler — CTO / VP Eng, neobank','ICP 2','Proof that this is real and safe. Regulatory standing. Who else has done this. They need to take this decision to their board and legal team.','Being the person who put the company on an unproven rail. A compliance incident. Having to explain a bad infrastructure choice to the board.','"We need to understand the regulatory standing" = "My legal team will veto anything without credible compliance coverage."','Lead with BlackRock and Hamilton Lane first. These names end the "is this safe?" conversation. Then Revolut and Nubank. Then the numbers. Never open with technology.','"We are still building out the compliance layer." "You would handle KYC on your side." Any answer that puts compliance ownership back on the buyer kills the deal.')+perCard('P','#1D7A55','The Processor — Payments Product Lead','ICP 3','Cost per transaction, corridor coverage, reliability, API quality. Evaluates by hard numbers. If the specs are right, they take it to engineering for evaluation.','Switching infrastructure that works fine today for something unproven. Downtime. A corridor that goes live then has reliability issues.','"What is the cost per transaction?" = "I need to build a business case. Give me the number."','Lead with hard numbers immediately. $0.002 average cost. 110 TPS current. $54B in transfers processed. Then corridor coverage. Then integration timeline.','"We are the future of payments." "Blockchain changes everything." Any macro narrative without immediate hard numbers loses this buyer in the first 30 seconds.');}
+
+window.setPT=function(p){
+  PT=p;
+  document.querySelectorAll('.ptb').forEach(function(b){b.className='ptb'+(b.dataset.p===p?' on':'')});
+  var pc=document.getElementById('ptc');if(pc)pc.innerHTML=PITCHES[p];
+};
+
+/* ═══ OBJECTION HANDLING ═══ */
+function objCard(title,root,never,rebuttal,proof){return'<div class="oc"><div class="oc-h"><i class="ti ti-alert-circle oc-hi"></i><span class="oc-t">'+title+'</span></div><div class="oc-b"><div><p class="ocsl" style="color:#F2CC70">Root cause</p><p class="octx">'+root+'</p></div><div><p class="ocsl" style="color:#F9A8A7">Never say</p><p class="octx">'+never+'</p></div><div><p class="ocsl" style="color:#5EEABD">Rebuttal</p><p class="octx">'+rebuttal+'</p><span class="ocpf">'+proof+'</span></div></div></div>';}
+
+function tObj(){return'<p class="ey">Sales Enablement · Tab 2 of 4</p><h3 class="sh">Objection <em>Handling</em></h3><p class="sub">Four objections with full structure: root cause, what NOT to say, the rebuttal, and the proof point. The root cause column is the most important — answering the stated objection without addressing the root cause does not move the deal.</p>'+objCard('Objection 1: "We are already talking to Bridge."','Bridge has Stripe\'s distribution and is the default first call. This is a comparison shopping signal, not a rejection. The buyer is warm — they are already in the market.','Any direct attack on Bridge. "Bridge is not as good as us." Sounds defensive and undermines credibility.','"That makes sense — Bridge is the obvious first call. The question is what you want to own long-term. Bridge is excellent for simplicity if you trust Stripe. OMS is right if you want open infrastructure — blockchain-native settlement, no platform dependency. The integration is similar. The long-term ceiling is not."','$54B volume + open infra + institutional logos Bridge cannot match')+objCard('Objection 2: "How long does integration actually take?"','Every fintech builder has been burned by a vendor who said "weeks" and delivered months. This is not a question — it is a trust check. Vague answers confirm the fear.','\"It depends on your use case.\" \"Usually pretty fast.\" Any vague answer confirms the fear that this will take months.','"The honest answer is days for a standard integration. Wallets and ramps are already assembled, compliance is built in. You are not negotiating five vendor contracts. The fastest path to first live transaction we have seen is under a week for teams ready to move."','Kosh Money card stack live in 2 months end-to-end')+objCard('Objection 3: "What is your regulatory and compliance standing?"','The buyer\'s legal or compliance team has flagged this as a prerequisite. The question is really about risk — "will I get in trouble for choosing this?"','\"We are compliant in most jurisdictions.\" \"You would handle compliance on your side.\" Anything that puts compliance ownership back on the buyer kills the deal.','"Compliance is built into the stack, not bolted on. KYC Hub manages all payments-related KYC in one place. Coinme covers 150+ countries. And the fastest answer is the customer list — BlackRock and Hamilton Lane did the diligence before choosing these rails."','BlackRock + Hamilton Lane + KYC Hub')+objCard('Objection 4: "We are not ready to move yet."','Either genuine timing (decision in Q3) or soft rejection — not convinced enough to move forward but do not want to close the door.','"Let me know when you are ready." This kills momentum entirely. The follow-up conversation will never happen without a next step.','"Completely fine — the best decisions are not rushed. Two things worth doing even before you are ready: tell me which corridor is next and I will show you what the integration looks like on OMS vs what you are currently planning — 20 minutes. Or I can connect you with a current customer at a similar stage."','Key: the corridor-specific scoping offer — replaces vague follow-up with a concrete next step');}
+
+/* ═══ COMPETITIVE CARDS ═══ */
+function ccCard(nm,sub,ttype,threat,track,omsw,theyw,landmine,neutralise){return'<div class="cc"><div class="cc-h"><div><p style="font-size:13px;font-weight:700;color:#fff">'+nm+'</p><p style="font-size:10px;color:rgba(255,255,255,.5);margin-top:1px">'+sub+'</p></div><span class="tg '+ttype+'">'+threat+'</span></div><div class="cc-b"><div><p class="ccl">BD talk track</p><p class="cct">'+track+'</p></div><div><p class="ccl" style="color:#5EEABD">OMS wins on</p><p class="cct">'+omsw+'</p><p class="ccl" style="color:#F9A8A7;margin-top:.5rem">They win on</p><p class="cct">'+theyw+'</p></div><div><p class="ccl" style="color:#F2CC70">Landmine</p><p class="cct">'+landmine+'</p><p class="ccl" style="color:#5EEABD;margin-top:.5rem">Neutralise</p><p class="cct">'+neutralise+'</p></div></div></div>';}
+
+function tCC(){return'<p class="ey">Sales Enablement · Tab 3 of 4</p><h3 class="sh">Competitive <em>Cards</em></h3><p class="sub">BD-ready competitive intelligence structured for live sales conversations. Unlike the MarketLens competitive analysis, these are built for use in the room — the talk track, the landmine, the neutralisation line for each competitor.</p>'+ccCard('Bridge (Stripe-owned)','Primary competitor · Most common alternative conversation','ttr','Highest priority','"Bridge is excellent if you want simplicity and trust Stripe to own your payments rail long-term. OMS is right if you want open infrastructure — blockchain-native settlement, $54B in proven transfer volume, and institutional logos that cleared the most rigorous compliance reviews. The integration experience is comparable. The long-term ceiling is not."','Blockchain-native settlement, open infrastructure, higher composability ceiling, stronger institutional proof (BlackRock, Hamilton Lane).','Stripe brand trust, developer experience quality, stablecoin issuance capability, card programme via Stripe Issuing.','"Polygon is a crypto chain, not a payments company."','"Stripe chose Polygon rails for their own infrastructure. $54B in stablecoin transfers with BlackRock on the customer list is a payments story, not a crypto story."')+ccCard('DIY Multi-Vendor Stack','Status quo · Internal resistance','ta','Status quo','"You have already built this stack once. You know what it cost. The question is whether the next corridor should take 3 months or 3 days. OMS is not replacing what you built — it is removing the next build."','Speed to next corridor, full stack assembled, compliance built in.','Full control, no platform dependency, engineering ownership identity.','"We can build this ourselves." Root cause is engineering ownership identity, not a technical objection.','"What would your team do with the 3 months they get back per corridor?"')+ccCard('Tron','Low-cost chain · Fee comparison','ta','Indirect','"Tron wins on fees in specific corridors — a real advantage if raw cost is the only variable. But Tron is a settlement layer. You still need wallets, ramps, and compliance. The all-in cost of DIY on Tron vs OMS usually favours OMS when you factor in engineering time."','Full stack vs settlement layer only, institutional compliance coverage.','Cheapest fees, deepest USDT ($86B), dominant SEA/LATAM/MEA remittance.','"Polygon is more expensive per transaction."','"Transaction fee is one line item. Engineering time, maintenance, and compliance exposure are not. The all-in cost comparison rarely goes the way the fee comparison suggests."')+ccCard('Base (Coinbase)','EVM chain · Developer momentum narrative','ta','Indirect','"Base is right for US-first products wanting Coinbase distribution. OMS is right for global corridors — 150+ countries, deeper stablecoin supply, institutional proof beyond the US context. Coinbase serves Coinbase. Polygon OMS is open infrastructure."','Global corridor coverage, open infrastructure, institutional proof beyond the US.','Coinbase brand trust, US regulatory standing, EVM compatibility, growing developer ecosystem.','"Polygon is older technology. Base is where developer momentum is going."','"Developer momentum and payment infrastructure are different decisions. The question is which infrastructure cleared the BlackRock and Hamilton Lane compliance review."');}
+/* ═══ WHY WE WIN / LOSE ═══ */
+function tWin(){return'<p class="ey">Sales Enablement · Tab 4 of 4</p><h3 class="sh">Why We Win / <em>Lose</em></h3><p class="sub">Honest assessment of where OMS wins deals, where it loses them, when to walk away, the 5-step demo script, and the buying committee map.</p><p class="slb">Why we win</p><div class="wc"><span class="wn">1</span><div><p class="wt">The full stack advantage</p><p class="wb">No competitor offers wallets, fiat ramps, compliance, and blockchain-native settlement as one integration at this scale. Bridge comes closest but is a managed service, not open infrastructure. Every other option requires the buyer to assemble the rest of the stack themselves.</p></div></div><div class="wc"><span class="wn">2</span><div><p class="wt">Institutional proof closes the compliance conversation</p><p class="wb">BlackRock and Hamilton Lane are not early adopters. When the conservative buyer asks "is this real and is this safe," those two names end the conversation. Bridge has Stripe logos. Tron has no institutional logos. OMS has the logos that clear the most rigorous compliance reviews in the world.</p></div></div><div class="wc"><span class="wn">3</span><div><p class="wt">Open infrastructure is the long-term differentiator</p><p class="wb">As fintechs scale, platform dependency becomes a commercial risk. Bridge buyers face Stripe pricing leverage. Base buyers face Coinbase ecosystem constraints. OMS buyers own the rail. This is a 2 to 3 year argument — not day one, but the reason serious builders choose OMS when thinking long-term.</p></div></div><div class="wc"><span class="wn">4</span><div><p class="wt">Bridge is growing the category for us</p><p class="wb">Every fintech Bridge is talking to is already in the market for stablecoin infrastructure. Their acquisition is doing the category education OMS would otherwise have to do. OMS enters those warm conversations with a clear differentiator.</p></div></div><div class="dv"></div><p class="slb">Why we lose — honest assessment</p><div class="wc"><span class="ln">1</span><div><p class="wt">Stripe trust is hard to overcome for smaller teams</p><p class="wb">A Series A fintech with limited compliance resources and a tight timeline will often choose Bridge because "Stripe handles it" removes the need for internal compliance evaluation. These are buyers at the wrong stage for OMS. Qualify for maturity and timeline early.</p></div></div><div class="wc"><span class="ln">2</span><div><p class="wt">Cards are a current gap</p><p class="wb">Bridge has a mature card programme via Stripe Issuing. If the buyer\'s primary use case is stablecoin-backed cards rather than cross-border payments or remittance, Bridge wins that conversation today. Be honest about this gap rather than trying to overcome it with positioning.</p></div></div><div class="wc"><span class="ln">3</span><div><p class="wt">Developer documentation and onboarding experience</p><p class="wb">Bridge\'s developer experience inherits Stripe\'s documentation quality — the gold standard. If the buyer\'s primary evaluator is a developer who wants to read docs and start building before talking to sales, Bridge has an advantage in the first impression.</p></div></div><div class="wc"><span class="ln">4</span><div><p class="wt">When to walk away</p><p class="wb">If the buyer wants stablecoin issuance as a core product — Bridge is the better fit today. If the buyer is US-only with no global corridor ambitions and deeply embedded in the Stripe ecosystem — the switching cost does not justify the change. Qualify for global corridor ambition early in every conversation.</p></div></div><div class="dv"></div><p class="slb">Demo script — 5-step flow</p><div class="ds"><div class="dsn">1</div><div><p class="dst">Open with their problem, not your product</p><p class="dsb">"Before I show you anything, I want to make sure I am showing you the right thing. You mentioned [corridor / timeline / pain]. Is that still the most pressing thing for your team right now?" Wait for confirmation — anchors the entire demo to their problem.</p><p class="dsp">Their confirmation is the setup for everything that follows. Never skip this step.</p></div></div><div class="ds"><div class="dsn">2</div><div><p class="dst">Show the before state</p><p class="dsb">"Most teams at your stage are running something like this —" Walk the 5 to 6 vendor stack visually. Name the friction: separate contracts, 3 to 4 months per corridor, compliance fragmentation. "Does this look familiar?" Let them say yes.</p><p class="dsp">Their confirmation is the setup for the solution reveal.</p></div></div><div class="ds"><div class="dsn">3</div><div><p class="dst">Show the stack collapse</p><p class="dsb">"Here is what OMS replaces that with." Walk each component: Sequence for wallets, Coinme for ramps, compliance layer, Polygon Chain for settlement. "One integration, one contract, all of this already assembled and tested at $54B in transfer volume." Land on the time-to-market contrast: "Days, not 3 to 4 months."</p></div></div><div class="ds"><div class="dsn">4</div><div><p class="dst">Make it specific to their corridor</p><p class="dsb">"Let me show you what this looks like for [their specific use case / corridor]." Show the integration path, compliance coverage for that market, first transaction timeline.</p><p class="dsp">Generic demos lose deals. Specific demos win them. This is the highest-impact moment in the demo.</p></div></div><div class="ds"><div class="dsn">5</div><div><p class="dst">Close on a next step, not a question</p><p class="dsb">Do not ask "what do you think?" Ask: "The logical next step is usually a scoping call with your engineering lead to map the integration against your current timeline. Does [specific date] work, or is there someone on your team I should connect with directly?"</p><p class="dsp">Never leave without a specific next step. "Let me know" is not a next step.</p></div></div><div class="dv"></div><p class="slb">Buying committee map</p><div class="bm"><div class="bm-h"><p style="font-size:12px;font-weight:700;color:#fff">Three-person decision structure</p><span class="tg tp">Know who is in the room</span></div><div class="bm-b"><div><p class="bmsl">Economic buyer</p><p class="bmt"><strong style="color:#fff">CFO or VP Finance</strong><br>Cares about vendor consolidation ROI, contract simplicity.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> The business case — 5 contracts to 1, engineering hours saved per corridor.</p></div><div><p class="bmsl">Technical buyer (primary ICP)</p><p class="bmt"><strong style="color:#fff">CTO, VP Engineering, Head of Payments</strong><br>Evaluates integration complexity, time-to-first-transaction, compliance. Makes the shortlist recommendation.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> The integration demo specific to their corridor. Days-not-months with a real example.</p></div><div><p class="bmsl">Legal / Compliance (veto power)</p><p class="bmt"><strong style="color:#fff">GC or Head of Compliance</strong><br>Can veto, rarely initiates. Evaluates regulatory standing, KYC/AML coverage, liability exposure.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> BlackRock and Hamilton Lane logos. Those two names end the conversation before the questions start.</p></div></div></div>';}
+/* ═══ ASSET: ONE-PAGER ═══ */
+function tOP(){
+  var coH=CO?'<div class="a-co"><div class="a-ci">'+e(gi(CO))+'</div><div><p class="a-cn">Prepared for '+e(CO)+'</p><p class="a-cs">Personalised · Polygon Open Money Stack</p></div></div>':'';
+  var lead=CO&&COSTAT==='done'&&CO_LEAD?e(CO_LEAD):'Most fintechs building cross-border payment products are running 5 to 6 vendors just to make one corridor work. Every new market means another 3 to 4 month integration cycle. There is a faster way.';
+  return'<div>'+coH+'<p class="a-eyebrow">Stablecoin payments infrastructure</p><h3 class="a-h1">Move funds globally.<br><em>One stack.</em> Days, not months.</h3><p class="a-lead">'+lead+'</p><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">The problem</p><div class="bfr"><div class="vnd">Custody provider<span class="vnd-n">Contract 1</span></div><div class="vnd">Fiat ramp<span class="vnd-n">Contract 2</span></div><div class="vnd">Compliance layer<span class="vnd-n">Contract 3</span></div><div class="vnd">Cross-chain bridge<span class="vnd-n">Contract 4</span></div><div class="vnd">Settlement chain<span class="vnd-n">Contract 5</span></div></div><div class="arr">One integration replaces all of this</div><div class="oms-bar"><div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">First transaction in days</span></div><div class="oms-bar-comps"><span class="oms-c">Wallets · Sequence</span><span class="oms-c">Ramps · Coinme 150+ countries</span><span class="oms-c">Compliance · KYC Hub</span><span class="oms-c">Settlement · Polygon Chain</span><span class="oms-c">Crosschain · Trails</span></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Real usage, not just promises</p><div class="stat4"><div class="s4c"><span class="s4n">$54B</span><span class="s4l">Transfer volume</span></div><div class="s4c"><span class="s4n">7B</span><span class="s4l">Transactions</span></div><div class="s4c"><span class="s4n">159M</span><span class="s4l">Wallets</span></div><div class="s4c"><span class="s4n">$0.002</span><span class="s4l">Avg cost</span></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Why teams choose OMS</p><div class="vp-list"><div class="vp-row"><div class="vp-ic"><i class="ti ti-rocket"></i></div><div><p class="vp-tl">Speed to market</p><p class="vp-bd">First live transaction in days. New corridors without new integration cycles.</p></div></div><div class="vp-row"><div class="vp-ic"><i class="ti ti-building-bank"></i></div><div><p class="vp-tl">Proven at institutional scale</p><p class="vp-bd">BlackRock and Hamilton Lane did the diligence. The compliance question is answered.</p></div></div><div class="vp-row"><div class="vp-ic"><i class="ti ti-lock-open"></i></div><div><p class="vp-tl">Open infrastructure</p><p class="vp-bd">Not owned by Stripe or Coinbase. Build on rails you control.</p></div></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Who chose these rails</p><div class="logos-row"><span class="logo-pill">Stripe</span><span class="logo-pill">Revolut</span><span class="logo-pill">Nubank</span><span class="logo-pill">BlackRock</span><span class="logo-pill">Hamilton Lane</span></div><div class="cta-bar"><div class="cta-l">Ready to open your next corridor?<span>polygon.technology/open-money-stack</span></div><span class="cta-r">Book a call →</span></div></div>';}
+
+/* ═══ ASSET: PITCH DECK ═══ */
+function tPD(){
+  var co=CO;
+  var coCover=co?'<div class="co-cover"><div class="co-init">'+e(gi(co))+'</div><div class="co-div"></div><div><p class="co-name">Prepared for '+e(co)+'</p><p class="co-sub">Personalised deck</p></div></div>':'';
+  return'<div class="slide"><div class="slide-glow"></div>'+coCover+'<div><p class="sl-ey">Open Money Stack</p><h3 class="sl-h">Global rails for <em>upgraded money.</em></h3><p class="sl-s">One integration. Every layer assembled, tested, and live at institutional scale.</p></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">01 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">The problem</p><h3 class="sl-h">Building global payments means <em>assembling vendors.</em></h3></div><div class="pain-g"><div class="pg"><span class="pg-ic"><i class="ti ti-clock"></i></span><div><p class="pg-t">3 to 6 months per corridor</p><p class="pg-b">New market triggers new integration cycle.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-puzzle"></i></span><div><p class="pg-t">5 to 6 separate vendors</p><p class="pg-b">Each a separate contract and failure point.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-shield-off"></i></span><div><p class="pg-t">Compliance fragmented</p><p class="pg-b">No single vendor owns the compliance layer.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-tool"></i></span><div><p class="pg-t">Maintenance compounds</p><p class="pg-b">Engineering teams become infrastructure teams.</p></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">02 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">The cost</p><h3 class="sl-h">The DIY stack is <em>slowing you down.</em></h3></div><div class="b3g"><div class="b3s"><span class="b3n">6</span><span class="b3l">Vendors to assemble</span></div><div class="b3s"><span class="b3n">4mo</span><span class="b3l">Avg to first transaction</span></div><div class="b3s"><span class="b3n">30%</span><span class="b3l">Sprint capacity lost</span></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">03 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">The solution</p><h3 class="sl-h"><em>One integration.</em> Every layer assembled.</h3></div><div style="flex:1;display:flex;flex-direction:column;gap:.32rem;margin-top:.32rem"><div style="display:flex;flex-wrap:wrap;gap:4px"><span class="vnd">Custody</span><span class="vnd">Fiat ramp</span><span class="vnd">Compliance</span><span class="vnd">Cross-chain</span><span class="vnd">Settlement</span></div><div class="arr">One integration replaces all of this</div><div class="oms-bar" style="flex:1"><div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">Days to first transaction</span></div><div class="oms-bar-comps"><span class="oms-c">Wallets</span><span class="oms-c">Ramps 150+</span><span class="oms-c">Compliance</span><span class="oms-c">Settlement</span><span class="oms-c">Crosschain</span></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">04 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">Why it works</p><h3 class="sl-h">Three reasons teams choose <em>OMS.</em></h3></div><div class="vpm"><div class="vpmr"><span class="vpmn">01</span><div><p class="vpmt">Speed to market</p><p class="vpmb">First transaction in days. New corridors without new cycles.</p></div></div><div class="vpmr"><span class="vpmn">02</span><div><p class="vpmt">Proven at institutional scale</p><p class="vpmb">$54B volume. BlackRock and Hamilton Lane chose these rails.</p></div></div><div class="vpmr"><span class="vpmn">03</span><div><p class="vpmt">Open infrastructure</p><p class="vpmb">Not Stripe or Coinbase-owned. Build on rails you control.</p></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">05 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">Competitive landscape</p><h3 class="sl-h">No one else has <em>the full stack.</em></h3></div><table class="cmt" style="flex:1;margin-top:.35rem"><thead><tr><th>Option</th><th>Full stack</th><th>Inst. proof</th><th>Open</th><th>Global</th></tr></thead><tbody><tr class="or"><td>Polygon OMS</td><td class="cyw">Yes</td><td class="cyw">Yes</td><td class="cyw">Yes</td><td class="cyw">150+</td></tr><tr><td>Bridge</td><td class="cpw">Managed</td><td class="cpw">Stripe</td><td class="cnw">No</td><td class="cpw">Ltd</td></tr><tr><td>DIY stack</td><td class="cnw">Build</td><td class="cnw">Varies</td><td class="cyw">Yes</td><td class="cnw">Build</td></tr><tr><td>Tron</td><td class="cnw">Settlement</td><td class="cnw">None</td><td class="cpw">Partial</td><td class="cnw">None</td></tr></tbody></table><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">06 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">Social proof</p><h3 class="sl-h">Real usage, <em>not just promises.</em></h3></div><div class="proof-g"><div class="pg2"><p class="pg2l">Who chose these rails</p><div class="pg2-logos"><span class="pg2-logo">Stripe</span><span class="pg2-logo">Revolut</span><span class="pg2-logo">Nubank</span><span class="pg2-logo">BlackRock</span><span class="pg2-logo">Hamilton Lane</span></div></div><div class="pg2"><p class="pg2l">Stablecoin volume</p><p class="pg2-big">$54B</p><p class="pg2-sub">Processed on Polygon</p></div><div class="pg2"><p class="pg2l">Total transactions</p><p class="pg2-big">7B</p><p class="pg2-sub">Battle-tested rails</p></div><div class="pg2"><p class="pg2l">Avg transaction cost</p><p class="pg2-big">$0.002</p><p class="pg2-sub">150+ country coverage</p></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">07 / 08</span></div></div>'+
+'<div class="slide"><div><p class="sl-ey">Next steps</p></div><div class="cta-slide"><h3 class="ctas-h">Ready to open your next corridor?</h3><p class="ctas-s">Tell us which corridor is next. We scope the OMS integration against it. 20 minutes.</p><div class="ctas-btns"><button class="ctas-btn">Book a scoping call</button><button class="ctas-btn" style="background:rgba(255,255,255,.08)">Get early access</button></div><p class="ctas-url">polygon.technology/open-money-stack</p></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">08 / 08</span></div></div>';}
+
+/* ═══ ASSET: EMAIL SEQUENCE ═══ */
+function tEM(){
+  var co=CO;
+  var toLine=co?'[First Name] at '+e(co):'[First Name] at [Company]';
+  var coRef=co?e(co):'[Company]';
+  return'<div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 1</span><span class="em-tm">Day 1 · Awareness</span></div><span class="em-ty">Pain hook</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">How long did your last corridor take?</span></div></div><div class="em-body"><p class="em-hook">Most fintechs we talk to spent 3 to 4 months getting their last payment corridor live. Not because they moved slowly — because the infrastructure required it.</p><p>Custody here. Compliance there. A fiat ramp for every new market. By the time the first transaction settles, the roadmap has already moved on.</p><p>We built the Polygon Open Money Stack to collapse that cycle. One integration gives you wallets, fiat ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement. Teams go from decision to first live transaction in days, not months.</p><p>Worth a 20-minute conversation to show you what that looks like for '+coRef+'\'s next corridor?</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 20-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Anchor to '+coRef+'\'s specific next corridor. Opening with a question makes them answer it in their head before you name the product.</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 2</span><span class="em-tm">Day 5 · Consideration</span></div><span class="em-ty">Solution intro</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">What your next market entry could look like</span></div></div><div class="em-body"><p>Quick follow-up on my last note.</p><p class="em-hook">Every fintech opening a new payment corridor goes through the same process. Find a custody provider. Source a local fiat ramp. Sort compliance. Three to four months if things go smoothly.</p><p>The Open Money Stack compresses that to days. Wallets, ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement, assembled at <span class="em-stat">$54B</span> in stablecoin transfer volume.</p><p>Stripe, Revolut, Nubank, BlackRock, and Hamilton Lane are live on these rails. If it cleared BlackRock\'s compliance review, it will clear most.</p><div class="em-cta"><i class="ti ti-arrow-right" style="font-size:11px"></i>Reply with your next target corridor</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> If '+coRef+' is Bridge-aware, add: "Unlike Bridge, OMS is open infrastructure, not a Stripe-owned managed service."</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 more days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 3</span><span class="em-tm">Day 9 · Conversion</span></div><span class="em-ty">Concrete ask</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">One corridor. A few days. See the difference.</span></div></div><div class="em-body"><p>Last note from me on this.</p><p class="em-hook">The offer is simple. Pick one payment corridor. We scope the OMS integration against it. No commitment beyond the scoping call.</p><p>We have processed <span class="em-stat">$54B</span> in stablecoin transfers and <span class="em-stat">7B</span> total transactions. The infrastructure is not a bet — it is proven rails that Stripe, Revolut, and BlackRock already validated.</p><p>15 minutes to scope it?</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 15-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Email 3 should be the shortest. Brevity signals confidence. If '+coRef+' has shown intent signals, reference them directly.</p></div></div>';}
+/* ═══ GEN + DRIVE ═══ */
+async function genAssets(){
+  var name=document.getElementById('coName').value.trim();
+  if(!name){document.getElementById('coName').focus();return;}
+  CO=name;COSTAT='generating';CO_LEAD=null;
+  var btn=document.getElementById('genBtn');
+  btn.disabled=true;btn.innerHTML='<i class="ti ti-loader" style="font-size:11px"></i> Generating...';
+  document.getElementById('sbStatus').innerHTML='';
+  VIEW='asset';ATAB='op';FW='';
+  ['op','pd','em'].forEach(function(x){document.getElementById('at-'+x).className='at'+(x==='op'?' on':'')});
+  renderHdr();renderTabs();renderBd();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,
+        system:'You are a PMM at Polygon Labs. Use your knowledge of '+name+'.\n\n'+SRC+'\n\nReturn ONLY a raw JSON object with key "lead" containing a 2-3 sentence personalised opening explaining why OMS is specifically relevant to '+name+'. Speak payments not blockchain. No markdown. Start with {',
+        messages:[{role:'user',content:'Personalised opening for '+name}]
+      })
+    });
+    var data=await res.json();
+    var raw=((data.content||[]).find(function(b){return b.type==='text'})||{}).text||'';
+    raw=raw.replace(/```json|```/g,'').trim();
+    var s=raw.indexOf('{'),ed=raw.lastIndexOf('}');
+    if(s!==-1&&ed!==-1){var p=JSON.parse(raw.substring(s,ed+1));CO_LEAD=p.lead||null;}
+    COSTAT='done';
+  }catch(er){COSTAT='done';}
+  btn.disabled=false;btn.innerHTML='<i class="ti ti-sparkles" style="font-size:11px"></i>Generate personalised assets';
+  document.getElementById('sbStatus').innerHTML='<div class="co-pill"><span class="co-dot"></span><span class="co-nm">'+e(CO)+'</span><span class="co-ty">Personalised</span></div>';
+  renderHdr();renderBd();
+}
+
+async function editInDrive(){
+  var btn=document.getElementById('editBtn'),lbl=document.getElementById('editBtnLbl');
+  var orig=lbl.textContent;btn.disabled=true;lbl.textContent='Creating...';
+  var isSlides=ATAB==='pd';
+  var title=(ATAB==='op'?'Polygon OMS One-Pager':ATAB==='pd'?'Polygon OMS Pitch Deck':'Polygon OMS Email Sequence')+(CO?' — '+CO:'');
+  var content='Polygon Open Money Stack\n'+title+'\n\npolygon.technology/open-money-stack';
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
+        mcp_servers:[{"type":"url","url":"https://drivemcp.googleapis.com/mcp/v1","name":"google-drive-mcp"}],
+        system:'Create a Google '+(isSlides?'Slides presentation':'Doc')+' using available tools and return only the file URL.',
+        messages:[{role:'user',content:'Create Google '+(isSlides?'Slides presentation':'Doc')+' titled "'+title+'" with this content:\n\n'+content+'\n\nReturn only the URL.'}]
+      })
+    });
+    var d=await r.json();
+    var txt=((d.content||[]).filter(function(b){return b.type==='text'}).map(function(b){return b.text}).join(''));
+    var um=txt.match(/https:\/\/docs\.google\.com\/[^\s"]+/);
+    if(um){lbl.textContent='Opened ✓';window.open(um[0],'_blank');setTimeout(function(){lbl.textContent=orig;btn.disabled=false;},3000);}
+    else{lbl.textContent=orig;btn.disabled=false;}
+  }catch(er){lbl.textContent=orig;btn.disabled=false;}
+}
+
+/* ═══ INIT ═══ */
+VIEW='asset';ATAB='op';
+initFWList();renderHdr();renderTabs();renderBd();
+</script>
+</body>
+</html>
