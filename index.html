@@ -9,74 +9,74 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1A;color:#fff;overflow:hidden}
-.app{display:grid;grid-template-columns:230px 1fr;height:100vh}
+.app{display:grid;grid-template-columns:285px 1fr;height:100vh}
 /* SIDEBAR */
 .sb{background:#060910;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;overflow:hidden}
 .sb-logo-wrap{padding:1rem 1rem .85rem;border-bottom:1px solid rgba(255,255,255,.07)}
 .sb-logo{display:flex;align-items:center;gap:7px;margin-bottom:.9rem}
-.slt{font-size:12px;font-weight:700;color:#fff}
-.sls{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8247E5;display:block}
-.sec-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.5rem}
+.slt{font-size:14px;font-weight:700;color:#fff}
+.sls{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8247E5;display:block}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.5rem}
 .fw-item{display:flex;align-items:flex-start;gap:.5rem;padding:.58rem .65rem;border-radius:5px;cursor:pointer;border:1px solid transparent;transition:all .15s;margin-bottom:3px}
 .fw-item:hover{background:rgba(130,71,229,.08);border-color:rgba(130,71,229,.15)}
 .fw-item.on{background:rgba(130,71,229,.15);border-color:rgba(130,71,229,.3)}
 .fw-dot{width:7px;height:7px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:3px}
-.fw-txt{font-size:11px;font-weight:600;color:rgba(255,255,255,.42);line-height:1.35}
+.fw-txt{font-size:13px;font-weight:600;color:rgba(255,255,255,.42);line-height:1.35}
 .fw-item.on .fw-txt{color:#fff}
-.fw-ck{font-size:10px;color:#5EEABD;margin-left:auto;flex-shrink:0}
+.fw-ck{font-size:11px;color:#5EEABD;margin-left:auto;flex-shrink:0}
 /* asset section */
 .sb-assets-wrap{padding:.85rem 1rem;border-top:1px solid rgba(255,255,255,.07)}
 .at{display:flex;align-items:center;gap:.5rem;padding:.5rem .65rem;border-radius:5px;cursor:pointer;border:1px solid transparent;transition:all .15s;margin-bottom:3px}
 .at:hover{background:rgba(255,255,255,.04)}
 .at.on{background:rgba(130,71,229,.1);border-color:rgba(130,71,229,.2)}
-.at-ic{width:22px;height:22px;background:rgba(255,255,255,.05);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.3);flex-shrink:0}
+.at-ic{width:22px;height:22px;background:rgba(255,255,255,.05);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,.3);flex-shrink:0}
 .at.on .at-ic{background:rgba(130,71,229,.2);color:#A97CF8}
-.at-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.38)}
+.at-lbl{font-size:13px;font-weight:600;color:rgba(255,255,255,.38)}
 .at.on .at-lbl{color:#fff}
-.at-bdg{font-size:9px;font-weight:600;color:#5EEABD;margin-left:auto;background:rgba(29,158,117,.08);padding:1px 5px;border-radius:3px}
+.at-bdg{font-size:10px;font-weight:600;color:#5EEABD;margin-left:auto;background:rgba(29,158,117,.08);padding:1px 5px;border-radius:3px}
 /* personalise section */
 .sb-pers{padding:.85rem 1rem;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
-.sb-input{width:100%;background:#0B0E1A;border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.45rem .65rem;font-size:11px;color:#fff;font-family:'Inter',system-ui;outline:none;margin-bottom:.45rem}
+.sb-input{width:100%;background:#0B0E1A;border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.45rem .65rem;font-size:13px;color:#fff;font-family:'Inter',system-ui;outline:none;margin-bottom:.45rem}
 .sb-input:focus{border-color:#8247E5}
 .sb-input::placeholder{color:rgba(255,255,255,.2)}
-.gen-btn{width:100%;background:#8247E5;color:#fff;border:none;border-radius:5px;padding:.55rem;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:'Inter',system-ui;transition:opacity .15s}
+.gen-btn{width:100%;background:#8247E5;color:#fff;border:none;border-radius:5px;padding:.55rem;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:'Inter',system-ui;transition:opacity .15s}
 .gen-btn:hover{opacity:.88}
 .gen-btn:disabled{opacity:.4;cursor:not-allowed}
 .sb-bot{padding:.7rem 1rem;border-top:1px solid rgba(255,255,255,.07);flex-shrink:0}
-.sb-tip{font-size:10px;color:rgba(255,255,255,.22);line-height:1.5}
+.sb-tip{font-size:11px;color:rgba(255,255,255,.22);line-height:1.5}
 .co-pill{background:rgba(130,71,229,.1);border:1px solid rgba(130,71,229,.2);border-radius:4px;padding:.38rem .6rem;display:flex;align-items:center;gap:.4rem}
 .co-dot{width:5px;height:5px;border-radius:50%;background:#8247E5;flex-shrink:0}
-.co-nm{font-size:11px;font-weight:600;color:#A97CF8}
-.co-ty{font-size:9px;color:rgba(255,255,255,.28);margin-left:auto}
+.co-nm{font-size:12px;font-weight:600;color:#A97CF8}
+.co-ty{font-size:10px;color:rgba(255,255,255,.28);margin-left:auto}
 /* MAIN */
 .main{display:flex;flex-direction:column;overflow:hidden}
 .mh{padding:.8rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.07);background:#080B14;flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
 .mh-left{display:flex;flex-direction:column}
-.mh-lb{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.18rem}
-.mh-ti{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em}
-.edit-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:rgba(255,255,255,.5);font-size:11px;font-weight:600;padding:6px 11px;cursor:pointer;display:flex;align-items:center;gap:.4rem;font-family:'Inter',system-ui;transition:all .15s}
+.mh-lb{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.18rem}
+.mh-ti{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.edit-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:rgba(255,255,255,.5);font-size:13px;font-weight:600;padding:6px 11px;cursor:pointer;display:flex;align-items:center;gap:.4rem;font-family:'Inter',system-ui;transition:all .15s}
 .edit-btn:hover{background:rgba(255,255,255,.09);color:#fff}
 .edit-btn:disabled{opacity:.4;cursor:not-allowed}
 .tbar{display:flex;gap:3px;padding:.55rem 1.3rem .4rem;border-bottom:1px solid rgba(255,255,255,.07);flex-wrap:wrap;background:#060910;flex-shrink:0}
-.tab{padding:.28rem .62rem;border-radius:4px;font-size:11px;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.tab{padding:.28rem .62rem;border-radius:4px;font-size:12px;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;border:1px solid transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.05)}
 .tab.on{background:rgba(130,71,229,.18);border-color:rgba(130,71,229,.35);color:#D4B5FF}
 .bd{padding:1.15rem 1.3rem;overflow-y:auto;flex:1}
 /* SHARED COMPONENTS */
-.ey{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.32rem}
+.ey{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.32rem}
 .sh{font-size:17px;font-weight:900;line-height:1.2;letter-spacing:-.02em;color:#fff;margin-bottom:.28rem}
 .sh em{color:#C4A4FF;font-style:normal}
-.sub{font-size:12px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:1rem;max-width:520px}
-.slb{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.6rem}
+.sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:1rem;max-width:520px}
+.slb{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.6rem}
 .dv{border:none;border-top:1px solid rgba(255,255,255,.08);margin:.95rem 0}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
 .ca{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:7px}
 .ca:last-child{margin-bottom:0}
-.cl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem}
-.cv{font-size:13px;font-weight:600;color:#fff;line-height:1.5}
-.cs{font-size:11px;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.6}
-.tg{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
+.cl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem}
+.cv{font-size:14px;font-weight:600;color:#fff;line-height:1.5}
+.cs{font-size:13px;color:rgba(255,255,255,.72);margin-top:.2rem;line-height:1.6}
+.tg{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
 .tp{background:rgba(130,71,229,.25);color:#D4B5FF}
 .ttr{background:rgba(226,75,74,.2);color:#F9A8A7}
 .ta{background:rgba(186,117,23,.2);color:#F2CC70}
@@ -84,34 +84,34 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 .rf{display:flex;align-items:flex-start;gap:.55rem;margin-bottom:.42rem}
 .rf:last-child{margin-bottom:0}
 .bl{width:5px;height:5px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:.37rem}
-.bt{font-size:11px;color:rgba(255,255,255,.75);line-height:1.55}
-.qb{border-left:3px solid #9B6DF5;padding:.5rem .75rem;background:rgba(130,71,229,.09);border-radius:0 5px 5px 0;font-size:12px;font-style:italic;color:rgba(255,255,255,.82);line-height:1.6;margin-bottom:6px}
+.bt{font-size:13px;color:rgba(255,255,255,.75);line-height:1.55}
+.qb{border-left:3px solid #9B6DF5;padding:.5rem .75rem;background:rgba(130,71,229,.09);border-radius:0 5px 5px 0;font-size:13px;font-style:italic;color:rgba(255,255,255,.82);line-height:1.6;margin-bottom:6px}
 /* ICP */
 .ic{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:10px}
 .ic-top{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
 .ic-av{width:30px;height:30px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
-.ic-nm{font-size:13px;font-weight:700;color:#fff}
-.ic-ro{font-size:10px;color:rgba(255,255,255,.5)}
+.ic-nm{font-size:14px;font-weight:700;color:#fff}
+.ic-ro{font-size:11px;color:rgba(255,255,255,.5)}
 .ic-b{padding:.85rem}
-.ic-d{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.7rem}
+.ic-d{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.7rem}
 .ic-tr{background:rgba(130,71,229,.1);border-radius:4px;padding:.4rem .6rem;margin-bottom:.7rem;border:1px solid rgba(130,71,229,.2)}
-.ic-tl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B48BFF;margin-bottom:.18rem}
-.ic-tt{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
-.isl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.28rem;margin-top:.6rem}
-.ip{display:flex;align-items:flex-start;gap:.33rem;font-size:11px;color:rgba(255,255,255,.72);line-height:1.43;margin-bottom:.2rem}
+.ic-tl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B48BFF;margin-bottom:.18rem}
+.ic-tt{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
+.isl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.28rem;margin-top:.6rem}
+.ip{display:flex;align-items:flex-start;gap:.33rem;font-size:13px;color:rgba(255,255,255,.72);line-height:1.43;margin-bottom:.2rem}
 .ipd{width:4px;height:4px;border-radius:50%;background:#8247E5;flex-shrink:0;margin-top:.32rem}
-.iq{font-size:12px;font-style:italic;color:rgba(255,255,255,.72);border-left:2px solid rgba(130,71,229,.5);padding:.4rem .65rem;margin-top:.6rem;line-height:1.6;background:rgba(130,71,229,.07);border-radius:0 4px 4px 0}
-.ch{display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:2px 7px;font-size:10px;color:rgba(255,255,255,.72);margin:2px;font-style:italic}
+.iq{font-size:13px;font-style:italic;color:rgba(255,255,255,.72);border-left:2px solid rgba(130,71,229,.5);padding:.4rem .65rem;margin-top:.6rem;line-height:1.6;background:rgba(130,71,229,.07);border-radius:0 4px 4px 0}
+.ch{display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:2px 7px;font-size:11px;color:rgba(255,255,255,.72);margin:2px;font-style:italic}
 /* COMP MATRIX */
 .cmx{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:.9rem}
 .cmxh{display:grid;grid-template-columns:145px repeat(4,minmax(0,1fr));background:#0B1120;border-bottom:1px solid rgba(255,255,255,.08)}
-.cmxhc{padding:.48rem .6rem;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
+.cmxhc{padding:.48rem .6rem;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
 .cmxhc:first-child{text-align:left}
 .cmxr{display:grid;grid-template-columns:145px repeat(4,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.05);align-items:center}
 .cmxr:last-child{border-bottom:none}
 .cmxr.oms{background:rgba(130,71,229,.08)}
-.cmxc{padding:.48rem .6rem;font-size:11px;color:rgba(255,255,255,.6);text-align:center}
-.cmxc:first-child{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-align:left}
+.cmxc{padding:.48rem .6rem;font-size:12px;color:rgba(255,255,255,.6);text-align:center}
+.cmxc:first-child{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);text-align:left}
 .cmxr.oms .cmxc:first-child{color:#C4A4FF;font-weight:700}
 .cy{color:#5EEABD;font-weight:700;font-size:13px}
 .cn{color:rgba(255,255,255,.3);font-size:13px}
@@ -119,212 +119,270 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 /* FULL COMP CARD */
 .fcc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
 .fcc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
-.fcc-n{font-size:13px;font-weight:700;color:#fff}
-.fcc-s{font-size:10px;color:rgba(255,255,255,.5);margin-top:1px}
+.fcc-n{font-size:14px;font-weight:700;color:#fff}
+.fcc-s{font-size:11px;color:rgba(255,255,255,.5);margin-top:1px}
 .fcc-b{padding:.85rem}
-.frl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
-.frt{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6}
+.frl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.frt{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6}
 .lm{background:rgba(186,117,23,.1);border:1px solid rgba(186,117,23,.25);border-radius:4px;padding:.42rem .65rem;margin-top:.42rem}
-.lml{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F2CC70;margin-bottom:.15rem}
-.lmt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.lml{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F2CC70;margin-bottom:.15rem}
+.lmt{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
 .neu{background:rgba(29,158,117,.09);border:1px solid rgba(29,158,117,.25);border-radius:4px;padding:.42rem .65rem;margin-top:.42rem}
-.neul{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5EEABD;margin-bottom:.15rem}
-.neut{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.neul{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5EEABD;margin-bottom:.15rem}
+.neut{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
 /* DRIVER CHART */
 .drc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:.9rem}
 .dr{display:flex;align-items:center;gap:.65rem;margin-bottom:.42rem}
-.drl{font-size:11px;color:rgba(255,255,255,.78);width:182px;flex-shrink:0}
+.drl{font-size:13px;color:rgba(255,255,255,.78);width:182px;flex-shrink:0}
 .drb{flex:1;background:rgba(255,255,255,.07);border-radius:3px;height:7px;overflow:hidden}
 .drbi{height:100%;border-radius:3px;background:#8247E5}
-.drp{font-size:10px;font-weight:700;color:#B48BFF;width:32px;text-align:right;flex-shrink:0}
-.dri{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;padding-left:182px;margin-top:.12rem;margin-bottom:.65rem}
+.drp{font-size:11px;font-weight:700;color:#B48BFF;width:32px;text-align:right;flex-shrink:0}
+.dri{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;padding-left:182px;margin-top:.12rem;margin-bottom:.65rem}
 /* CONCLUSION / PURPLE BOX */
 .pbox{background:#8247E5;border-radius:7px;padding:.95rem 1.15rem;position:relative;overflow:hidden;margin-bottom:8px}
 .pbox::after{content:'"';position:absolute;right:.7rem;top:-.5rem;font-size:75px;font-weight:900;color:rgba(255,255,255,.08);line-height:1;pointer-events:none}
-.pbox-l{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.4rem}
-.pbox-t{font-size:13px;font-weight:600;color:#fff;line-height:1.75}
+.pbox-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.4rem}
+.pbox-t{font-size:14px;font-weight:600;color:#fff;line-height:1.75}
 /* VP */
 .vp{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;margin-bottom:7px}
 .vpn{font-size:24px;font-weight:900;color:#9B6DF5;line-height:1;flex-shrink:0;width:32px}
-.vptit{font-size:13px;font-weight:700;color:#fff;margin-bottom:.15rem}
-.vpft{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:.28rem;font-style:italic}
-.vpb{font-size:12px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:.3rem}
-.vpw{font-size:11px;color:rgba(255,255,255,.62);line-height:1.5;margin-bottom:.3rem}
-.vppf{font-size:11px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.15);padding:3px 8px;border-radius:3px;display:inline-block}
+.vptit{font-size:14px;font-weight:700;color:#fff;margin-bottom:.15rem}
+.vpft{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:.28rem;font-style:italic}
+.vpb{font-size:13px;color:rgba(255,255,255,.78);line-height:1.6;margin-bottom:.3rem}
+.vpw{font-size:13px;color:rgba(255,255,255,.62);line-height:1.5;margin-bottom:.3rem}
+.vppf{font-size:12px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.15);padding:3px 8px;border-radius:3px;display:inline-block}
 /* FRAME */
 .fr{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:7px}
 .fr-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
-.fr-n{font-size:13px;font-weight:700;color:#fff}
-.frsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.22rem}
-.frt2{font-size:12px;color:rgba(255,255,255,.75);line-height:1.65}
-.fscr{background:rgba(130,71,229,.09);border-left:3px solid #8247E5;padding:.5rem .75rem;border-radius:0 4px 4px 0;font-size:12px;color:rgba(255,255,255,.82);line-height:1.65;font-style:italic;margin-top:.32rem}
+.fr-n{font-size:14px;font-weight:700;color:#fff}
+.frsl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.22rem}
+.frt2{font-size:13px;color:rgba(255,255,255,.75);line-height:1.65}
+.fscr{background:rgba(130,71,229,.09);border-left:3px solid #8247E5;padding:.5rem .75rem;border-radius:0 4px 4px 0;font-size:13px;color:rgba(255,255,255,.82);line-height:1.65;font-style:italic;margin-top:.32rem}
 /* MSG */
 .mc2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:.85rem}
 .mc2c{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden}
-.mc2h{background:#0B1120;padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.07);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.mc2h{background:#0B1120;padding:.5rem .85rem;border-bottom:1px solid rgba(255,255,255,.07);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .mc2b{padding:.75rem .85rem;display:flex;flex-direction:column;gap:.55rem}
-.mil{font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.15rem}
-.mit{font-size:12px;color:#fff;font-weight:600;line-height:1.5}
-.mis{font-size:11px;color:rgba(255,255,255,.65);line-height:1.55;font-weight:400;margin-top:.1rem}
+.mil{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.15rem}
+.mit{font-size:13px;color:#fff;font-weight:600;line-height:1.5}
+.mis{font-size:13px;color:rgba(255,255,255,.65);line-height:1.55;font-weight:400;margin-top:.1rem}
 .gc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px}
-.gcl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.3rem}
-.gct{font-size:12px;color:rgba(255,255,255,.75);line-height:1.65}
+.gcl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.3rem}
+.gct{font-size:13px;color:rgba(255,255,255,.75);line-height:1.65}
 .tg2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .tc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem}
-.tcl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.42rem}
-.tci{font-size:11px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.3rem;display:flex;align-items:flex-start;gap:.45rem}
+.tcl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.42rem}
+.tci{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:.3rem;display:flex;align-items:flex-start;gap:.45rem}
 .tci:last-child{margin-bottom:0}
 /* SESS */
 .pt{display:flex;gap:4px;margin-bottom:.75rem}
-.ptb{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.28rem .65rem;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .15s}
+.ptb{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.28rem .65rem;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .15s}
 .ptb.on{background:#8247E5;border-color:#8247E5;color:#fff}
-.ptc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;font-size:13px;line-height:1.85;color:rgba(255,255,255,.82);margin-bottom:.85rem;white-space:pre-line}
+.ptc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.85rem;font-size:14px;line-height:1.85;color:rgba(255,255,255,.82);margin-bottom:.85rem;white-space:pre-line}
 .ptc em{color:#C4A4FF;font-style:normal;font-weight:600}
 .pe{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
 .pe-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
-.pe-n{font-size:12px;font-weight:700;color:#fff}
+.pe-n{font-size:13px;font-weight:700;color:#fff}
 .pe-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.pesl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem}
-.pet{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.pesl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.28rem}
+.pet{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
 .lmb{background:rgba(226,75,74,.09);border:1px solid rgba(226,75,74,.2);border-radius:4px;padding:.4rem .65rem;margin:.4rem .85rem .75rem}
-.lmbl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F9A8A7;margin-bottom:.15rem}
-.lmbt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.5}
+.lmbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F9A8A7;margin-bottom:.15rem}
+.lmbt{font-size:13px;color:rgba(255,255,255,.72);line-height:1.5}
 .oc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
 .oc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
 .oc-hi{font-size:13px;color:#F9A8A7}
-.oc-t{font-size:12px;font-weight:700;color:#fff}
+.oc-t{font-size:13px;font-weight:700;color:#fff}
 .oc-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
-.ocsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
-.octx{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
-.ocpf{font-size:10px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.12);padding:2px 7px;border-radius:3px;display:inline-block;margin-top:.3rem}
+.ocsl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.octx{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
+.ocpf{font-size:11px;font-weight:600;color:#B48BFF;background:rgba(130,71,229,.12);padding:2px 7px;border-radius:3px;display:inline-block;margin-top:.3rem}
 .cc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:8px}
 .cc-h{background:#0B1120;padding:.55rem .85rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
 .cc-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
-.ccl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
-.cct{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.ccl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.cct{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
 .wc{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px;display:flex;align-items:flex-start;gap:.65rem}
 .wn{font-size:20px;font-weight:900;color:#5EEABD;line-height:1;flex-shrink:0;width:28px}
 .ln{font-size:20px;font-weight:900;color:#F9A8A7;line-height:1;flex-shrink:0;width:28px}
-.wt{font-size:13px;font-weight:700;color:#fff;margin-bottom:.2rem}
-.wb{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6}
+.wt{font-size:14px;font-weight:700;color:#fff;margin-bottom:.2rem}
+.wb{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6}
 .ds{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:.75rem .85rem;margin-bottom:7px;display:flex;align-items:flex-start;gap:.65rem}
 .dsn{width:25px;height:25px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
-.dst{font-size:12px;font-weight:700;color:#fff;margin-bottom:.15rem}
-.dsb{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6}
-.dsp{font-size:11px;font-style:italic;color:#B48BFF;margin-top:.28rem;background:rgba(130,71,229,.08);padding:.25rem .45rem;border-radius:3px}
+.dst{font-size:13px;font-weight:700;color:#fff;margin-bottom:.15rem}
+.dsb{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6}
+.dsp{font-size:12px;font-style:italic;color:#B48BFF;margin-top:.28rem;background:rgba(130,71,229,.08);padding:.25rem .45rem;border-radius:3px}
 .bm{background:#111827;border:1px solid rgba(255,255,255,.09);border-radius:7px;overflow:hidden;margin-bottom:7px}
 .bm-h{background:#0B1120;padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between}
 .bm-b{padding:.75rem .85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
-.bmsl{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
-.bmt{font-size:11px;color:rgba(255,255,255,.72);line-height:1.55}
+.bmsl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem}
+.bmt{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55}
 /* ASSET VIEWS */
-.a-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8247E5;margin-bottom:.4rem}
-.a-h1{font-size:20px;font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:.55rem}
+.a-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8247E5;margin-bottom:.4rem}
+.a-h1{font-size:22px;font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:.55rem}
 .a-h1 em{color:#8247E5;font-style:normal}
-.a-lead{font-size:13px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:.9rem}
+.a-lead{font-size:14px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:.9rem}
 .a-co{background:rgba(130,71,229,.08);border:1px solid rgba(130,71,229,.15);border-radius:6px;padding:.6rem .85rem;display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
 .a-ci{width:28px;height:28px;background:#8247E5;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
-.a-cn{font-size:12px;font-weight:700;color:#fff}
-.a-cs{font-size:10px;color:rgba(255,255,255,.4)}
+.a-cn{font-size:13px;font-weight:700;color:#fff}
+.a-cs{font-size:11px;color:rgba(255,255,255,.4)}
 .bfr{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.55rem}
-.vnd{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:4px 8px;font-size:10px;font-weight:500;color:rgba(255,255,255,.35)}
-.vnd-n{font-size:8px;color:#F9A8A7;font-weight:600;display:block;margin-top:1px}
-.arr{display:flex;align-items:center;gap:.4rem;font-size:10px;color:rgba(255,255,255,.18);margin:.45rem 0}
+.vnd{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:4px 8px;font-size:11px;font-weight:500;color:rgba(255,255,255,.35)}
+.vnd-n{font-size:10px;color:#F9A8A7;font-weight:600;display:block;margin-top:1px}
+.arr{display:flex;align-items:center;gap:.4rem;font-size:11px;color:rgba(255,255,255,.18);margin:.45rem 0}
 .arr::before,.arr::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
 .oms-bar{background:#8247E5;border-radius:5px;padding:.7rem .85rem;margin-bottom:.7rem}
 .oms-bar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.42rem}
-.oms-bar-nm{font-size:12px;font-weight:700;color:#fff}
-.oms-bar-bg{font-size:9px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.2);padding:2px 6px;border-radius:2px;font-weight:600}
+.oms-bar-nm{font-size:13px;font-weight:700;color:#fff}
+.oms-bar-bg{font-size:10px;color:rgba(255,255,255,.7);background:rgba(0,0,0,.2);padding:2px 6px;border-radius:2px;font-weight:600}
 .oms-bar-comps{display:flex;flex-wrap:wrap;gap:4px}
-.oms-c{background:rgba(255,255,255,.12);border-radius:2px;padding:2px 6px;font-size:10px;color:rgba(255,255,255,.88);font-weight:500}
+.oms-c{background:rgba(255,255,255,.12);border-radius:2px;padding:2px 6px;font-size:11px;color:rgba(255,255,255,.88);font-weight:500}
 .stat4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden;margin:.4rem 0 .8rem}
 .s4c{background:#0B0E1A;padding:.75rem;text-align:center}
 .s4n{font-size:17px;font-weight:900;color:#8247E5;display:block;letter-spacing:-.02em;line-height:1}
-.s4l{font-size:9px;color:rgba(255,255,255,.3);margin-top:.25rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.s4l{font-size:10px;color:rgba(255,255,255,.3);margin-top:.25rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
 .vp-list{display:flex;flex-direction:column;gap:5px}
 .vp-row{background:#111827;border-radius:5px;padding:.6rem .8rem;display:flex;gap:.6rem;align-items:flex-start}
 .vp-ic{width:23px;height:23px;background:rgba(130,71,229,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#A97CF8;font-size:12px}
-.vp-tl{font-size:12px;font-weight:700;color:#fff;margin-bottom:.12rem}
-.vp-bd{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5}
+.vp-tl{font-size:13px;font-weight:700;color:#fff;margin-bottom:.12rem}
+.vp-bd{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
 .logos-row{display:flex;flex-wrap:wrap;gap:4px;margin:.45rem 0}
-.logo-pill{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:3px 9px;font-size:10px;font-weight:600;color:rgba(255,255,255,.45)}
+.logo-pill{border:1px solid rgba(255,255,255,.09);border-radius:3px;padding:3px 9px;font-size:11px;font-weight:600;color:rgba(255,255,255,.45)}
 .cta-bar{background:#8247E5;border-radius:5px;padding:.75rem .9rem;display:flex;align-items:center;justify-content:space-between;margin-top:.9rem;gap:.6rem}
-.cta-l{font-size:12px;font-weight:700;color:#fff}
-.cta-l span{display:block;font-size:10px;font-weight:400;color:rgba(255,255,255,.6);margin-top:1px}
-.cta-r{font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.2);padding:5px 10px;border-radius:3px;flex-shrink:0}
+.cta-l{font-size:13px;font-weight:700;color:#fff}
+.cta-l span{display:block;font-size:11px;font-weight:400;color:rgba(255,255,255,.6);margin-top:1px}
+.cta-r{font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.2);padding:5px 10px;border-radius:3px;flex-shrink:0}
+/* ONE-PAGER REDESIGN */
+.op-wrap{display:flex;flex-direction:column;gap:0}
+.op-hdr{background:linear-gradient(135deg,#0D0A1E 0%,#140B2A 100%);border:1px solid rgba(130,71,229,.25);border-radius:8px;padding:1.1rem 1.25rem;margin-bottom:10px;position:relative;overflow:hidden}
+.op-hdr::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.18) 0%,transparent 70%);pointer-events:none}
+.op-hdr-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.65rem}
+.op-logo{display:flex;align-items:center;gap:7px}
+.op-logo-txt{font-size:12px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.op-logo-dot{width:8px;height:8px;border-radius:50%;background:#8247E5;flex-shrink:0}
+.op-for-badge{background:rgba(130,71,229,.2);border:1px solid rgba(130,71,229,.35);border-radius:4px;padding:4px 10px;font-size:11px;font-weight:700;color:#C4A4FF;white-space:nowrap}
+.op-hdr-h{font-size:20px;font-weight:900;color:#fff;line-height:1.18;letter-spacing:-.02em;margin-bottom:.4rem}
+.op-hdr-h em{color:#A97CF8;font-style:normal}
+.op-hdr-sub{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;max-width:540px}
+.op-ba{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-bottom:10px;align-items:stretch}
+.op-before{background:#0F0A0A;border:1px solid rgba(226,75,74,.2);border-radius:8px 0 0 8px;padding:.9rem 1rem}
+.op-ba-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.op-ba-lbl.bad{color:#E24B4A}
+.op-ba-lbl.good{color:#5EEABD}
+.op-vendors{display:flex;flex-direction:column;gap:5px}
+.op-vnd{display:flex;align-items:center;justify-content:space-between;background:rgba(226,75,74,.06);border:1px solid rgba(226,75,74,.12);border-radius:4px;padding:5px 9px}
+.op-vnd-nm{font-size:12px;font-weight:600;color:rgba(255,255,255,.65)}
+.op-vnd-ct{font-size:10px;color:#E24B4A;font-weight:700}
+.op-arr{display:flex;align-items:center;justify-content:center;width:44px;background:rgba(130,71,229,.08);border-top:1px solid rgba(130,71,229,.15);border-bottom:1px solid rgba(130,71,229,.15);flex-shrink:0}
+.op-arr-ic{font-size:18px;color:#8247E5;font-weight:900}
+.op-after{background:linear-gradient(135deg,#0D0A20 0%,#130A2A 100%);border:1px solid rgba(130,71,229,.3);border-radius:0 8px 8px 0;padding:.9rem 1rem}
+.op-oms-title{font-size:13px;font-weight:800;color:#fff;margin-bottom:.45rem}
+.op-oms-comps{display:flex;flex-direction:column;gap:4px}
+.op-oms-comp{display:flex;align-items:center;gap:.45rem;font-size:12px;color:rgba(255,255,255,.75)}
+.op-oms-comp-dot{width:5px;height:5px;border-radius:50%;background:#5EEABD;flex-shrink:0}
+.op-oms-tag{font-size:10px;color:#5EEABD;font-weight:700;margin-left:auto;background:rgba(29,158,117,.1);padding:1px 6px;border-radius:2px}
+.op-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(130,71,229,.15);border-radius:8px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(130,71,229,.2)}
+.op-stat{background:#0D0A1E;padding:.9rem .75rem;text-align:center}
+.op-stat-n{font-size:22px;font-weight:900;color:#8247E5;display:block;letter-spacing:-.02em;line-height:1;margin-bottom:.22rem}
+.op-stat-l{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.op-vps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.op-vp{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:.85rem .9rem;position:relative;overflow:hidden}
+.op-vp::before{content:attr(data-n);position:absolute;right:.7rem;top:-.2rem;font-size:42px;font-weight:900;color:rgba(130,71,229,.1);line-height:1;pointer-events:none}
+.op-vp-h{font-size:13px;font-weight:800;color:#fff;margin-bottom:.3rem;line-height:1.3}
+.op-vp-b{font-size:12px;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:.45rem}
+.op-vp-proof{font-size:11px;font-weight:700;color:#A97CF8;background:rgba(130,71,229,.12);padding:3px 8px;border-radius:3px;display:inline-block}
+.op-trust{background:#0B0E1A;border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:.7rem 1rem;margin-bottom:10px;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.op-trust-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25);flex-shrink:0}
+.op-trust-logos{display:flex;flex-wrap:wrap;gap:5px;flex:1}
+.op-trust-logo{border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:4px 10px;font-size:11px;font-weight:700;color:rgba(255,255,255,.5);background:rgba(255,255,255,.03)}
+.op-cta{background:linear-gradient(135deg,#6B35C7 0%,#8247E5 60%,#9B6DF5 100%);border-radius:8px;padding:1.15rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:relative;overflow:hidden}
+.op-cta::before{content:'→';position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:72px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;pointer-events:none}
+.op-cta-l{flex:1}
+.op-cta-h{font-size:16px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:.25rem;letter-spacing:-.01em}
+.op-cta-s{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5}
+.op-cta-btns{display:flex;gap:7px;flex-shrink:0}
+.op-cta-btn-pri{background:#fff;color:#7B35D9;font-size:12px;font-weight:800;padding:8px 16px;border-radius:5px;border:none;cursor:pointer;font-family:'Inter',system-ui;white-space:nowrap}
+.op-cta-btn-sec{background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:5px;border:1px solid rgba(255,255,255,.2);cursor:pointer;font-family:'Inter',system-ui;white-space:nowrap}
 /* SLIDES */
-.slide{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:1.1rem;height:188px;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:7px;overflow:hidden;position:relative}
+/* PITCH DECK REDESIGN */
+.pd-wrap{display:flex;flex-direction:column;gap:10px}
+.slide{background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:1.4rem 1.5rem;aspect-ratio:16/7;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;box-sizing:border-box}
+.slide.sl-cover{background:linear-gradient(135deg,#0D0722 0%,#1A0A3D 50%,#2D1260 100%);border-color:rgba(130,71,229,.4)}
+.slide.sl-cta-v{background:linear-gradient(135deg,#5C2DB8 0%,#8247E5 60%,#9B5FF5 100%);border-color:rgba(130,71,229,.5)}
+.slide-glow{position:absolute;right:-30px;top:-30px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.2) 0%,transparent 65%);pointer-events:none}
+.slide-glow-br{position:absolute;right:-20px;bottom:-20px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(162,111,255,.1) 0%,transparent 70%);pointer-events:none}
+
 .slide-glow{position:absolute;right:-20px;top:-20px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.09) 0%,transparent 70%);pointer-events:none}
-.sl-ey{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8247E5;margin-bottom:.32rem}
-.sl-h{font-size:16px;font-weight:900;line-height:1.2;letter-spacing:-.02em;color:#fff}
+.sl-ey{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.4rem}
+.sl-h{font-size:22px;font-weight:900;line-height:1.15;letter-spacing:-.025em;color:#fff}
 .sl-h em{color:#8247E5;font-style:normal}
-.sl-s{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5;margin-top:.3rem;max-width:340px}
-.sl-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.45rem;border-top:1px solid rgba(255,255,255,.05);margin-top:auto;flex-shrink:0}
-.sl-logo{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:rgba(255,255,255,.2)}
-.sl-num{font-size:10px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.05em}
+.sl-s{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6;margin-top:.45rem;max-width:400px}
+.sl-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08);margin-top:auto;flex-shrink:0}
+.sl-logo{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:rgba(255,255,255,.2)}
+.sl-num{font-size:11px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.05em}
 .pain-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
-.pg{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:.4rem .55rem;display:flex;gap:.4rem}
+.pg{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:.55rem .65rem;display:flex;gap:.45rem}
 .pg-ic{font-size:10px;color:rgba(255,255,255,.22);flex-shrink:0;margin-top:1px}
-.pg-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);margin-bottom:.1rem}
-.pg-b{font-size:10px;color:rgba(255,255,255,.32);line-height:1.4}
-.b3g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;flex:1;margin-top:.35rem;max-height:85px}
-.b3s{background:#111827;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.b3n{font-size:22px;font-weight:900;color:#8247E5;letter-spacing:-.02em;line-height:1}
-.b3l{font-size:8px;color:rgba(255,255,255,.25);margin-top:.18rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600;text-align:center}
+.pg-t{font-size:12px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:.15rem}
+.pg-b{font-size:11px;color:rgba(255,255,255,.45);line-height:1.45}
+.b3g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:rgba(130,71,229,.2);border-radius:6px;overflow:hidden;flex:1;margin-top:.5rem}
+.b3s{background:#0D0A1E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.7rem}
+.b3n{font-size:32px;font-weight:900;color:#8247E5;letter-spacing:-.03em;line-height:1}
+.b3l{font-size:10px;color:rgba(255,255,255,.4);margin-top:.25rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;text-align:center}
 .vpm{display:flex;flex-direction:column;gap:4px;flex:1;margin-top:.35rem}
-.vpmr{background:rgba(255,255,255,.03);border-radius:4px;padding:.4rem .55rem;display:flex;gap:.5rem}
-.vpmn{font-size:13px;font-weight:900;color:#8247E5;line-height:1;flex-shrink:0;width:18px}
-.vpmt{font-size:10px;font-weight:700;color:#fff;margin-bottom:.08rem}
-.vpmb{font-size:10px;color:rgba(255,255,255,.3);line-height:1.4}
-.cmt{width:100%;border-collapse:collapse;font-size:10px;flex:1;margin-top:.35rem}
-.cmt th{font-size:8px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:.3rem .45rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.05)}
+.vpmr{background:rgba(130,71,229,.07);border:1px solid rgba(130,71,229,.15);border-radius:5px;padding:.55rem .65rem;display:flex;gap:.55rem}
+.vpmn{font-size:15px;font-weight:900;color:#8247E5;line-height:1;flex-shrink:0;width:22px}
+.vpmt{font-size:12px;font-weight:700;color:#fff;margin-bottom:.12rem}
+.vpmb{font-size:11px;color:rgba(255,255,255,.5);line-height:1.45}
+.cmt{width:100%;border-collapse:collapse;font-size:11px;flex:1;margin-top:.35rem}
+.cmt th{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:.3rem .45rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.05)}
 .cmt td{padding:.35rem .45rem;border-bottom:1px solid rgba(255,255,255,.03);color:rgba(255,255,255,.4)}
 .cmt tr:last-child td{border-bottom:none}
 .cmt .or td{color:#fff;background:rgba(130,71,229,.05)}
 .cmt .or td:first-child{color:#8247E5;font-weight:700}
 .cyw{color:#1D9E75;font-weight:600}.cpw{color:#BA7517}.cnw{color:rgba(255,255,255,.18)}
 .proof-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
-.pg2{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:.45rem .6rem}
-.pg2l{font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.28rem}
+.pg2{background:rgba(130,71,229,.06);border:1px solid rgba(130,71,229,.15);border-radius:5px;padding:.55rem .7rem}
+.pg2l{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.28rem}
 .pg2-logos{display:flex;flex-wrap:wrap;gap:3px}
-.pg2-logo{border:1px solid rgba(255,255,255,.08);border-radius:2px;padding:2px 5px;font-size:9px;font-weight:600;color:rgba(255,255,255,.4)}
-.pg2-big{font-size:19px;font-weight:900;color:#8247E5;letter-spacing:-.02em;line-height:1.1}
-.pg2-sub{font-size:8px;color:rgba(255,255,255,.25);margin-top:.15rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.cta-slide{background:#8247E5;border-radius:5px;padding:.9rem 1rem;flex:1;margin-top:.35rem;display:flex;flex-direction:column;justify-content:space-between}
-.ctas-h{font-size:15px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.02em}
-.ctas-s{font-size:10px;color:rgba(255,255,255,.65);margin-top:.28rem;line-height:1.45}
+.pg2-logo{border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:3px 7px;font-size:10px;font-weight:700;color:rgba(255,255,255,.6)}
+.pg2-big{font-size:26px;font-weight:900;color:#8247E5;letter-spacing:-.03em;line-height:1}
+.pg2-sub{font-size:9px;color:rgba(255,255,255,.25);margin-top:.15rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.cta-slide{flex:1;margin-top:.35rem;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
+.ctas-h{font-size:20px;font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.025em}
+.ctas-s{font-size:13px;color:rgba(255,255,255,.7);line-height:1.55}
 .ctas-btns{display:flex;gap:5px;margin-top:.6rem}
-.ctas-btn{background:rgba(255,255,255,.15);color:#fff;border:none;font-size:10px;font-weight:700;padding:5px 10px;border-radius:3px;cursor:pointer;font-family:'Inter',system-ui}
-.ctas-url{font-size:9px;color:rgba(255,255,255,.35);margin-top:.32rem}
+.ctas-btn{color:#fff;border:none;font-size:12px;font-weight:700;padding:8px 16px;border-radius:5px;cursor:pointer;font-family:'Inter',system-ui}
+.ctas-url{font-size:11px;color:rgba(255,255,255,.45);margin-top:.3rem;letter-spacing:.02em}
 .co-cover{display:flex;align-items:center;gap:.55rem;margin-bottom:.65rem}
-.co-init{width:26px;height:26px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
-.co-name{font-size:11px;font-weight:700;color:#fff}
-.co-sub{font-size:10px;color:rgba(255,255,255,.3)}
+.co-init{width:26px;height:26px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0}
+.co-name{font-size:12px;font-weight:700;color:#fff}
+.co-sub{font-size:11px;color:rgba(255,255,255,.3)}
 .co-div{width:1px;height:26px;background:rgba(255,255,255,.1)}
 /* EMAIL */
 .em-card{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;margin-bottom:7px}
 .em-hdr{background:#0B1120;padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between}
-.em-nb{background:#8247E5;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;letter-spacing:.04em}
-.em-tm{font-size:9px;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.05em;text-transform:uppercase}
-.em-ty{font-size:9px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.05em;text-transform:uppercase}
+.em-nb{background:#8247E5;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:2px;letter-spacing:.04em}
+.em-tm{font-size:10px;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.05em;text-transform:uppercase}
+.em-ty{font-size:10px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.05em;text-transform:uppercase}
 .em-meta{padding:.55rem .85rem;border-bottom:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;gap:3px}
 .em-row{display:flex;align-items:baseline;gap:.4rem}
-.em-lbl{font-size:9px;font-weight:700;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.06em;width:42px;flex-shrink:0}
-.em-val{font-size:11px;color:rgba(255,255,255,.45)}
-.em-val.s{font-size:12px;font-weight:600;color:#fff}
-.em-body{padding:.85rem;font-size:12px;line-height:1.8;color:rgba(255,255,255,.65)}
+.em-lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.06em;width:42px;flex-shrink:0}
+.em-val{font-size:13px;color:rgba(255,255,255,.45)}
+.em-val.s{font-size:14px;font-weight:600;color:#fff}
+.em-body{padding:.85rem;font-size:13px;line-height:1.8;color:rgba(255,255,255,.65)}
 .em-body p{margin-bottom:.6rem}
 .em-body p:last-child{margin-bottom:0}
-.em-hook{font-size:13px;font-weight:600;color:#fff;line-height:1.6;padding-left:.6rem;border-left:3px solid #8247E5;margin-bottom:.7rem}
+.em-hook{font-size:14px;font-weight:600;color:#fff;line-height:1.6;padding-left:.6rem;border-left:3px solid #8247E5;margin-bottom:.7rem}
 .em-stat{color:#A97CF8;font-weight:700}
-.em-cta{background:rgba(130,71,229,.1);border:1px solid rgba(130,71,229,.2);border-radius:4px;padding:.42rem .75rem;font-size:11px;font-weight:600;color:#A97CF8;margin-top:.7rem;display:flex;align-items:center;gap:.35rem}
-.em-sig{margin-top:.85rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:rgba(255,255,255,.22)}
+.em-cta{background:rgba(130,71,229,.1);border:1px solid rgba(130,71,229,.2);border-radius:4px;padding:.42rem .75rem;font-size:12px;font-weight:600;color:#A97CF8;margin-top:.7rem;display:flex;align-items:center;gap:.35rem}
+.em-sig{margin-top:.85rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.05);font-size:12px;color:rgba(255,255,255,.22)}
 .em-sig strong{color:rgba(255,255,255,.38);display:block;margin-bottom:1px}
 .em-note{padding:.5rem .85rem;background:rgba(130,71,229,.04);border-top:1px solid rgba(130,71,229,.08);display:flex;gap:.42rem;align-items:flex-start}
 .em-ni{color:#8247E5;font-size:11px;flex-shrink:0;margin-top:1px}
-.em-nt{font-size:10px;color:rgba(255,255,255,.28);line-height:1.5}
+.em-nt{font-size:11px;color:rgba(255,255,255,.28);line-height:1.5}
 .em-nt strong{color:rgba(255,255,255,.38)}
-.em-conn{display:flex;align-items:center;justify-content:center;gap:.35rem;padding:.22rem 0;color:rgba(255,255,255,.1);font-size:10px;font-weight:500}
+.em-conn{display:flex;align-items:center;justify-content:center;gap:.35rem;padding:.22rem 0;color:rgba(255,255,255,.1);font-size:11px;font-weight:500}
 .em-conn::before,.em-conn::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.04)}
 /* GENERATING STATE */
 .gen-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.8rem;color:rgba(255,255,255,.35)}
@@ -333,7 +391,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 .gen-dots span:nth-child(2){animation-delay:.2s}
 .gen-dots span:nth-child(3){animation-delay:.4s}
 @keyframes dp{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
-.gen-lbl{font-size:12px;font-weight:500}
+.gen-lbl{font-size:13px;font-weight:500}
 </style>
 </head>
 <body>
@@ -377,7 +435,7 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 </div>
 </div>
 <script>
-var VIEW='asset', FW='', ATAB='op', FTAB='', PT='30s', CO='', COSTAT='default', CO_LEAD=null;
+var VIEW='asset', FW='', ATAB='op', FTAB='', PT='30s', CO='', COSTAT='default', CO_LEAD=null, CO_SUBJECTS=null, CO_DECK_HOOK=null;
 var SRC='Polygon Open Money Stack: One integration replaces 5-6 vendor stack. ICP: fintechs and payment processors. Proof: $54B stablecoin transfer volume, 7B transactions, 159M wallets, $0.002 avg cost. Customers: Stripe, Revolut, Nubank, BlackRock, Hamilton Lane. Primary competitor: Bridge (Stripe-owned managed service). Tone: payments professionals not blockchain enthusiasts.';
 var FWMAP={
   market:{lb:'FRAMEWORK 1 OF 3',ti:'User, Competitor and Market Research',tabs:['Market Context','ICP Profiles','Competitive Analysis','Buyer Intelligence']},
@@ -461,7 +519,7 @@ function tICP(){return'<p class="ey">MarketLens · Tab 2 of 4</p><h3 class="sh">
 function fccCard(nm,sub,ttype,threat,posLbl,pos,wins,loses,landmine,neutralise){
   return'<div class="fcc"><div class="fcc-h"><div><p class="fcc-n">'+nm+'</p><p class="fcc-s">'+sub+'</p></div><span class="tg '+ttype+'">'+threat+'</span></div><div class="fcc-b"><div style="margin-bottom:.7rem"><p class="frl">'+posLbl+'</p><p class="frt">'+pos+'</p></div><div class="g2"><div><p class="frl" style="color:#5EEABD">Where they win</p>'+wins.map(function(w){return'<div class="rf"><span class="bl" style="background:#1D9E75"></span><span class="bt">'+w+'</span></div>'}).join('')+'</div><div><p class="frl" style="color:#F9A8A7">Where they lose</p>'+loses.map(function(l){return'<div class="rf"><span class="bl" style="background:#E24B4A"></span><span class="bt">'+l+'</span></div>'}).join('')+'</div></div><div class="lm"><p class="lml">⚠ Landmine they plant</p><p class="lmt">'+landmine+'</p></div><div class="neu"><p class="neul">✓ Neutralise</p><p class="neut">'+neutralise+'</p></div></div></div>';}
 
-function tComp(){return'<p class="ey">MarketLens · Tab 3 of 4</p><h3 class="sh">Competitive <em>Analysis</em></h3><p class="sub">Full competitor profiles from the research lens — positioning, structural strengths and weaknesses, landmines, and how to neutralise each. For BD-ready talk tracks see Sales Enablement System.</p><p class="slb">Quick reference matrix</p><div class="cmx"><div class="cmxh"><div class="cmxhc">Competitor</div><div class="cmxhc">Full stack</div><div class="cmxhc">Inst. proof</div><div class="cmxhc">Open infra</div><div class="cmxhc">Global ramps</div></div><div class="cmxr oms"><div class="cmxc">Polygon OMS</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc" style="color:#5EEABD;font-size:10px;font-weight:600">150+ countries</div></div><div class="cmxr"><div class="cmxc">Bridge (Stripe)</div><div class="cmxc cpa">Managed</div><div class="cmxc cpa">Stripe logos</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Limited</div></div><div class="cmxr"><div class="cmxc">DIY stack</div><div class="cmxc cn">Build it</div><div class="cmxc cn">Varies</div><div class="cmxc cy">✓</div><div class="cmxc cn">Build it</div></div><div class="cmxr"><div class="cmxc">Tron</div><div class="cmxc cn">Settlement only</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Partial</div><div class="cmxc cn">✗</div></div><div class="cmxr"><div class="cmxc">Base (Coinbase)</div><div class="cmxc cn">Chain only</div><div class="cmxc cpa">Coinbase</div><div class="cmxc cn">✗</div><div class="cmxc cpa">US-centric</div></div></div><p class="slb">Full competitor profiles</p>'+fccCard('Bridge (Stripe-owned)','End-to-end stablecoin platform · Primary competitor','ttr','Highest threat','Their positioning','"The only platform businesses need to receive, store, convert, issue, and spend stablecoins through a single API. We handle all the regulatory, compliance, and technical complexities."',['Stripe brand trust and warm distribution','Developer experience inherits Stripe docs quality','Stablecoin issuance capability','Card programme via Stripe Issuing','Simplicity narrative — "we handle everything"'],['Platform dependency — Stripe-owned commercial risk','Not blockchain-native settlement','Lower long-term composability ceiling','No BlackRock / Hamilton Lane level proof','No stablecoin depth advantage'],'"Polygon is a blockchain company, not a payments company." Also uses Stripe regulatory standing as the primary trust signal.','Stripe chose Polygon rails for their own infrastructure. $54B in stablecoin transfers with BlackRock on the customer list is a payments story, not a crypto story.')+fccCard('DIY Multi-Vendor Stack','Current buyer behaviour · Status quo','ta','Status quo','What the buyer is doing today','Custody + fiat ramp + compliance + cross-chain + settlement assembled independently. Full control, custom built. This is what most ICPs are running and will defend internally.',['Full control over every component','No single platform dependency','Engineering team ownership identity'],['3 to 6 months engineering per new corridor','Maintenance overhead compounds over time','Compliance fragmented with no single owner'],'"We can build this ourselves." Root cause is engineering ownership identity, not a technical objection.','We are not replacing what your team built — we are removing the next build. What would your team do with the 3 months they get back per corridor?')+fccCard('Tron','Dominant low-cost settlement layer','ta','Indirect','Their positioning','Ultra-low fee settlement layer. $86B stablecoin supply. Dominant in SEA, LATAM, MEA remittance. Permissionless, fast, cheap.',['Cheapest fees in the market','Deepest USDT liquidity — $86B','Dominant in SEA, LATAM, MEA remittance corridors'],['Settlement layer only — no wallets, ramps, or compliance','No EVM compatibility','No institutional standing or regulatory credibility'],'"Polygon is more expensive per transaction."','Transaction fee is one line item. Engineering time, maintenance, and compliance exposure are not. The all-in cost comparison rarely goes the way the fee comparison suggests.')+fccCard('Base (Coinbase)','EVM chain with Coinbase distribution','ta','Indirect','Their positioning','EVM-compatible L2 with Coinbase distribution and growing developer ecosystem momentum.',['Coinbase brand trust and US regulatory standing','EVM compatibility — familiar Ethereum tooling','Growing developer ecosystem momentum'],['Coinbase commercial interests conflict with open infrastructure','US-centric — weaker in SEA, LATAM, MEA','Platform risk same pattern as Bridge'],'"Polygon is older technology. Base is where developer momentum is going."','Developer momentum and payment infrastructure are different decisions. The question is which infrastructure cleared the BlackRock and Hamilton Lane compliance review.');}
+function tComp(){return'<p class="ey">MarketLens · Tab 3 of 4</p><h3 class="sh">Competitive <em>Analysis</em></h3><p class="sub">Full competitor profiles from the research lens — positioning, structural strengths and weaknesses, landmines, and how to neutralise each. For BD-ready talk tracks see Sales Enablement System.</p><p class="slb">Quick reference matrix</p><div class="cmx"><div class="cmxh"><div class="cmxhc">Competitor</div><div class="cmxhc">Full stack</div><div class="cmxhc">Inst. proof</div><div class="cmxhc">Open infra</div><div class="cmxhc">Global ramps</div></div><div class="cmxr oms"><div class="cmxc">Polygon OMS</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc cy">✓</div><div class="cmxc" style="color:#5EEABD;font-size:12px;font-weight:600">150+ countries</div></div><div class="cmxr"><div class="cmxc">Bridge (Stripe)</div><div class="cmxc cpa">Managed</div><div class="cmxc cpa">Stripe logos</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Limited</div></div><div class="cmxr"><div class="cmxc">DIY stack</div><div class="cmxc cn">Build it</div><div class="cmxc cn">Varies</div><div class="cmxc cy">✓</div><div class="cmxc cn">Build it</div></div><div class="cmxr"><div class="cmxc">Tron</div><div class="cmxc cn">Settlement only</div><div class="cmxc cn">✗</div><div class="cmxc cpa">Partial</div><div class="cmxc cn">✗</div></div><div class="cmxr"><div class="cmxc">Base (Coinbase)</div><div class="cmxc cn">Chain only</div><div class="cmxc cpa">Coinbase</div><div class="cmxc cn">✗</div><div class="cmxc cpa">US-centric</div></div></div><p class="slb">Full competitor profiles</p>'+fccCard('Bridge (Stripe-owned)','End-to-end stablecoin platform · Primary competitor','ttr','Highest threat','Their positioning','"The only platform businesses need to receive, store, convert, issue, and spend stablecoins through a single API. We handle all the regulatory, compliance, and technical complexities."',['Stripe brand trust and warm distribution','Developer experience inherits Stripe docs quality','Stablecoin issuance capability','Card programme via Stripe Issuing','Simplicity narrative — "we handle everything"'],['Platform dependency — Stripe-owned commercial risk','Not blockchain-native settlement','Lower long-term composability ceiling','No BlackRock / Hamilton Lane level proof','No stablecoin depth advantage'],'"Polygon is a blockchain company, not a payments company." Also uses Stripe regulatory standing as the primary trust signal.','Stripe chose Polygon rails for their own infrastructure. $54B in stablecoin transfers with BlackRock on the customer list is a payments story, not a crypto story.')+fccCard('DIY Multi-Vendor Stack','Current buyer behaviour · Status quo','ta','Status quo','What the buyer is doing today','Custody + fiat ramp + compliance + cross-chain + settlement assembled independently. Full control, custom built. This is what most ICPs are running and will defend internally.',['Full control over every component','No single platform dependency','Engineering team ownership identity'],['3 to 6 months engineering per new corridor','Maintenance overhead compounds over time','Compliance fragmented with no single owner'],'"We can build this ourselves." Root cause is engineering ownership identity, not a technical objection.','We are not replacing what your team built — we are removing the next build. What would your team do with the 3 months they get back per corridor?')+fccCard('Tron','Dominant low-cost settlement layer','ta','Indirect','Their positioning','Ultra-low fee settlement layer. $86B stablecoin supply. Dominant in SEA, LATAM, MEA remittance. Permissionless, fast, cheap.',['Cheapest fees in the market','Deepest USDT liquidity — $86B','Dominant in SEA, LATAM, MEA remittance corridors'],['Settlement layer only — no wallets, ramps, or compliance','No EVM compatibility','No institutional standing or regulatory credibility'],'"Polygon is more expensive per transaction."','Transaction fee is one line item. Engineering time, maintenance, and compliance exposure are not. The all-in cost comparison rarely goes the way the fee comparison suggests.')+fccCard('Base (Coinbase)','EVM chain with Coinbase distribution','ta','Indirect','Their positioning','EVM-compatible L2 with Coinbase distribution and growing developer ecosystem momentum.',['Coinbase brand trust and US regulatory standing','EVM compatibility — familiar Ethereum tooling','Growing developer ecosystem momentum'],['Coinbase commercial interests conflict with open infrastructure','US-centric — weaker in SEA, LATAM, MEA','Platform risk same pattern as Bridge'],'"Polygon is older technology. Base is where developer momentum is going."','Developer momentum and payment infrastructure are different decisions. The question is which infrastructure cleared the BlackRock and Hamilton Lane compliance review.');}
 
 /* ═══ BUYER INTELLIGENCE ═══ */
 function drRow(icon,label,pct,insight){return'<div class="dr"><span class="drl"><i class="'+icon+'" style="font-size:11px;margin-right:4px;color:#9B6DF5"></i>'+label+'</span><div class="drb"><div class="drbi" style="width:'+pct+'%"></div></div><span class="drp">'+pct+'%</span></div><p class="dri">'+insight+'</p>';}
@@ -499,36 +557,221 @@ function objCard(title,root,never,rebuttal,proof){return'<div class="oc"><div cl
 function tObj(){return'<p class="ey">Sales Enablement · Tab 2 of 4</p><h3 class="sh">Objection <em>Handling</em></h3><p class="sub">Four objections with full structure: root cause, what NOT to say, the rebuttal, and the proof point. The root cause column is the most important — answering the stated objection without addressing the root cause does not move the deal.</p>'+objCard('Objection 1: "We are already talking to Bridge."','Bridge has Stripe\'s distribution and is the default first call. This is a comparison shopping signal, not a rejection. The buyer is warm — they are already in the market.','Any direct attack on Bridge. "Bridge is not as good as us." Sounds defensive and undermines credibility.','"That makes sense — Bridge is the obvious first call. The question is what you want to own long-term. Bridge is excellent for simplicity if you trust Stripe. OMS is right if you want open infrastructure — blockchain-native settlement, no platform dependency. The integration is similar. The long-term ceiling is not."','$54B volume + open infra + institutional logos Bridge cannot match')+objCard('Objection 2: "How long does integration actually take?"','Every fintech builder has been burned by a vendor who said "weeks" and delivered months. This is not a question — it is a trust check. Vague answers confirm the fear.','\"It depends on your use case.\" \"Usually pretty fast.\" Any vague answer confirms the fear that this will take months.','"The honest answer is days for a standard integration. Wallets and ramps are already assembled, compliance is built in. You are not negotiating five vendor contracts. The fastest path to first live transaction we have seen is under a week for teams ready to move."','Kosh Money card stack live in 2 months end-to-end')+objCard('Objection 3: "What is your regulatory and compliance standing?"','The buyer\'s legal or compliance team has flagged this as a prerequisite. The question is really about risk — "will I get in trouble for choosing this?"','\"We are compliant in most jurisdictions.\" \"You would handle compliance on your side.\" Anything that puts compliance ownership back on the buyer kills the deal.','"Compliance is built into the stack, not bolted on. KYC Hub manages all payments-related KYC in one place. Coinme covers 150+ countries. And the fastest answer is the customer list — BlackRock and Hamilton Lane did the diligence before choosing these rails."','BlackRock + Hamilton Lane + KYC Hub')+objCard('Objection 4: "We are not ready to move yet."','Either genuine timing (decision in Q3) or soft rejection — not convinced enough to move forward but do not want to close the door.','"Let me know when you are ready." This kills momentum entirely. The follow-up conversation will never happen without a next step.','"Completely fine — the best decisions are not rushed. Two things worth doing even before you are ready: tell me which corridor is next and I will show you what the integration looks like on OMS vs what you are currently planning — 20 minutes. Or I can connect you with a current customer at a similar stage."','Key: the corridor-specific scoping offer — replaces vague follow-up with a concrete next step');}
 
 /* ═══ COMPETITIVE CARDS ═══ */
-function ccCard(nm,sub,ttype,threat,track,omsw,theyw,landmine,neutralise){return'<div class="cc"><div class="cc-h"><div><p style="font-size:13px;font-weight:700;color:#fff">'+nm+'</p><p style="font-size:10px;color:rgba(255,255,255,.5);margin-top:1px">'+sub+'</p></div><span class="tg '+ttype+'">'+threat+'</span></div><div class="cc-b"><div><p class="ccl">BD talk track</p><p class="cct">'+track+'</p></div><div><p class="ccl" style="color:#5EEABD">OMS wins on</p><p class="cct">'+omsw+'</p><p class="ccl" style="color:#F9A8A7;margin-top:.5rem">They win on</p><p class="cct">'+theyw+'</p></div><div><p class="ccl" style="color:#F2CC70">Landmine</p><p class="cct">'+landmine+'</p><p class="ccl" style="color:#5EEABD;margin-top:.5rem">Neutralise</p><p class="cct">'+neutralise+'</p></div></div></div>';}
+function ccCard(nm,sub,ttype,threat,track,omsw,theyw,landmine,neutralise){return'<div class="cc"><div class="cc-h"><div><p style="font-size:13px;font-weight:700;color:#fff">'+nm+'</p><p style="font-size:12px;color:rgba(255,255,255,.5);margin-top:1px">'+sub+'</p></div><span class="tg '+ttype+'">'+threat+'</span></div><div class="cc-b"><div><p class="ccl">BD talk track</p><p class="cct">'+track+'</p></div><div><p class="ccl" style="color:#5EEABD">OMS wins on</p><p class="cct">'+omsw+'</p><p class="ccl" style="color:#F9A8A7;margin-top:.5rem">They win on</p><p class="cct">'+theyw+'</p></div><div><p class="ccl" style="color:#F2CC70">Landmine</p><p class="cct">'+landmine+'</p><p class="ccl" style="color:#5EEABD;margin-top:.5rem">Neutralise</p><p class="cct">'+neutralise+'</p></div></div></div>';}
 
 function tCC(){return'<p class="ey">Sales Enablement · Tab 3 of 4</p><h3 class="sh">Competitive <em>Cards</em></h3><p class="sub">BD-ready competitive intelligence structured for live sales conversations. Unlike the MarketLens competitive analysis, these are built for use in the room — the talk track, the landmine, the neutralisation line for each competitor.</p>'+ccCard('Bridge (Stripe-owned)','Primary competitor · Most common alternative conversation','ttr','Highest priority','"Bridge is excellent if you want simplicity and trust Stripe to own your payments rail long-term. OMS is right if you want open infrastructure — blockchain-native settlement, $54B in proven transfer volume, and institutional logos that cleared the most rigorous compliance reviews. The integration experience is comparable. The long-term ceiling is not."','Blockchain-native settlement, open infrastructure, higher composability ceiling, stronger institutional proof (BlackRock, Hamilton Lane).','Stripe brand trust, developer experience quality, stablecoin issuance capability, card programme via Stripe Issuing.','"Polygon is a crypto chain, not a payments company."','"Stripe chose Polygon rails for their own infrastructure. $54B in stablecoin transfers with BlackRock on the customer list is a payments story, not a crypto story."')+ccCard('DIY Multi-Vendor Stack','Status quo · Internal resistance','ta','Status quo','"You have already built this stack once. You know what it cost. The question is whether the next corridor should take 3 months or 3 days. OMS is not replacing what you built — it is removing the next build."','Speed to next corridor, full stack assembled, compliance built in.','Full control, no platform dependency, engineering ownership identity.','"We can build this ourselves." Root cause is engineering ownership identity, not a technical objection.','"What would your team do with the 3 months they get back per corridor?"')+ccCard('Tron','Low-cost chain · Fee comparison','ta','Indirect','"Tron wins on fees in specific corridors — a real advantage if raw cost is the only variable. But Tron is a settlement layer. You still need wallets, ramps, and compliance. The all-in cost of DIY on Tron vs OMS usually favours OMS when you factor in engineering time."','Full stack vs settlement layer only, institutional compliance coverage.','Cheapest fees, deepest USDT ($86B), dominant SEA/LATAM/MEA remittance.','"Polygon is more expensive per transaction."','"Transaction fee is one line item. Engineering time, maintenance, and compliance exposure are not. The all-in cost comparison rarely goes the way the fee comparison suggests."')+ccCard('Base (Coinbase)','EVM chain · Developer momentum narrative','ta','Indirect','"Base is right for US-first products wanting Coinbase distribution. OMS is right for global corridors — 150+ countries, deeper stablecoin supply, institutional proof beyond the US context. Coinbase serves Coinbase. Polygon OMS is open infrastructure."','Global corridor coverage, open infrastructure, institutional proof beyond the US.','Coinbase brand trust, US regulatory standing, EVM compatibility, growing developer ecosystem.','"Polygon is older technology. Base is where developer momentum is going."','"Developer momentum and payment infrastructure are different decisions. The question is which infrastructure cleared the BlackRock and Hamilton Lane compliance review."');}
 /* ═══ WHY WE WIN / LOSE ═══ */
 function tWin(){return'<p class="ey">Sales Enablement · Tab 4 of 4</p><h3 class="sh">Why We Win / <em>Lose</em></h3><p class="sub">Honest assessment of where OMS wins deals, where it loses them, when to walk away, the 5-step demo script, and the buying committee map.</p><p class="slb">Why we win</p><div class="wc"><span class="wn">1</span><div><p class="wt">The full stack advantage</p><p class="wb">No competitor offers wallets, fiat ramps, compliance, and blockchain-native settlement as one integration at this scale. Bridge comes closest but is a managed service, not open infrastructure. Every other option requires the buyer to assemble the rest of the stack themselves.</p></div></div><div class="wc"><span class="wn">2</span><div><p class="wt">Institutional proof closes the compliance conversation</p><p class="wb">BlackRock and Hamilton Lane are not early adopters. When the conservative buyer asks "is this real and is this safe," those two names end the conversation. Bridge has Stripe logos. Tron has no institutional logos. OMS has the logos that clear the most rigorous compliance reviews in the world.</p></div></div><div class="wc"><span class="wn">3</span><div><p class="wt">Open infrastructure is the long-term differentiator</p><p class="wb">As fintechs scale, platform dependency becomes a commercial risk. Bridge buyers face Stripe pricing leverage. Base buyers face Coinbase ecosystem constraints. OMS buyers own the rail. This is a 2 to 3 year argument — not day one, but the reason serious builders choose OMS when thinking long-term.</p></div></div><div class="wc"><span class="wn">4</span><div><p class="wt">Bridge is growing the category for us</p><p class="wb">Every fintech Bridge is talking to is already in the market for stablecoin infrastructure. Their acquisition is doing the category education OMS would otherwise have to do. OMS enters those warm conversations with a clear differentiator.</p></div></div><div class="dv"></div><p class="slb">Why we lose — honest assessment</p><div class="wc"><span class="ln">1</span><div><p class="wt">Stripe trust is hard to overcome for smaller teams</p><p class="wb">A Series A fintech with limited compliance resources and a tight timeline will often choose Bridge because "Stripe handles it" removes the need for internal compliance evaluation. These are buyers at the wrong stage for OMS. Qualify for maturity and timeline early.</p></div></div><div class="wc"><span class="ln">2</span><div><p class="wt">Cards are a current gap</p><p class="wb">Bridge has a mature card programme via Stripe Issuing. If the buyer\'s primary use case is stablecoin-backed cards rather than cross-border payments or remittance, Bridge wins that conversation today. Be honest about this gap rather than trying to overcome it with positioning.</p></div></div><div class="wc"><span class="ln">3</span><div><p class="wt">Developer documentation and onboarding experience</p><p class="wb">Bridge\'s developer experience inherits Stripe\'s documentation quality — the gold standard. If the buyer\'s primary evaluator is a developer who wants to read docs and start building before talking to sales, Bridge has an advantage in the first impression.</p></div></div><div class="wc"><span class="ln">4</span><div><p class="wt">When to walk away</p><p class="wb">If the buyer wants stablecoin issuance as a core product — Bridge is the better fit today. If the buyer is US-only with no global corridor ambitions and deeply embedded in the Stripe ecosystem — the switching cost does not justify the change. Qualify for global corridor ambition early in every conversation.</p></div></div><div class="dv"></div><p class="slb">Demo script — 5-step flow</p><div class="ds"><div class="dsn">1</div><div><p class="dst">Open with their problem, not your product</p><p class="dsb">"Before I show you anything, I want to make sure I am showing you the right thing. You mentioned [corridor / timeline / pain]. Is that still the most pressing thing for your team right now?" Wait for confirmation — anchors the entire demo to their problem.</p><p class="dsp">Their confirmation is the setup for everything that follows. Never skip this step.</p></div></div><div class="ds"><div class="dsn">2</div><div><p class="dst">Show the before state</p><p class="dsb">"Most teams at your stage are running something like this —" Walk the 5 to 6 vendor stack visually. Name the friction: separate contracts, 3 to 4 months per corridor, compliance fragmentation. "Does this look familiar?" Let them say yes.</p><p class="dsp">Their confirmation is the setup for the solution reveal.</p></div></div><div class="ds"><div class="dsn">3</div><div><p class="dst">Show the stack collapse</p><p class="dsb">"Here is what OMS replaces that with." Walk each component: Sequence for wallets, Coinme for ramps, compliance layer, Polygon Chain for settlement. "One integration, one contract, all of this already assembled and tested at $54B in transfer volume." Land on the time-to-market contrast: "Days, not 3 to 4 months."</p></div></div><div class="ds"><div class="dsn">4</div><div><p class="dst">Make it specific to their corridor</p><p class="dsb">"Let me show you what this looks like for [their specific use case / corridor]." Show the integration path, compliance coverage for that market, first transaction timeline.</p><p class="dsp">Generic demos lose deals. Specific demos win them. This is the highest-impact moment in the demo.</p></div></div><div class="ds"><div class="dsn">5</div><div><p class="dst">Close on a next step, not a question</p><p class="dsb">Do not ask "what do you think?" Ask: "The logical next step is usually a scoping call with your engineering lead to map the integration against your current timeline. Does [specific date] work, or is there someone on your team I should connect with directly?"</p><p class="dsp">Never leave without a specific next step. "Let me know" is not a next step.</p></div></div><div class="dv"></div><p class="slb">Buying committee map</p><div class="bm"><div class="bm-h"><p style="font-size:12px;font-weight:700;color:#fff">Three-person decision structure</p><span class="tg tp">Know who is in the room</span></div><div class="bm-b"><div><p class="bmsl">Economic buyer</p><p class="bmt"><strong style="color:#fff">CFO or VP Finance</strong><br>Cares about vendor consolidation ROI, contract simplicity.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> The business case — 5 contracts to 1, engineering hours saved per corridor.</p></div><div><p class="bmsl">Technical buyer (primary ICP)</p><p class="bmt"><strong style="color:#fff">CTO, VP Engineering, Head of Payments</strong><br>Evaluates integration complexity, time-to-first-transaction, compliance. Makes the shortlist recommendation.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> The integration demo specific to their corridor. Days-not-months with a real example.</p></div><div><p class="bmsl">Legal / Compliance (veto power)</p><p class="bmt"><strong style="color:#fff">GC or Head of Compliance</strong><br>Can veto, rarely initiates. Evaluates regulatory standing, KYC/AML coverage, liability exposure.<br><br><span style="color:#B48BFF;font-weight:600">What handles their objection:</span> BlackRock and Hamilton Lane logos. Those two names end the conversation before the questions start.</p></div></div></div>';}
 /* ═══ ASSET: ONE-PAGER ═══ */
 function tOP(){
-  var coH=CO?'<div class="a-co"><div class="a-ci">'+e(gi(CO))+'</div><div><p class="a-cn">Prepared for '+e(CO)+'</p><p class="a-cs">Personalised · Polygon Open Money Stack</p></div></div>':'';
   var lead=CO&&COSTAT==='done'&&CO_LEAD?e(CO_LEAD):'Most fintechs building cross-border payment products are running 5 to 6 vendors just to make one corridor work. Every new market means another 3 to 4 month integration cycle. There is a faster way.';
-  return'<div>'+coH+'<p class="a-eyebrow">Stablecoin payments infrastructure</p><h3 class="a-h1">Move funds globally.<br><em>One stack.</em> Days, not months.</h3><p class="a-lead">'+lead+'</p><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">The problem</p><div class="bfr"><div class="vnd">Custody provider<span class="vnd-n">Contract 1</span></div><div class="vnd">Fiat ramp<span class="vnd-n">Contract 2</span></div><div class="vnd">Compliance layer<span class="vnd-n">Contract 3</span></div><div class="vnd">Cross-chain bridge<span class="vnd-n">Contract 4</span></div><div class="vnd">Settlement chain<span class="vnd-n">Contract 5</span></div></div><div class="arr">One integration replaces all of this</div><div class="oms-bar"><div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">First transaction in days</span></div><div class="oms-bar-comps"><span class="oms-c">Wallets · Sequence</span><span class="oms-c">Ramps · Coinme 150+ countries</span><span class="oms-c">Compliance · KYC Hub</span><span class="oms-c">Settlement · Polygon Chain</span><span class="oms-c">Crosschain · Trails</span></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Real usage, not just promises</p><div class="stat4"><div class="s4c"><span class="s4n">$54B</span><span class="s4l">Transfer volume</span></div><div class="s4c"><span class="s4n">7B</span><span class="s4l">Transactions</span></div><div class="s4c"><span class="s4n">159M</span><span class="s4l">Wallets</span></div><div class="s4c"><span class="s4n">$0.002</span><span class="s4l">Avg cost</span></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Why teams choose OMS</p><div class="vp-list"><div class="vp-row"><div class="vp-ic"><i class="ti ti-rocket"></i></div><div><p class="vp-tl">Speed to market</p><p class="vp-bd">First live transaction in days. New corridors without new integration cycles.</p></div></div><div class="vp-row"><div class="vp-ic"><i class="ti ti-building-bank"></i></div><div><p class="vp-tl">Proven at institutional scale</p><p class="vp-bd">BlackRock and Hamilton Lane did the diligence. The compliance question is answered.</p></div></div><div class="vp-row"><div class="vp-ic"><i class="ti ti-lock-open"></i></div><div><p class="vp-tl">Open infrastructure</p><p class="vp-bd">Not owned by Stripe or Coinbase. Build on rails you control.</p></div></div></div><hr style="border:none;border-top:1px solid rgba(255,255,255,.07);margin:.9rem 0"><p class="slb">Who chose these rails</p><div class="logos-row"><span class="logo-pill">Stripe</span><span class="logo-pill">Revolut</span><span class="logo-pill">Nubank</span><span class="logo-pill">BlackRock</span><span class="logo-pill">Hamilton Lane</span></div><div class="cta-bar"><div class="cta-l">Ready to open your next corridor?<span>polygon.technology/open-money-stack</span></div><span class="cta-r">Book a call →</span></div></div>';}
+  var forBadge=CO?'<span class="op-for-badge">Prepared for '+e(CO)+'</span>':'<span class="op-for-badge" style="opacity:.35">Polygon Labs \u00b7 Confidential</span>';
+  return'<div class="op-wrap">'+
+  '<div class="op-hdr">'+
+    '<div class="op-hdr-top">'+
+      '<div class="op-logo">'+PLY+'<span class="op-logo-txt">POLYGON OPEN MONEY STACK</span></div>'+
+      forBadge+
+    '</div>'+
+    '<p class="op-hdr-h">Move funds globally.<br><em>One stack.</em> Days, not months.</p>'+
+    '<p class="op-hdr-sub">'+lead+'</p>'+
+  '</div>'+
+  '<div class="op-ba">'+
+    '<div class="op-before">'+
+      '<p class="op-ba-lbl bad">\u26a0 The problem \u2014 today\'s stack</p>'+
+      '<div class="op-vendors">'+
+        '<div class="op-vnd"><span class="op-vnd-nm">Custody provider</span><span class="op-vnd-ct">Contract 1</span></div>'+
+        '<div class="op-vnd"><span class="op-vnd-nm">Fiat ramp</span><span class="op-vnd-ct">Contract 2</span></div>'+
+        '<div class="op-vnd"><span class="op-vnd-nm">Compliance layer</span><span class="op-vnd-ct">Contract 3</span></div>'+
+        '<div class="op-vnd"><span class="op-vnd-nm">Cross-chain bridge</span><span class="op-vnd-ct">Contract 4</span></div>'+
+        '<div class="op-vnd"><span class="op-vnd-nm">Settlement chain</span><span class="op-vnd-ct">Contract 5</span></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="op-arr"><span class="op-arr-ic">\u2192</span></div>'+
+    '<div class="op-after">'+
+      '<p class="op-ba-lbl good">\u2713 With OMS \u2014 one integration</p>'+
+      '<p class="op-oms-title">Polygon Open Money Stack</p>'+
+      '<div class="op-oms-comps">'+
+        '<div class="op-oms-comp"><span class="op-oms-comp-dot"></span>Wallets \u00b7 Sequence<span class="op-oms-tag">Assembled</span></div>'+
+        '<div class="op-oms-comp"><span class="op-oms-comp-dot"></span>Fiat ramps \u00b7 150+ countries<span class="op-oms-tag">Assembled</span></div>'+
+        '<div class="op-oms-comp"><span class="op-oms-comp-dot"></span>Compliance \u00b7 KYC Hub<span class="op-oms-tag">Assembled</span></div>'+
+        '<div class="op-oms-comp"><span class="op-oms-comp-dot"></span>Settlement \u00b7 Polygon Chain<span class="op-oms-tag">Assembled</span></div>'+
+        '<div class="op-oms-comp"><span class="op-oms-comp-dot"></span>Crosschain \u00b7 Trails<span class="op-oms-tag">Assembled</span></div>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="op-stats">'+
+    '<div class="op-stat"><span class="op-stat-n">$54B</span><span class="op-stat-l">Transfer volume</span></div>'+
+    '<div class="op-stat"><span class="op-stat-n">7B</span><span class="op-stat-l">Transactions processed</span></div>'+
+    '<div class="op-stat"><span class="op-stat-n">150+</span><span class="op-stat-l">Countries covered</span></div>'+
+    '<div class="op-stat"><span class="op-stat-n">$0.002</span><span class="op-stat-l">Avg transaction cost</span></div>'+
+  '</div>'+
+  '<div class="op-vps">'+
+    '<div class="op-vp" data-n="01"><p class="op-vp-h">Speed to market</p><p class="op-vp-b">First live transaction in days. New corridors without new integration cycles.</p><span class="op-vp-proof">Days, not 3\u20134 months</span></div>'+
+    '<div class="op-vp" data-n="02"><p class="op-vp-h">Proven at institutional scale</p><p class="op-vp-b">BlackRock and Hamilton Lane cleared the compliance review. The hardest question is already answered.</p><span class="op-vp-proof">$54B in transfer volume</span></div>'+
+    '<div class="op-vp" data-n="03"><p class="op-vp-h">Open infrastructure</p><p class="op-vp-b">Not owned by Stripe or Coinbase. You own the rail \u2014 no platform lock-in as you scale.</p><span class="op-vp-proof">Not a managed service</span></div>'+
+  '</div>'+
+  '<div class="op-trust">'+
+    '<span class="op-trust-lbl">Trusted by</span>'+
+    '<div class="op-trust-logos">'+
+      '<span class="op-trust-logo">Stripe</span>'+
+      '<span class="op-trust-logo">Revolut</span>'+
+      '<span class="op-trust-logo">Nubank</span>'+
+      '<span class="op-trust-logo">BlackRock</span>'+
+      '<span class="op-trust-logo">Hamilton Lane</span>'+
+    '</div>'+
+  '</div>'+
+  '<div class="op-cta">'+
+    '<div class="op-cta-l">'+
+      '<p class="op-cta-h">Ready to open your next corridor?</p>'+
+      '<p class="op-cta-s">Tell us which corridor is next. We scope the OMS integration against it \u2014 20 minutes.<br><span style="opacity:.7">polygon.technology/open-money-stack</span></p>'+
+    '</div>'+
+    '<div class="op-cta-btns">'+
+      '<button class="op-cta-btn-pri">Book a scoping call</button>'+
+      '<button class="op-cta-btn-sec">Get early access</button>'+
+    '</div>'+
+  '</div>'+
+  '</div>';}
 
 /* ═══ ASSET: PITCH DECK ═══ */
 function tPD(){
   var co=CO;
-  var coCover=co?'<div class="co-cover"><div class="co-init">'+e(gi(co))+'</div><div class="co-div"></div><div><p class="co-name">Prepared for '+e(co)+'</p><p class="co-sub">Personalised deck</p></div></div>':'';
-  return'<div class="slide"><div class="slide-glow"></div>'+coCover+'<div><p class="sl-ey">Open Money Stack</p><h3 class="sl-h">Global rails for <em>upgraded money.</em></h3><p class="sl-s">One integration. Every layer assembled, tested, and live at institutional scale.</p></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">01 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">The problem</p><h3 class="sl-h">Building global payments means <em>assembling vendors.</em></h3></div><div class="pain-g"><div class="pg"><span class="pg-ic"><i class="ti ti-clock"></i></span><div><p class="pg-t">3 to 6 months per corridor</p><p class="pg-b">New market triggers new integration cycle.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-puzzle"></i></span><div><p class="pg-t">5 to 6 separate vendors</p><p class="pg-b">Each a separate contract and failure point.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-shield-off"></i></span><div><p class="pg-t">Compliance fragmented</p><p class="pg-b">No single vendor owns the compliance layer.</p></div></div><div class="pg"><span class="pg-ic"><i class="ti ti-tool"></i></span><div><p class="pg-t">Maintenance compounds</p><p class="pg-b">Engineering teams become infrastructure teams.</p></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">02 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">The cost</p><h3 class="sl-h">The DIY stack is <em>slowing you down.</em></h3></div><div class="b3g"><div class="b3s"><span class="b3n">6</span><span class="b3l">Vendors to assemble</span></div><div class="b3s"><span class="b3n">4mo</span><span class="b3l">Avg to first transaction</span></div><div class="b3s"><span class="b3n">30%</span><span class="b3l">Sprint capacity lost</span></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">03 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">The solution</p><h3 class="sl-h"><em>One integration.</em> Every layer assembled.</h3></div><div style="flex:1;display:flex;flex-direction:column;gap:.32rem;margin-top:.32rem"><div style="display:flex;flex-wrap:wrap;gap:4px"><span class="vnd">Custody</span><span class="vnd">Fiat ramp</span><span class="vnd">Compliance</span><span class="vnd">Cross-chain</span><span class="vnd">Settlement</span></div><div class="arr">One integration replaces all of this</div><div class="oms-bar" style="flex:1"><div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">Days to first transaction</span></div><div class="oms-bar-comps"><span class="oms-c">Wallets</span><span class="oms-c">Ramps 150+</span><span class="oms-c">Compliance</span><span class="oms-c">Settlement</span><span class="oms-c">Crosschain</span></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">04 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">Why it works</p><h3 class="sl-h">Three reasons teams choose <em>OMS.</em></h3></div><div class="vpm"><div class="vpmr"><span class="vpmn">01</span><div><p class="vpmt">Speed to market</p><p class="vpmb">First transaction in days. New corridors without new cycles.</p></div></div><div class="vpmr"><span class="vpmn">02</span><div><p class="vpmt">Proven at institutional scale</p><p class="vpmb">$54B volume. BlackRock and Hamilton Lane chose these rails.</p></div></div><div class="vpmr"><span class="vpmn">03</span><div><p class="vpmt">Open infrastructure</p><p class="vpmb">Not Stripe or Coinbase-owned. Build on rails you control.</p></div></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">05 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">Competitive landscape</p><h3 class="sl-h">No one else has <em>the full stack.</em></h3></div><table class="cmt" style="flex:1;margin-top:.35rem"><thead><tr><th>Option</th><th>Full stack</th><th>Inst. proof</th><th>Open</th><th>Global</th></tr></thead><tbody><tr class="or"><td>Polygon OMS</td><td class="cyw">Yes</td><td class="cyw">Yes</td><td class="cyw">Yes</td><td class="cyw">150+</td></tr><tr><td>Bridge</td><td class="cpw">Managed</td><td class="cpw">Stripe</td><td class="cnw">No</td><td class="cpw">Ltd</td></tr><tr><td>DIY stack</td><td class="cnw">Build</td><td class="cnw">Varies</td><td class="cyw">Yes</td><td class="cnw">Build</td></tr><tr><td>Tron</td><td class="cnw">Settlement</td><td class="cnw">None</td><td class="cpw">Partial</td><td class="cnw">None</td></tr></tbody></table><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">06 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">Social proof</p><h3 class="sl-h">Real usage, <em>not just promises.</em></h3></div><div class="proof-g"><div class="pg2"><p class="pg2l">Who chose these rails</p><div class="pg2-logos"><span class="pg2-logo">Stripe</span><span class="pg2-logo">Revolut</span><span class="pg2-logo">Nubank</span><span class="pg2-logo">BlackRock</span><span class="pg2-logo">Hamilton Lane</span></div></div><div class="pg2"><p class="pg2l">Stablecoin volume</p><p class="pg2-big">$54B</p><p class="pg2-sub">Processed on Polygon</p></div><div class="pg2"><p class="pg2l">Total transactions</p><p class="pg2-big">7B</p><p class="pg2-sub">Battle-tested rails</p></div><div class="pg2"><p class="pg2l">Avg transaction cost</p><p class="pg2-big">$0.002</p><p class="pg2-sub">150+ country coverage</p></div></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">07 / 08</span></div></div>'+
-'<div class="slide"><div><p class="sl-ey">Next steps</p></div><div class="cta-slide"><h3 class="ctas-h">Ready to open your next corridor?</h3><p class="ctas-s">Tell us which corridor is next. We scope the OMS integration against it. 20 minutes.</p><div class="ctas-btns"><button class="ctas-btn">Book a scoping call</button><button class="ctas-btn" style="background:rgba(255,255,255,.08)">Get early access</button></div><p class="ctas-url">polygon.technology/open-money-stack</p></div><div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">08 / 08</span></div></div>';}
+  var coBadge=co?'<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:4px 10px;margin-bottom:.7rem"><div style="width:20px;height:20px;background:rgba(255,255,255,.15);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0">'+e(gi(co))+'</div><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.8)">Prepared for '+e(co)+'</span></div>':'';
+  return'<div class="pd-wrap">'+
+  /* ── 01 COVER ── */
+  '<div class="slide sl-cover">'+
+    '<div class="slide-glow"></div>'+
+    '<div class="slide-glow-br"></div>'+
+    '<div>'+
+      (co?coBadge:'')+'<p class="sl-ey">Polygon Labs</p>'+
+      '<h3 class="sl-h" style="font-size:26px;max-width:440px">Global rails for <em>upgraded money.</em></h3>'+
+      '<p class="sl-s">One integration. Every layer assembled, tested, and live at institutional scale.</p>'+
+    '</div>'+
+    '<div class="sl-foot">'+
+      '<div class="sl-logo">'+PLY+' Polygon Open Money Stack</div>'+
+      '<span class="sl-num">01 / 08</span>'+
+    '</div>'+
+  '</div>'+
+  /* ── 02 THE PROBLEM ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #E24B4A;padding-left:.7rem">'+
+      '<p class="sl-ey" style="color:#E24B4A">The problem</p>'+
+      (CO_DECK_HOOK&&COSTAT==='done'?'<h3 class="sl-h">'+e(CO_DECK_HOOK)+'</h3>':'<h3 class="sl-h">Building global payments means <em>assembling vendors.</em></h3>')+
+    '</div>'+
+    '<div class="pain-g">'+
+      '<div class="pg"><span class="pg-ic"><i class="ti ti-clock"></i></span><div><p class="pg-t">3–6 months per corridor</p><p class="pg-b">New market triggers new integration cycle.</p></div></div>'+
+      '<div class="pg"><span class="pg-ic"><i class="ti ti-puzzle"></i></span><div><p class="pg-t">5–6 separate vendors</p><p class="pg-b">Each a separate contract and failure point.</p></div></div>'+
+      '<div class="pg"><span class="pg-ic"><i class="ti ti-shield-off"></i></span><div><p class="pg-t">Compliance fragmented</p><p class="pg-b">No single vendor owns the compliance layer.</p></div></div>'+
+      '<div class="pg"><span class="pg-ic"><i class="ti ti-tool"></i></span><div><p class="pg-t">Maintenance compounds</p><p class="pg-b">Engineering teams become infrastructure teams.</p></div></div>'+
+    '</div>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">02 / 08</span></div>'+
+  '</div>'+
+  /* ── 03 THE COST ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #F2CC70;padding-left:.7rem">'+
+      '<p class="sl-ey" style="color:#F2CC70">The cost</p>'+
+      '<h3 class="sl-h">The DIY stack is <em>slowing you down.</em></h3>'+
+    '</div>'+
+    '<div class="b3g">'+
+      '<div class="b3s"><span class="b3n">6</span><span class="b3l">Vendors to assemble</span></div>'+
+      '<div class="b3s"><span class="b3n">4mo</span><span class="b3l">Avg to first transaction</span></div>'+
+      '<div class="b3s"><span class="b3n">30%</span><span class="b3l">Sprint capacity lost</span></div>'+
+    '</div>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">03 / 08</span></div>'+
+  '</div>'+
+  /* ── 04 THE SOLUTION ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #5EEABD;padding-left:.7rem">'+
+      '<p class="sl-ey" style="color:#5EEABD">The solution</p>'+
+      '<h3 class="sl-h"><em>One integration.</em> Every layer assembled.</h3>'+
+    '</div>'+
+    '<div style="flex:1;display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem">'+
+      '<div style="display:flex;flex-wrap:wrap;gap:5px">'+
+        '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Custody</span>'+
+        '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Fiat ramp</span>'+
+        '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Compliance</span>'+
+        '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Cross-chain</span>'+
+        '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Settlement</span>'+
+      '</div>'+
+      '<div style="display:flex;align-items:center;gap:.5rem;font-size:11px;color:rgba(255,255,255,.2)"><span style="flex:1;height:1px;background:rgba(255,255,255,.06)"></span><span style="color:#8247E5;font-weight:700">\u2192 One integration replaces all of this</span><span style="flex:1;height:1px;background:rgba(255,255,255,.06)"></span></div>'+
+      '<div class="oms-bar" style="flex:1">'+
+        '<div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">Days to first transaction</span></div>'+
+        '<div class="oms-bar-comps"><span class="oms-c">Wallets \u00b7 Sequence</span><span class="oms-c">Ramps \u00b7 150+</span><span class="oms-c">Compliance</span><span class="oms-c">Settlement</span><span class="oms-c">Crosschain</span></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">04 / 08</span></div>'+
+  '</div>'+
+  /* ── 05 WHY IT WORKS ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #8247E5;padding-left:.7rem">'+
+      '<p class="sl-ey">Why it works</p>'+
+      '<h3 class="sl-h">Three reasons teams choose <em>OMS.</em></h3>'+
+    '</div>'+
+    '<div class="vpm">'+
+      '<div class="vpmr"><span class="vpmn">01</span><div><p class="vpmt">Speed to market</p><p class="vpmb">First transaction in days. New corridors without new integration cycles.</p></div></div>'+
+      '<div class="vpmr"><span class="vpmn">02</span><div><p class="vpmt">Proven at institutional scale</p><p class="vpmb">$54B volume. BlackRock and Hamilton Lane chose these rails.</p></div></div>'+
+      '<div class="vpmr"><span class="vpmn">03</span><div><p class="vpmt">Open infrastructure</p><p class="vpmb">Not Stripe or Coinbase-owned. Build on rails you control.</p></div></div>'+
+    '</div>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">05 / 08</span></div>'+
+  '</div>'+
+  /* ── 06 COMPETITIVE ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #9B6DF5;padding-left:.7rem">'+
+      '<p class="sl-ey">Competitive landscape</p>'+
+      '<h3 class="sl-h">No one else has <em>the full stack.</em></h3>'+
+    '</div>'+
+    '<table class="cmt" style="flex:1;margin-top:.5rem">'+
+      '<thead><tr><th>Option</th><th>Full stack</th><th>Inst. proof</th><th>Open</th><th>Global</th></tr></thead>'+
+      '<tbody>'+
+        '<tr class="or"><td>Polygon OMS</td><td class="cyw">\u2713 Yes</td><td class="cyw">\u2713 Yes</td><td class="cyw">\u2713 Yes</td><td class="cyw">150+</td></tr>'+
+        '<tr><td>Bridge (Stripe)</td><td class="cpw">Managed</td><td class="cpw">Stripe</td><td class="cnw">No</td><td class="cpw">Ltd</td></tr>'+
+        '<tr><td>DIY stack</td><td class="cnw">Build it</td><td class="cnw">Varies</td><td class="cyw">\u2713</td><td class="cnw">Build it</td></tr>'+
+        '<tr><td>Tron</td><td class="cnw">Settlement</td><td class="cnw">None</td><td class="cpw">Partial</td><td class="cnw">None</td></tr>'+
+      '</tbody>'+
+    '</table>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">06 / 08</span></div>'+
+  '</div>'+
+  /* ── 07 SOCIAL PROOF ── */
+  '<div class="slide">'+
+    '<div style="border-left:3px solid #5EEABD;padding-left:.7rem">'+
+      '<p class="sl-ey" style="color:#5EEABD">Social proof</p>'+
+      '<h3 class="sl-h">Real usage, <em>not just promises.</em></h3>'+
+    '</div>'+
+    '<div class="proof-g">'+
+      '<div class="pg2"><p class="pg2l">Who chose these rails</p><div class="pg2-logos"><span class="pg2-logo">Stripe</span><span class="pg2-logo">Revolut</span><span class="pg2-logo">Nubank</span><span class="pg2-logo">BlackRock</span><span class="pg2-logo">Hamilton Lane</span></div></div>'+
+      '<div class="pg2"><p class="pg2l">Stablecoin volume</p><p class="pg2-big">$54B</p><p class="pg2-sub">Processed on Polygon</p></div>'+
+      '<div class="pg2"><p class="pg2l">Total transactions</p><p class="pg2-big">7B</p><p class="pg2-sub">Battle-tested rails</p></div>'+
+      '<div class="pg2"><p class="pg2l">Avg transaction cost</p><p class="pg2-big">$0.002</p><p class="pg2-sub">150+ country coverage</p></div>'+
+    '</div>'+
+    '<div class="sl-foot"><div class="sl-logo">'+PLY+' Polygon Labs</div><span class="sl-num">07 / 08</span></div>'+
+  '</div>'+
+  /* ── 08 CTA ── */
+  '<div class="slide sl-cta-v">'+
+    '<div class="slide-glow"></div>'+
+    '<div><p class="sl-ey" style="color:rgba(255,255,255,.6)">Next steps</p></div>'+
+    '<div class="cta-slide">'+
+      '<h3 class="ctas-h">Ready to open your next corridor?</h3>'+
+      '<p class="ctas-s">Tell us which corridor is next. We scope the OMS integration against it \u2014 no commitment beyond 20 minutes.</p>'+
+      '<div class="ctas-btns">'+
+        '<button class="ctas-btn" style="background:#fff;color:#7B35D9">Book a scoping call</button>'+
+        '<button class="ctas-btn" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)">Get early access</button>'+
+      '</div>'+
+      '<p class="ctas-url">polygon.technology/open-money-stack</p>'+
+    '</div>'+
+    '<div class="sl-foot" style="border-top-color:rgba(255,255,255,.15)"><div class="sl-logo" style="color:rgba(255,255,255,.4)">'+PLY+' Polygon Labs</div><span class="sl-num" style="color:rgba(255,255,255,.35)">08 / 08</span></div>'+
+  '</div>'+
+  '</div>';}
 
 /* ═══ ASSET: EMAIL SEQUENCE ═══ */
 function tEM(){
   var co=CO;
   var toLine=co?'[First Name] at '+e(co):'[First Name] at [Company]';
   var coRef=co?e(co):'[Company]';
-  return'<div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 1</span><span class="em-tm">Day 1 · Awareness</span></div><span class="em-ty">Pain hook</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">How long did your last corridor take?</span></div></div><div class="em-body"><p class="em-hook">Most fintechs we talk to spent 3 to 4 months getting their last payment corridor live. Not because they moved slowly — because the infrastructure required it.</p><p>Custody here. Compliance there. A fiat ramp for every new market. By the time the first transaction settles, the roadmap has already moved on.</p><p>We built the Polygon Open Money Stack to collapse that cycle. One integration gives you wallets, fiat ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement. Teams go from decision to first live transaction in days, not months.</p><p>Worth a 20-minute conversation to show you what that looks like for '+coRef+'\'s next corridor?</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 20-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Anchor to '+coRef+'\'s specific next corridor. Opening with a question makes them answer it in their head before you name the product.</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 2</span><span class="em-tm">Day 5 · Consideration</span></div><span class="em-ty">Solution intro</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">What your next market entry could look like</span></div></div><div class="em-body"><p>Quick follow-up on my last note.</p><p class="em-hook">Every fintech opening a new payment corridor goes through the same process. Find a custody provider. Source a local fiat ramp. Sort compliance. Three to four months if things go smoothly.</p><p>The Open Money Stack compresses that to days. Wallets, ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement, assembled at <span class="em-stat">$54B</span> in stablecoin transfer volume.</p><p>Stripe, Revolut, Nubank, BlackRock, and Hamilton Lane are live on these rails. If it cleared BlackRock\'s compliance review, it will clear most.</p><div class="em-cta"><i class="ti ti-arrow-right" style="font-size:11px"></i>Reply with your next target corridor</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> If '+coRef+' is Bridge-aware, add: "Unlike Bridge, OMS is open infrastructure, not a Stripe-owned managed service."</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 more days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 3</span><span class="em-tm">Day 9 · Conversion</span></div><span class="em-ty">Concrete ask</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span><span class="em-val s">One corridor. A few days. See the difference.</span></div></div><div class="em-body"><p>Last note from me on this.</p><p class="em-hook">The offer is simple. Pick one payment corridor. We scope the OMS integration against it. No commitment beyond the scoping call.</p><p>We have processed <span class="em-stat">$54B</span> in stablecoin transfers and <span class="em-stat">7B</span> total transactions. The infrastructure is not a bet — it is proven rails that Stripe, Revolut, and BlackRock already validated.</p><p>15 minutes to scope it?</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 15-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Email 3 should be the shortest. Brevity signals confidence. If '+coRef+' has shown intent signals, reference them directly.</p></div></div>';}
+  var hasSubs=co&&COSTAT==='done'&&CO_SUBJECTS;
+  var sub1=hasSubs&&CO_SUBJECTS.s1?e(CO_SUBJECTS.s1):'How long did your last corridor take?';
+  var sub2=hasSubs&&CO_SUBJECTS.s2?e(CO_SUBJECTS.s2):'What your next market entry could look like';
+  var sub3=hasSubs&&CO_SUBJECTS.s3?e(CO_SUBJECTS.s3):'One corridor. A few days. See the difference.';
+  var emBanner=co?'<div style="background:linear-gradient(90deg,rgba(130,71,229,.12) 0%,rgba(130,71,229,.06) 100%);border:1px solid rgba(130,71,229,.2);border-radius:7px;padding:.6rem 1rem;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:.5rem"><div style="width:22px;height:22px;background:#8247E5;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0">'+e(gi(co))+'</div><span style="font-size:12px;font-weight:700;color:#fff">Prepared for '+e(co)+'</span></div><span style="font-size:11px;color:rgba(255,255,255,.3);font-weight:600">Polygon Open Money Stack · 3-email sequence</span></div>':'';
+  return emBanner+'<div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 1</span><span class="em-tm">Day 1 · Awareness</span></div><span class="em-ty">Pain hook</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span>'+(hasSubs?'<span class="em-val s" style="color:#A97CF8">'+sub1+'</span>':'<span class="em-val s">How long did your last corridor take?</span>')+'</div></div><div class="em-body"><p class="em-hook">Most fintechs we talk to spent 3 to 4 months getting their last payment corridor live. Not because they moved slowly — because the infrastructure required it.</p><p>Custody here. Compliance there. A fiat ramp for every new market. By the time the first transaction settles, the roadmap has already moved on.</p><p>'+( co ? 'For a team like '+coRef+', that cycle compounds fast. ' : '')+'We built the Polygon Open Money Stack to collapse it. One integration gives you wallets, fiat ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement. Teams go from decision to first live transaction in days, not months.</p><p>Worth a 20-minute conversation to show you what that looks like for '+coRef+'\'s next corridor?</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 20-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Anchor to '+coRef+'\'s specific next corridor. Opening with a question makes them answer it in their head before you name the product.</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 2</span><span class="em-tm">Day 5 · Consideration</span></div><span class="em-ty">Solution intro</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span>'+(hasSubs?'<span class="em-val s" style="color:#A97CF8">'+sub2+'</span>':'<span class="em-val s">What your next market entry could look like</span>')+'</div></div><div class="em-body"><p>Quick follow-up on my last note.</p><p class="em-hook">'+(co?'Teams like '+coRef+' that are building across corridors face the same friction: e':'E')+'very fintech opening a new payment corridor goes through the same process. Find a custody provider. Source a local fiat ramp. Sort compliance. Three to four months if things go smoothly.</p><p>The Open Money Stack compresses that to days. Wallets, ramps in <span class="em-stat">150+ countries</span>, compliance, and blockchain-native settlement, assembled at <span class="em-stat">$54B</span> in stablecoin transfer volume.</p><p>Stripe, Revolut, Nubank, BlackRock, and Hamilton Lane are live on these rails. If it cleared BlackRock\'s compliance review, it will clear most.</p><div class="em-cta"><i class="ti ti-arrow-right" style="font-size:11px"></i>Reply with your next target corridor</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> If '+coRef+' is Bridge-aware, add: "Unlike Bridge, OMS is open infrastructure, not a Stripe-owned managed service."</p></div></div><div class="em-conn"><i class="ti ti-arrow-down" style="font-size:10px"></i>Send if no reply after 4 more days</div><div class="em-card"><div class="em-hdr"><div style="display:flex;align-items:center;gap:.45rem"><span class="em-nb">Email 3</span><span class="em-tm">Day 9 · Conversion</span></div><span class="em-ty">Concrete ask</span></div><div class="em-meta"><div class="em-row"><span class="em-lbl">To</span><span class="em-val">'+toLine+'</span></div><div class="em-row"><span class="em-lbl">Subject</span>'+(hasSubs?'<span class="em-val s" style="color:#A97CF8">'+sub3+'</span>':'<span class="em-val s">One corridor. A few days. See the difference.</span>')+'</div></div><div class="em-body"><p>Last note from me on this.</p><p class="em-hook">The offer is simple. Pick one payment corridor. We scope the OMS integration against it. No commitment beyond the scoping call.</p><p>We have processed <span class="em-stat">$54B</span> in stablecoin transfers and <span class="em-stat">7B</span> total transactions. The infrastructure is not a bet — it is proven rails that Stripe, Revolut, and BlackRock already validated.</p><p>'+(co?'15 minutes to scope it for '+coRef+'?':'15 minutes to scope it?')+'</p><div class="em-cta"><i class="ti ti-calendar" style="font-size:11px"></i>Book a 15-minute scoping call</div><div class="em-sig"><strong>[Your name] · Polygon Labs</strong>polygon.technology/open-money-stack</div></div><div class="em-note"><i class="ti ti-info-circle em-ni"></i><p class="em-nt"><strong>Personalisation note:</strong> Email 3 should be the shortest. Brevity signals confidence. If '+coRef+' has shown intent signals, reference them directly.</p></div></div>';}
 /* ═══ GEN + DRIVE ═══ */
 async function genAssets(){
   var name=document.getElementById('coName').value.trim();
@@ -542,16 +785,21 @@ async function genAssets(){
   renderHdr();renderTabs();renderBd();
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1000,
-        system:'You are a PMM at Polygon Labs. Use your knowledge of '+name+'.\n\n'+SRC+'\n\nReturn ONLY a raw JSON object with key "lead" containing a 2-3 sentence personalised opening explaining why OMS is specifically relevant to '+name+'. Speak payments not blockchain. No markdown. Start with {',
-        messages:[{role:'user',content:'Personalised opening for '+name}]
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1200,
+        system:'You are a senior PMM at Polygon Labs. Use your knowledge of '+name+' to personalise outreach assets.\n\n'+SRC+'\n\nReturn ONLY a raw JSON object (no markdown, no backticks) with these keys:\n- "lead": 2-3 sentence personalised one-pager opening explaining why OMS is specifically relevant to '+name+'. Speak payments not blockchain.\n- "deckHook": One punchy sentence (max 12 words) naming the specific payment challenge '+name+' faces that OMS solves. Used as a slide headline.\n- "sub1": Personalised subject line for Email 1 (pain hook angle, reference '+name+' context, max 8 words)\n- "sub2": Personalised subject line for Email 2 (solution angle, reference '+name+' context, max 8 words)\n- "sub3": Personalised subject line for Email 3 (brevity + direct ask, max 7 words)\nStart JSON with {',
+        messages:[{role:'user',content:'Personalise all assets for '+name}]
       })
     });
     var data=await res.json();
     var raw=((data.content||[]).find(function(b){return b.type==='text'})||{}).text||'';
     raw=raw.replace(/```json|```/g,'').trim();
     var s=raw.indexOf('{'),ed=raw.lastIndexOf('}');
-    if(s!==-1&&ed!==-1){var p=JSON.parse(raw.substring(s,ed+1));CO_LEAD=p.lead||null;}
+    if(s!==-1&&ed!==-1){
+      var p=JSON.parse(raw.substring(s,ed+1));
+      CO_LEAD=p.lead||null;
+      CO_DECK_HOOK=p.deckHook||null;
+      CO_SUBJECTS={s1:p.sub1||null,s2:p.sub2||null,s3:p.sub3||null};
+    }
     COSTAT='done';
   }catch(er){COSTAT='done';}
   btn.disabled=false;btn.innerHTML='<i class="ti ti-sparkles" style="font-size:11px"></i>Generate personalised assets';
@@ -564,21 +812,71 @@ async function editInDrive(){
   var orig=lbl.textContent;btn.disabled=true;lbl.textContent='Creating...';
   var isSlides=ATAB==='pd';
   var title=(ATAB==='op'?'Polygon OMS One-Pager':ATAB==='pd'?'Polygon OMS Pitch Deck':'Polygon OMS Email Sequence')+(CO?' — '+CO:'');
-  var content='Polygon Open Money Stack\n'+title+'\n\npolygon.technology/open-money-stack';
+  var mimeType=isSlides?'application/vnd.google-apps.presentation':'application/vnd.google-apps.document';
+  var driveType=isSlides?'Google Slides presentation':'Google Doc';
+  var system='You are a helpful assistant with access to Google Drive tools. When asked to create a file, use the available Drive tools to create it immediately. After creating the file, respond with the file URL in the format: https://docs.google.com/... Do not ask clarifying questions — just create the file and return the URL.';
+  var userMsg='Create a '+driveType+' titled "'+title+'". Use the Google Drive tool to create it now. The file should be a '+driveType+' (mimeType: '+mimeType+'). After creating it, give me the URL to open it.';
+  var messages=[{role:'user',content:userMsg}];
+  var mcpServers=[{"type":"url","url":"https://drivemcp.googleapis.com/mcp/v1","name":"google-drive-mcp"}];
+
   try{
-    var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,
-        mcp_servers:[{"type":"url","url":"https://drivemcp.googleapis.com/mcp/v1","name":"google-drive-mcp"}],
-        system:'Create a Google '+(isSlides?'Slides presentation':'Doc')+' using available tools and return only the file URL.',
-        messages:[{role:'user',content:'Create Google '+(isSlides?'Slides presentation':'Doc')+' titled "'+title+'" with this content:\n\n'+content+'\n\nReturn only the URL.'}]
-      })
-    });
-    var d=await r.json();
-    var txt=((d.content||[]).filter(function(b){return b.type==='text'}).map(function(b){return b.text}).join(''));
-    var um=txt.match(/https:\/\/docs\.google\.com\/[^\s"]+/);
-    if(um){lbl.textContent='Opened ✓';window.open(um[0],'_blank');setTimeout(function(){lbl.textContent=orig;btn.disabled=false;},3000);}
-    else{lbl.textContent=orig;btn.disabled=false;}
-  }catch(er){lbl.textContent=orig;btn.disabled=false;}
+    var fileUrl=null;
+    // Multi-turn loop: keep going until the model finishes (handles tool_use → tool_result rounds)
+    for(var turn=0;turn<6;turn++){
+      var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:system,mcp_servers:mcpServers,messages:messages})
+      });
+      var d=await r.json();
+      if(d.error){console.error('API error',d.error);break;}
+
+      // Append the assistant turn to the conversation history
+      messages.push({role:'assistant',content:d.content});
+
+      // Scan every content block for a Google Drive URL (may appear in text or mcp_tool_result)
+      var allText=(d.content||[]).map(function(b){
+        if(b.type==='text') return b.text;
+        if(b.type==='mcp_tool_result'&&b.content){
+          return (b.content||[]).map(function(c){return c.text||'';}).join(' ');
+        }
+        return '';
+      }).join(' ');
+
+      var m=allText.match(/https:\/\/docs\.google\.com\/[^\s"<>]+/);
+      if(m){fileUrl=m[0].replace(/[.,;)]+$/,'');break;}
+
+      // Also look for a file ID in tool results to construct the URL ourselves
+      var idMatch=allText.match(/"id"\s*:\s*"([a-zA-Z0-9_-]{25,})"/);
+      if(!idMatch) idMatch=allText.match(/\bid\b[^:]*:\s*['"]*([a-zA-Z0-9_-]{25,})/);
+      if(idMatch&&!fileUrl){
+        var fid=idMatch[1];
+        fileUrl=isSlides?'https://docs.google.com/presentation/d/'+fid+'/edit':'https://docs.google.com/document/d/'+fid+'/edit';
+        break;
+      }
+
+      // If stopped — nothing left to do
+      if(d.stop_reason==='end_turn') break;
+
+      // If there are tool_use blocks, send back tool_result responses so the loop continues
+      var toolUseBlocks=(d.content||[]).filter(function(b){return b.type==='tool_use'||b.type==='mcp_tool_use';});
+      if(toolUseBlocks.length===0) break;
+      var toolResults=toolUseBlocks.map(function(b){
+        return{type:'tool_result',tool_use_id:b.id,content:'Tool executed successfully.'};
+      });
+      messages.push({role:'user',content:toolResults});
+    }
+
+    if(fileUrl){
+      lbl.textContent='Opened ✓';
+      window.open(fileUrl,'_blank');
+      setTimeout(function(){lbl.textContent=orig;btn.disabled=false;},3000);
+    } else {
+      lbl.textContent='Failed — check console';
+      setTimeout(function(){lbl.textContent=orig;btn.disabled=false;},3000);
+    }
+  }catch(er){
+    console.error('editInDrive error',er);
+    lbl.textContent=orig;btn.disabled=false;
+  }
 }
 
 /* ═══ INIT ═══ */
