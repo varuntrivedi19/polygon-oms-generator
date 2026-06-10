@@ -306,13 +306,12 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 /* SLIDES */
 /* PITCH DECK REDESIGN */
 .pd-wrap{display:flex;flex-direction:column;gap:10px}
-.slide{background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:1.4rem 1.5rem;aspect-ratio:16/7;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;box-sizing:border-box}
+.slide{background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:1.25rem 1.4rem;height:230px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
 .slide.sl-cover{background:linear-gradient(135deg,#0D0722 0%,#1A0A3D 50%,#2D1260 100%);border-color:rgba(130,71,229,.4)}
 .slide.sl-cta-v{background:linear-gradient(135deg,#5C2DB8 0%,#8247E5 60%,#9B5FF5 100%);border-color:rgba(130,71,229,.5)}
 .slide-glow{position:absolute;right:-30px;top:-30px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.2) 0%,transparent 65%);pointer-events:none}
 .slide-glow-br{position:absolute;right:-20px;bottom:-20px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(162,111,255,.1) 0%,transparent 70%);pointer-events:none}
 
-.slide-glow{position:absolute;right:-20px;top:-20px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(130,71,229,.09) 0%,transparent 70%);pointer-events:none}
 .sl-ey{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9B6DF5;margin-bottom:.4rem}
 .sl-h{font-size:22px;font-weight:900;line-height:1.15;letter-spacing:-.025em;color:#fff}
 .sl-h em{color:#8247E5;font-style:normal}
@@ -320,35 +319,35 @@ html,body{height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B0E1
 .sl-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08);margin-top:auto;flex-shrink:0}
 .sl-logo{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:rgba(255,255,255,.2)}
 .sl-num{font-size:11px;font-weight:700;color:rgba(255,255,255,.18);letter-spacing:.05em}
-.pain-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
+.pain-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:.4rem}
 .pg{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:.55rem .65rem;display:flex;gap:.45rem}
 .pg-ic{font-size:10px;color:rgba(255,255,255,.22);flex-shrink:0;margin-top:1px}
 .pg-t{font-size:12px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:.15rem}
 .pg-b{font-size:11px;color:rgba(255,255,255,.45);line-height:1.45}
-.b3g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:rgba(130,71,229,.2);border-radius:6px;overflow:hidden;flex:1;margin-top:.5rem}
-.b3s{background:#0D0A1E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.7rem}
+.b3g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:rgba(130,71,229,.2);border-radius:6px;overflow:hidden;margin-top:.5rem}
+.b3s{background:#0D0A1E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.85rem .5rem;height:100px}
 .b3n{font-size:32px;font-weight:900;color:#8247E5;letter-spacing:-.03em;line-height:1}
 .b3l{font-size:10px;color:rgba(255,255,255,.4);margin-top:.25rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;text-align:center}
-.vpm{display:flex;flex-direction:column;gap:4px;flex:1;margin-top:.35rem}
+.vpm{display:flex;flex-direction:column;gap:5px;margin-top:.4rem}
 .vpmr{background:rgba(130,71,229,.07);border:1px solid rgba(130,71,229,.15);border-radius:5px;padding:.55rem .65rem;display:flex;gap:.55rem}
 .vpmn{font-size:15px;font-weight:900;color:#8247E5;line-height:1;flex-shrink:0;width:22px}
 .vpmt{font-size:12px;font-weight:700;color:#fff;margin-bottom:.12rem}
 .vpmb{font-size:11px;color:rgba(255,255,255,.5);line-height:1.45}
-.cmt{width:100%;border-collapse:collapse;font-size:11px;flex:1;margin-top:.35rem}
+.cmt{width:100%;border-collapse:collapse;font-size:11px;margin-top:.4rem}
 .cmt th{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:.3rem .45rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.05)}
 .cmt td{padding:.35rem .45rem;border-bottom:1px solid rgba(255,255,255,.03);color:rgba(255,255,255,.4)}
 .cmt tr:last-child td{border-bottom:none}
 .cmt .or td{color:#fff;background:rgba(130,71,229,.05)}
 .cmt .or td:first-child{color:#8247E5;font-weight:700}
 .cyw{color:#1D9E75;font-weight:600}.cpw{color:#BA7517}.cnw{color:rgba(255,255,255,.18)}
-.proof-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;margin-top:.35rem}
+.proof-g{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:.4rem}
 .pg2{background:rgba(130,71,229,.06);border:1px solid rgba(130,71,229,.15);border-radius:5px;padding:.55rem .7rem}
 .pg2l{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.28rem}
 .pg2-logos{display:flex;flex-wrap:wrap;gap:3px}
 .pg2-logo{border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:3px 7px;font-size:10px;font-weight:700;color:rgba(255,255,255,.6)}
 .pg2-big{font-size:26px;font-weight:900;color:#8247E5;letter-spacing:-.03em;line-height:1}
 .pg2-sub{font-size:9px;color:rgba(255,255,255,.25);margin-top:.15rem;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.cta-slide{flex:1;margin-top:.35rem;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
+.cta-slide{display:flex;flex-direction:column;justify-content:flex-end;gap:.5rem;margin-top:auto}
 .ctas-h{font-size:20px;font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.025em}
 .ctas-s{font-size:13px;color:rgba(255,255,255,.7);line-height:1.55}
 .ctas-btns{display:flex;gap:5px;margin-top:.6rem}
@@ -684,7 +683,7 @@ function tPD(){
       '<p class="sl-ey" style="color:#5EEABD">The solution</p>'+
       '<h3 class="sl-h"><em>One integration.</em> Every layer assembled.</h3>'+
     '</div>'+
-    '<div style="flex:1;display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem">'+
+    '<div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem">'+
       '<div style="display:flex;flex-wrap:wrap;gap:5px">'+
         '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Custody</span>'+
         '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Fiat ramp</span>'+
@@ -693,7 +692,7 @@ function tPD(){
         '<span style="border:1px solid rgba(226,75,74,.25);border-radius:3px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.4)">Settlement</span>'+
       '</div>'+
       '<div style="display:flex;align-items:center;gap:.5rem;font-size:11px;color:rgba(255,255,255,.2)"><span style="flex:1;height:1px;background:rgba(255,255,255,.06)"></span><span style="color:#8247E5;font-weight:700">\u2192 One integration replaces all of this</span><span style="flex:1;height:1px;background:rgba(255,255,255,.06)"></span></div>'+
-      '<div class="oms-bar" style="flex:1">'+
+      '<div class="oms-bar">'+
         '<div class="oms-bar-top"><span class="oms-bar-nm">Polygon Open Money Stack</span><span class="oms-bar-bg">Days to first transaction</span></div>'+
         '<div class="oms-bar-comps"><span class="oms-c">Wallets \u00b7 Sequence</span><span class="oms-c">Ramps \u00b7 150+</span><span class="oms-c">Compliance</span><span class="oms-c">Settlement</span><span class="oms-c">Crosschain</span></div>'+
       '</div>'+
